@@ -1,0 +1,14 @@
+{
+  "name": "seo-ace-mcp",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Lokalny MCP server pre SEO workflow na sperky-eshop.sk - crawl e-shopu a Google Search Console",
+  "type": "module",
+  "bin": { "seo-ace-mcp": "./index.mjs" },
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "start": "node index.mjs",
+    "selftest": "node selftest.mjs"
+  },
+  "dependencies": {}
+}

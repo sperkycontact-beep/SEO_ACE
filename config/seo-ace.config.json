@@ -1,0 +1,82 @@
+{
+  "$schema": "./seo-ace.schema.json",
+  "version": "1.0.0",
+  "site": {
+    "domain": "sperky-eshop.sk",
+    "baseUrl": "https://www.sperky-eshop.sk",
+    "canonicalHost": "sperky-eshop.sk",
+    "platform": "prestashop",
+    "locale": "sk-SK",
+    "currency": "EUR",
+    "brandName": "Šperky-eshop.sk"
+  },
+  "target": {
+    "categoryId": 77,
+    "categoryPath": "/77-zlate-nausnice",
+    "categoryName": "Zlaté náušnice",
+    "includeSubcategories": [92, 93, 94, 91],
+    "productsPerDay": 5
+  },
+  "dataSources": {
+    "ahrefs": {
+      "projectId": 9364794,
+      "gscEnabled": true,
+      "paidEndpointsEnabled": false,
+      "paidEndpointsResumeAfter": "2026-08-29",
+      "note": "API units vycerpane 401648/400000. GSC endpointy su zdarma. Po resete zapnut paidEndpointsEnabled."
+    },
+    "gsc": {
+      "mode": "oauth",
+      "propertyUrl": "sc-domain:sperky-eshop.sk",
+      "lookbackDays": 90,
+      "tokenPath": "~/.seo-ace/gsc-token.json"
+    }
+  },
+  "prioritisation": {
+    "strategy": "impressions_x_ctr_gap",
+    "minImpressions": 50,
+    "maxPosition": 40,
+    "excludeUrlPatterns": ["?", "/mobile/", "utm_", "a_aid", "full=1"],
+    "requireHtmlProductUrl": true,
+    "cooldownDays": 120
+  },
+  "seoScope": {
+    "metaTitle": { "enabled": true, "minChars": 45, "maxChars": 60 },
+    "metaDescription": { "enabled": true, "minChars": 130, "maxChars": 155 },
+    "h1": { "enabled": true, "maxChars": 70 },
+    "shortDescription": { "enabled": true, "minWords": 25, "maxWords": 45 },
+    "longDescription": { "enabled": true, "minWords": 200, "maxWords": 400 },
+    "imageAlt": { "enabled": true, "maxChars": 125 },
+    "jsonLd": { "enabled": true, "types": ["Product", "BreadcrumbList"] },
+    "internalLinks": { "enabled": true, "min": 3, "max": 5 }
+  },
+  "tone": {
+    "style": "selling_accessible",
+    "address": "vykanie",
+    "rules": [
+      "Vykanie, nikdy tykanie.",
+      "Slovenska diakritika vzdy spravne a uplne.",
+      "Ziadne superlativy bez podkladu (najlepsie, unikatne) a ziadne vykricniky.",
+      "Vzdy uvadzat rydzost zlata (9k/375, 14k/585, 18k/750) ak je znama.",
+      "Spomenut prilezitost darovania ak je relevantna (narodeniny, prve sv. prijimanie, svadba, Vianoce).",
+      "Neuvadzat cenu do meta description - meni sa a zastara.",
+      "Nesluboovat dorucenie ani dostupnost, ktore nie su overene z dat produktu."
+    ]
+  },
+  "delivery": {
+    "repoCommit": true,
+    "htmlArtifact": true,
+    "slack": { "enabled": true, "channel": null },
+    "googleDrive": { "enabled": true, "folder": "SEO ACE Reports" },
+    "pullRequest": true,
+    "autoPublishToShop": false,
+    "note": "autoPublishToShop je zamerne false - uzivatel schvaluje kazdu davku manualne."
+  },
+  "schedule": {
+    "crawlCron": "23 3 * * *",
+    "crawlCronTz": "UTC",
+    "seoCron": "23 5 * * *",
+    "seoCronTz": "UTC",
+    "note": "Crawl bezi v GitHub Actions (ma pristup na web). SEO generovanie bezi v Claude Routine (cloud)."
+  }
+}

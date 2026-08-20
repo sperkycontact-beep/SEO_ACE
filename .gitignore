@@ -1,0 +1,6 @@
+node_modules/
+.DS_Store
+*.log
+.seo-ace/
+gsc-token.json
+gsc-client.json

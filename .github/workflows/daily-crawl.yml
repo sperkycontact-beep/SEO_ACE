@@ -1,0 +1,113 @@
+name: SEO ACE — denný crawl
+
+# Crawler beží tu, nie v Claude session: GitHub runner má prístup na sperky-eshop.sk,
+# zatiaľ čo cloudová Claude session má domény blokované egress proxy.
+
+on:
+  schedule:
+    - cron: '23 3 * * *'   # 05:23 CEST / 04:23 CET
+  workflow_dispatch:
+    inputs:
+      date:
+        description: 'Dátum dávky (YYYY-MM-DD), prázdne = dnes'
+        required: false
+        type: string
+      batch_size:
+        description: 'Počet produktov v dávke'
+        required: false
+        default: '5'
+        type: string
+      reselect:
+        description: 'Prepočítať výber dávky z GSC snapshotu'
+        required: false
+        default: true
+        type: boolean
+
+permissions:
+  contents: write
+
+concurrency:
+  group: seo-ace-crawl
+  cancel-in-progress: false
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: claude/sperky-eshop-seo-workflow-sg70xu
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Overiť dostupnosť e-shopu
+        run: |
+          set -euo pipefail
+          code=$(curl -sS -o /dev/null -w '%{http_code}' -A 'SEO-ACE/1.0' \
+            --max-time 30 https://www.sperky-eshop.sk/77-zlate-nausnice || echo 000)
+          echo "Kategória vrátila HTTP $code"
+          if [ "$code" = "000" ]; then
+            echo "::error::E-shop nedostupný z runnera."
+            exit 1
+          fi
+
+      - name: Vybrať dennú dávku
+        if: ${{ inputs.reselect != 'false' }}
+        env:
+          SEO_ACE_DATE: ${{ inputs.date }}
+          SEO_ACE_BATCH_SIZE: ${{ inputs.batch_size }}
+        run: node scripts/select-batch.mjs
+
+      - name: Crawl produktov
+        env:
+          SEO_ACE_DATE: ${{ inputs.date }}
+        run: node scripts/crawl-batch.mjs
+
+      - name: Súhrn do job summary
+        if: always()
+        run: |
+          set -euo pipefail
+          DATE="${{ inputs.date }}"
+          [ -z "$DATE" ] && DATE=$(date -u +%F)
+          {
+            echo "## SEO ACE crawl — $DATE"
+            echo ""
+            if [ -f "data/products/$DATE/_crawl-summary.json" ]; then
+              node -e '
+                const s = require(`./data/products/${process.argv[1]}/_crawl-summary.json`);
+                console.log("| URL | Stav | Zistení |");
+                console.log("|---|---|---|");
+                for (const r of s.results) {
+                  const p = r.url.replace("https://sperky-eshop.sk", "");
+                  console.log(`| \`${p}\` | ${r.ok ? "OK" : "CHYBA: " + r.error} | ${r.issues ?? "-"} |`);
+                }
+              ' "$DATE"
+            else
+              echo "Crawl nevyprodukoval súhrn."
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Commitnúť dáta
+        run: |
+          set -euo pipefail
+          DATE="${{ inputs.date }}"
+          [ -z "$DATE" ] && DATE=$(date -u +%F)
+          git config user.name  "seo-ace-bot"
+          git config user.email "seo-ace-bot@users.noreply.github.com"
+          git add data/
+          if git diff --cached --quiet; then
+            echo "Žiadne nové dáta."
+            exit 0
+          fi
+          git commit -m "data: crawl dávky $DATE"
+          for i in 1 2 3 4; do
+            git push origin HEAD:claude/sperky-eshop-seo-workflow-sg70xu && exit 0
+            echo "Push zlyhal, pokus $i — čakám $((2**i))s"
+            sleep $((2**i))
+            git pull --rebase origin claude/sperky-eshop-seo-workflow-sg70xu || true
+          done
+          echo "::error::Push zlyhal po 4 pokusoch."
+          exit 1
