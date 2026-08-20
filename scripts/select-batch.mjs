@@ -26,13 +26,35 @@ const writeJson = (p, v) => {
 const pagesPath = resolve(ROOT, 'data/gsc/pages-latest.json');
 const queuePath = resolve(ROOT, 'data/queue.json');
 
-const pages = readJson(pagesPath, { pages: [] }).pages ?? [];
+const snapshot = readJson(pagesPath, { pages: [] });
+const pages = snapshot.pages ?? [];
+
+// A stale snapshot silently picks yesterday's winners forever. Fail loudly instead.
+const maxAge = P.maxSnapshotAgeDays ?? 7;
+if (snapshot.fetchedAt) {
+  const ageDays = (Date.now() - Date.parse(snapshot.fetchedAt)) / 86400000;
+  if (ageDays > maxAge) {
+    console.error(
+      `GSC snapshot je stary ${ageDays.toFixed(1)} dni (limit ${maxAge}). ` +
+        `Obnov data/gsc/pages-latest.json cez Ahrefs gsc-pages, alebo zvys prioritisation.maxSnapshotAgeDays.`
+    );
+    process.exit(3);
+  }
+  console.log(`GSC snapshot: ${snapshot.fetchedAt} (${ageDays.toFixed(1)} dni stary)\n`);
+} else {
+  console.error('VAROVANIE: GSC snapshot nema pole fetchedAt — vek sa neda overit.');
+}
 const queue = readJson(queuePath, { history: [], batches: [] });
 
-const done = new Map();
-for (const b of queue.batches) for (const item of b.items) done.set(item.url, b.date);
-
 const today = process.env.SEO_ACE_DATE || new Date().toISOString().slice(0, 10);
+
+// Cooldown history excludes today's own batch: re-running the selector for a date
+// must reproduce that date's batch, not skip past it as "already done".
+const done = new Map();
+for (const b of queue.batches) {
+  if (b.date === today) continue;
+  for (const item of b.items) done.set(item.url, b.date);
+}
 const cooldownMs = P.cooldownDays * 86400000;
 
 function isEligible(p) {

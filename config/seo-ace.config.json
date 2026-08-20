@@ -14,7 +14,12 @@
     "categoryId": 77,
     "categoryPath": "/77-zlate-nausnice",
     "categoryName": "Zlaté náušnice",
-    "includeSubcategories": [92, 93, 94, 91],
+    "includeSubcategories": [
+      92,
+      93,
+      94,
+      91
+    ],
     "productsPerDay": 5
   },
   "dataSources": {
@@ -36,19 +41,58 @@
     "strategy": "impressions_x_ctr_gap",
     "minImpressions": 50,
     "maxPosition": 40,
-    "excludeUrlPatterns": ["?", "/mobile/", "utm_", "a_aid", "full=1"],
+    "excludeUrlPatterns": [
+      "?",
+      "/mobile/",
+      "utm_",
+      "a_aid",
+      "full=1"
+    ],
     "requireHtmlProductUrl": true,
-    "cooldownDays": 120
+    "cooldownDays": 120,
+    "maxSnapshotAgeDays": 7
   },
   "seoScope": {
-    "metaTitle": { "enabled": true, "minChars": 45, "maxChars": 60 },
-    "metaDescription": { "enabled": true, "minChars": 130, "maxChars": 155 },
-    "h1": { "enabled": true, "maxChars": 70 },
-    "shortDescription": { "enabled": true, "minWords": 25, "maxWords": 45 },
-    "longDescription": { "enabled": true, "minWords": 200, "maxWords": 400 },
-    "imageAlt": { "enabled": true, "maxChars": 125 },
-    "jsonLd": { "enabled": true, "types": ["Product", "BreadcrumbList"] },
-    "internalLinks": { "enabled": true, "min": 3, "max": 5 }
+    "metaTitle": {
+      "enabled": true,
+      "minChars": 45,
+      "maxChars": 60
+    },
+    "metaDescription": {
+      "enabled": true,
+      "minChars": 130,
+      "maxChars": 155
+    },
+    "h1": {
+      "enabled": true,
+      "maxChars": 70
+    },
+    "shortDescription": {
+      "enabled": true,
+      "minWords": 25,
+      "maxWords": 45
+    },
+    "longDescription": {
+      "enabled": true,
+      "minWords": 200,
+      "maxWords": 400
+    },
+    "imageAlt": {
+      "enabled": true,
+      "maxChars": 125
+    },
+    "jsonLd": {
+      "enabled": true,
+      "types": [
+        "Product",
+        "BreadcrumbList"
+      ]
+    },
+    "internalLinks": {
+      "enabled": true,
+      "min": 3,
+      "max": 5
+    }
   },
   "tone": {
     "style": "selling_accessible",
@@ -66,8 +110,15 @@
   "delivery": {
     "repoCommit": true,
     "htmlArtifact": true,
-    "slack": { "enabled": true, "channel": null },
-    "googleDrive": { "enabled": true, "folder": "SEO ACE Reports" },
+    "slack": {
+      "enabled": true,
+      "channel": "#seo-daily-sperky",
+      "channelId": "C0BM727RRDJ"
+    },
+    "googleDrive": {
+      "enabled": true,
+      "folder": "SEO ACE Reports"
+    },
     "pullRequest": true,
     "autoPublishToShop": false,
     "note": "autoPublishToShop je zamerne false - uzivatel schvaluje kazdu davku manualne."
@@ -77,6 +128,8 @@
     "crawlCronTz": "UTC",
     "seoCron": "23 5 * * *",
     "seoCronTz": "UTC",
-    "note": "Crawl bezi v GitHub Actions (ma pristup na web). SEO generovanie bezi v Claude Routine (cloud)."
+    "note": "Crawl bezi v GitHub Actions (ma pristup na web). SEO generovanie bezi v Claude Routine (cloud).",
+    "routineId": "trig_01HSnCqkkDMwMFSNuC9r4JjM",
+    "routineNote": "Routine bola vytvorena z tejto session, preto neuchovava MCP konektory. Viz docs/ROUTINE_SETUP.md."
   }
 }
