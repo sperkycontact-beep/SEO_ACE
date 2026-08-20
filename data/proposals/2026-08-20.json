@@ -1,0 +1,640 @@
+{
+  "date": "2026-08-20",
+  "batch": 1,
+  "category": {
+    "id": 77,
+    "path": "/77-zlate-nausnice",
+    "name": "Zlaté náušnice"
+  },
+  "strategy": "impressions_x_ctr_gap",
+  "dataSources": {
+    "gsc": "Ahrefs MCP gsc-pages + gsc-keywords, projekt 9364794, 2026-05-20..2026-08-18, 0 API units",
+    "ctrBenchmark": "gsc-ctr-by-position, izotonicky vyhladena krivka",
+    "ahrefsPaid": "nedostupne — API units vycerpane do 2026-08-29",
+    "productCrawl": "CHYBA — cloudova session ma domenu blokovanu, GitHub Actions workflow nie je na default branchi"
+  },
+  "totals": {
+    "impressions": 5037,
+    "clicks": 17,
+    "missedClicks": 184.0,
+    "avgCtrPercent": 0.34
+  },
+  "products": [
+    {
+      "productId": "32023",
+      "url": "https://sperky-eshop.sk/32023-zlate-nausnice-585-oval-s-vlnkou-a-zirkonovymi-slzickami-zlte-biele-a-ruzove-zlato.html",
+      "rank": 1,
+      "gsc": {
+        "impressions": 432,
+        "clicks": 2,
+        "ctrPercent": 0.46,
+        "position": 1.83,
+        "expectedCtrPercent": 15.74,
+        "missedClicks": 66.0,
+        "keywordsCount": 3
+      },
+      "primaryQuery": "zlaté náušnice 585",
+      "secondaryQueries": [
+        {
+          "q": "akcia na zlate nausnice",
+          "imp": 430,
+          "clicks": 2,
+          "ctr": 0.47,
+          "pos": 1.77
+        },
+        {
+          "q": "zlate nausnice akcia",
+          "imp": 1,
+          "clicks": 0,
+          "ctr": 0.0,
+          "pos": 19.0
+        }
+      ],
+      "diagnosis": "Stránka je na pozícii 1,8 pre dopyt s intenciou akcie a berie 430 z 432 impresií tejto stránky. CTR 0,47 % nie je chyba textu — je to nezhoda intencie. Kto hľadá 'akcia na zlate nausnice', chce výpis zliav, nie jeden produkt. Toto je najväčšia CTR anomália v dávke a title ju sám nevyrieši.",
+      "materialFacts": [
+        "zlato rýdzosti 585 (14 karátov)",
+        "tvar ovál s vlnkou",
+        "zirkónové slzičky",
+        "kombinácia žltého, bieleho a ružového zlata"
+      ],
+      "proposed": {
+        "metaTitle": "Zlaté náušnice 585 ovál so zirkónmi | Šperky-eshop.sk",
+        "h1": "Zlaté náušnice 585 – ovál s vlnkou a zirkónovými slzičkami",
+        "metaDescription": "Ovál s vlnkou zo žltého, bieleho a ružového zlata 585, zdobený zirkónovými slzičkami. Ladia s každým odtieňom zlata, ktorý už nosíte.",
+        "shortDescription": "Náušnice zo zlata 585 v tvare ovála s jemnou vlnkou. Kombinujú žlté, biele a ružové zlato a dopĺňajú ich zirkónové slzičky. Vďaka trom odtieňom zlata sa hodia ku každému šperku, ktorý už máte.",
+        "longDescription": "Zlaté náušnice 585 v tvare ovála s vlnkou patria k šperkom, ktoré si nájdu miesto v každodennom nosení aj na slávnostnú príležitosť. Tvar je jemný a nenápadný, ale kombinácia troch odtieňov zlata mu dodáva hĺbku, akú jednofarebný šperk nemá.\n\nMateriál a rýdzosť. Náušnice sú vyrobené zo zlata s rýdzosťou 585, čo znamená 58,5 percenta čistého zlata — na Slovensku najbežnejšia rýdzosť pre šperky na denné nosenie. Kombinujú žlté, biele a ružové zlato, takže ladia so žltým aj bielym zlatom, ktoré už vlastníte.\n\nRozmery a zapínanie. Ovál má výšku [doplniť z crawlu: mm] a náušnice vážia [doplniť z crawlu: g] za pár. Zapínanie je [doplniť z crawlu: puzetka alebo francúzsky zámok], takže sa dajú nosiť celý deň bez toho, aby ťahali ucho.\n\nPre koho a na akú príležitosť. Ovál s vlnkou je vďačný tvar — nekonkuruje výraznému náhrdelníku ani účesu, a zároveň je viditeľný. Sadne k práci aj k svadbe. Ako darček funguje k narodeninám či k okrúhlemu jubileu, keď hľadáte šperk, o ktorom viete, že sa bude nosiť.\n\nStarostlivosť. Zlato 585 je odolné, ale zirkóny stratia lesk od krému, parfumu a chlóru. Náušnice preto odložte pred sprchou a plávaním. Na čistenie stačí vlažná voda s kvapkou saponátu a mäkká handrička; ultrazvukovú čističku nechajte na hladké zlato bez kameňov.",
+        "imageAlts": [
+          "Zlaté náušnice 585 – ovál s vlnkou a zirkónovými slzičkami, pohľad spredu",
+          "Trojfarebné zlato 585 na náušniciach – detail žltého, bieleho a ružového odtieňa",
+          "Zirkónové slzičky v ovále zo zlata 585 – detail osadenia kameňov",
+          "Zlaté náušnice 585 ovál s vlnkou – zapínanie z profilu",
+          "Zlaté náušnice 585 s vlnkou a zirkónmi na uchu – veľkosť v nosení"
+        ],
+        "jsonLd": {
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "name": "Zlaté náušnice 585 – ovál s vlnkou a zirkónovými slzičkami",
+          "image": [
+            "[doplniť z crawlu: URL fotiek produktu]"
+          ],
+          "description": "Ovál s vlnkou zo žltého, bieleho a ružového zlata 585, zdobený zirkónovými slzičkami.",
+          "sku": "[doplniť z crawlu: SKU]",
+          "material": "Zlato 585 (14 karátov)",
+          "brand": {
+            "@type": "Brand",
+            "name": "Šperky-eshop.sk"
+          },
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "EUR",
+            "price": "[doplniť z crawlu]",
+            "availability": "https://schema.org/InStock",
+            "url": "https://sperky-eshop.sk/32023-zlate-nausnice-585-oval-s-vlnkou-a-zirkonovymi-slzickami-zlte-biele-a-ruzove-zlato.html"
+          }
+        },
+        "internalLinks": [
+          {
+            "path": "/77-zlate-nausnice",
+            "anchor": "všetky zlaté náušnice",
+            "why": "nadradená kategória, 16 800 impresií"
+          },
+          {
+            "path": "/92-damske-zlate-nausnice",
+            "anchor": "dámske zlaté náušnice",
+            "why": "najbližšia podkategória"
+          },
+          {
+            "path": "/110-vypredaj-skladu",
+            "anchor": "zlaté náušnice vo výpredaji",
+            "why": "obsluhuje intenciu akcie, ktorá na túto stránku dopadá"
+          },
+          {
+            "path": "/74-zlato",
+            "anchor": "šperky zo zlata 585",
+            "why": "rodičovská kategória materiálu"
+          }
+        ]
+      },
+      "needsVerification": [
+        "rozmer ovála v mm",
+        "hmotnosť za pár",
+        "typ zapínania",
+        "cena a dostupnosť",
+        "URL fotiek a ich počet",
+        "SKU",
+        "či je produkt reálne v akcii"
+      ],
+      "structuralFinding": "Dopyt 'akcia na zlate nausnice' (454 impresií celkovo) si delia tri URL: kategória /77 na pozícii 2,42, tento produkt na 1,77 a produkt 32102 na 1,84. Všetky tri majú CTR pod 0,5 %. Kanibalizácia — dopyt patrí na /110-vypredaj-skladu, ktoré už pre 'zlate nausnice vypredaj' drží CTR 2,14 %."
+    },
+    {
+      "productId": "40226",
+      "url": "https://sperky-eshop.sk/40226-zlate-nausnice-14k-zlato-zatocene-kruhy.html",
+      "rank": 2,
+      "gsc": {
+        "impressions": 2515,
+        "clicks": 12,
+        "ctrPercent": 0.48,
+        "position": 10.73,
+        "expectedCtrPercent": 2.34,
+        "missedClicks": 46.9,
+        "keywordsCount": 46
+      },
+      "primaryQuery": "zlaté náušnice 14k",
+      "secondaryQueries": [
+        {
+          "q": "náušnice zlaté",
+          "imp": 666,
+          "clicks": 2,
+          "ctr": 0.3,
+          "pos": 7.5
+        },
+        {
+          "q": "14k zlato",
+          "imp": 237,
+          "clicks": 0,
+          "ctr": 0.0,
+          "pos": 9.03
+        },
+        {
+          "q": "zlate nausnice 14k",
+          "imp": 215,
+          "clicks": 0,
+          "ctr": 0.0,
+          "pos": 3.29
+        },
+        {
+          "q": "náušnice zlato",
+          "imp": 182,
+          "clicks": 0,
+          "ctr": 0.0,
+          "pos": 28.82
+        },
+        {
+          "q": "zlate damske nausnice 14k",
+          "imp": 167,
+          "clicks": 2,
+          "ctr": 1.2,
+          "pos": 1.63
+        },
+        {
+          "q": "zlate nausnice kruhy 14k",
+          "imp": 47,
+          "clicks": 3,
+          "ctr": 6.38,
+          "pos": 1.87
+        }
+      ],
+      "diagnosis": "Vzorec je čitateľný. Kde dopyt presne opisuje produkt ('zlate nausnice kruhy 14k', pozícia 1,9), CTR je 6,4 % — funguje. Kde je dopyt všeobecný ('zlate nausnice 14k', pozícia 3,3, 215 impresií), CTR je nula. Stránka drží top pozície na hlavových dopytoch, ale snippet na nich nepresvedčí. Rozdiel medzi 6,4 % a 0 % je čisto text v SERP.",
+      "materialFacts": [
+        "zlato rýdzosti 14k (585)",
+        "tvar kruhy",
+        "zatočený profil",
+        "žlté zlato"
+      ],
+      "proposed": {
+        "metaTitle": "Zlaté náušnice 14k – zatočené kruhy | Šperky-eshop.sk",
+        "h1": "Zlaté náušnice 14k – zatočené kruhy",
+        "metaDescription": "Kruhy zo zlata 14k so zatočeným profilom, ktorý zachytáva svetlo z každého uhla. Ľahké na celodenné nosenie, výrazné aj bez ďalších šperkov.",
+        "shortDescription": "Kruhové náušnice zo zlata 14k so zatočeným povrchom. Profil kruhu je stočený, takže sa v ňom svetlo láme a šperk vyzerá výraznejšie, než by čakal jeho rozmer. Klasika, ktorá sa nosí každý deň.",
+        "longDescription": "Zlaté náušnice 14k so zatočenými kruhmi sú z tých šperkov, ktoré nevyjdú z módy. Kruh je najstarší tvar náušnice a zatočený profil mu pridáva to, čo hladký kruh nemá — hru svetla, ktorá sa mení s každým pohybom hlavy.\n\nMateriál a rýdzosť. Zlato 14k má rýdzosť 585, teda 58,5 percenta čistého zlata. Je to pomer, ktorý drží zlatú farbu a zároveň znesie denné nosenie bez ohýbania a škrabancov. Ide o žlté zlato, takže ladí s ostatnými zlatými šperkami bez ohľadu na ich rýdzosť.\n\nRozmery a zapínanie. Priemer kruhu je [doplniť z crawlu: mm] a pár váži [doplniť z crawlu: g]. Zapínanie je [doplniť z crawlu: kĺbové alebo francúzsky zámok]. Zatočený profil znamená, že kruh je pri rovnakej hmotnosti opticky väčší než hladký.\n\nPre koho a na akú príležitosť. Zatočené kruhy fungujú ako šperk, ktorý si dáte ráno a celý deň naň nemyslíte. Sadnú k rifliam aj ku košeli, k vlasom zopnutým aj rozpusteným. Ako darček sú bezpečná voľba, pretože kruhy nosí takmer každá — nemusíte hádať vkus.\n\nStarostlivosť. Zlato bez kameňov je nenáročné. Utrite náušnice mäkkou handričkou po každom nosení, aby ste zbavili povrch mastnoty z pokožky. Raz za čas pomôže vlažná voda so saponátom a mäkká zubná kefka na drážky zatočeného profilu, kde sa nečistota drží najviac.",
+        "imageAlts": [
+          "Zlaté náušnice 14k so zatočenými kruhmi, pohľad spredu",
+          "Zatočený profil zlatého kruhu 14k – detail povrchu a hry svetla",
+          "Zlaté kruhy 14k z profilu – tvar a hrúbka kruhu",
+          "Zapínanie zlatých náušníc 14k so zatočenými kruhmi – detail",
+          "Zatočené zlaté kruhy 14k na uchu – skutočná veľkosť v nosení"
+        ],
+        "jsonLd": {
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "name": "Zlaté náušnice 14k – zatočené kruhy",
+          "image": [
+            "[doplniť z crawlu: URL fotiek produktu]"
+          ],
+          "description": "Kruhy zo zlata 14k so zatočeným profilom, ktorý zachytáva svetlo z každého uhla.",
+          "sku": "[doplniť z crawlu: SKU]",
+          "material": "Zlato 14k (585)",
+          "brand": {
+            "@type": "Brand",
+            "name": "Šperky-eshop.sk"
+          },
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "EUR",
+            "price": "[doplniť z crawlu]",
+            "availability": "https://schema.org/InStock",
+            "url": "https://sperky-eshop.sk/40226-zlate-nausnice-14k-zlato-zatocene-kruhy.html"
+          }
+        },
+        "internalLinks": [
+          {
+            "path": "/94-zlate-nausnice-kruhy",
+            "anchor": "zlaté náušnice kruhy",
+            "why": "presná podkategória, 6 413 impresií"
+          },
+          {
+            "path": "/77-zlate-nausnice",
+            "anchor": "celá kolekcia zlatých náušníc",
+            "why": "nadradená kategória"
+          },
+          {
+            "path": "/92-damske-zlate-nausnice",
+            "anchor": "dámske zlaté náušnice 14k",
+            "why": "obsluhuje dopyt 'zlate damske nausnice 14k' s CTR 1,2 %"
+          },
+          {
+            "path": "/74-zlato",
+            "anchor": "všetko zo zlata 14k",
+            "why": "rodičovská kategória materiálu"
+          }
+        ]
+      },
+      "needsVerification": [
+        "priemer kruhu v mm",
+        "hmotnosť za pár",
+        "typ zapínania",
+        "cena a dostupnosť",
+        "URL fotiek",
+        "SKU"
+      ],
+      "structuralFinding": "Dopyt 'náušnice zlaté' s 666 impresiami na pozícii 7,5 dopadá na jeden produkt namiesto kategórie. Hlavový dopyt patrí na /77-zlate-nausnice. Interný odkaz s týmto anchorom z produktu pomôže Googlu prehodnotiť, ktorá URL má na dopyt odpovedať."
+    },
+    {
+      "productId": "40138",
+      "url": "https://sperky-eshop.sk/40138-zlate-nausnice-14k-male-leskle-kruhy.html",
+      "rank": 3,
+      "gsc": {
+        "impressions": 552,
+        "clicks": 1,
+        "ctrPercent": 0.18,
+        "position": 5.06,
+        "expectedCtrPercent": 5.27,
+        "missedClicks": 28.1,
+        "keywordsCount": 20
+      },
+      "primaryQuery": "malé zlaté náušnice",
+      "secondaryQueries": [
+        {
+          "q": "male zlate nausnice",
+          "imp": 236,
+          "clicks": 1,
+          "ctr": 0.42,
+          "pos": 5.79
+        },
+        {
+          "q": "zlate nausnice 14k",
+          "imp": 153,
+          "clicks": 0,
+          "ctr": 0.0,
+          "pos": 2.58
+        },
+        {
+          "q": "zlate nausnice male",
+          "imp": 36,
+          "clicks": 0,
+          "ctr": 0.0,
+          "pos": 3.83
+        },
+        {
+          "q": "malé zlaté náušnice",
+          "imp": 27,
+          "clicks": 0,
+          "ctr": 0.0,
+          "pos": 2.89
+        },
+        {
+          "q": "zlaté náušnice kruhy malé",
+          "imp": 11,
+          "clicks": 0,
+          "ctr": 0.0,
+          "pos": 1.73
+        }
+      ],
+      "diagnosis": "Priemerná pozícia 5,06 pri CTR 0,18 % je najhoršia disproporcia v dávke po produkte 32023. Na dopyte 'zlate nausnice 14k' je stránka na pozícii 2,58 so 153 impresiami a nulou klikov. Slovo 'malé' je pritom pre túto stránku rozlišovací znak — ak nie je v title, používateľ nemá ako poznať, že našel presne to, čo hľadal.",
+      "materialFacts": [
+        "zlato rýdzosti 14k (585)",
+        "malé kruhy",
+        "hladký lesklý povrch"
+      ],
+      "proposed": {
+        "metaTitle": "Malé zlaté náušnice 14k – lesklé kruhy | Šperky-eshop",
+        "h1": "Malé lesklé kruhy zo zlata 14k",
+        "metaDescription": "Drobné kruhy zo zlata 14k s hladkým lesklým povrchom. Sadnú na každý deň, k práci aj do prvej dierky, a nechajú priestor ďalším náušniciam.",
+        "shortDescription": "Malé kruhy zo zlata 14k s hladkým leskom. Rozmer je zámerne drobný, takže sa dajú nosiť samostatne aj ako súčasť viacerých náušníc v jednom uchu. Nenápadný šperk na denné nosenie.",
+        "longDescription": "Malé zlaté kruhy 14k sú náušnice, ktoré si dáte a zabudnete na ne. Presne to je ich zmysel — drobný rozmer a hladký lesklý povrch bez ozdôb znamenajú šperk, ktorý neprekáža pri práci, pri športe ani v spánku.\n\nMateriál a rýdzosť. Rýdzosť 14k, teda 585, je 58,5 percenta čistého zlata. Pri malých kruhoch je to podstatné: nižšia rýdzosť by pri tenkom profile stmavla, vyššia by sa ohýbala. Povrch je hladký a lesklý, bez gravírovania a bez kameňov, takže sa nemá čo zachytiť o vlasy či oblečenie.\n\nRozmery a zapínanie. Priemer je [doplniť z crawlu: mm] a hmotnosť [doplniť z crawlu: g] za pár. Zapínanie je [doplniť z crawlu: kĺbové alebo puzetka]. Pri malom kruhu je typ zapínania dôležitejší než pri veľkom, pretože rozhoduje o tom, či sa dá nosiť nepretržite.\n\nPre koho a na akú príležitosť. Malé kruhy sú vďačná prvá zlatá náušnica po detských puzetkách, aj bezpečný darček pre niekoho, koho vkus nepoznáte. Fungujú v uchu samostatne, aj ako druhá či tretia náušnica k výraznejšiemu kusu.\n\nAko ich kombinovať. Malý kruh je základ, na ktorý sa dá stavať. V jednom uchu znesie spoločnosť puzetky so zirkónom aj druhého, väčšieho kruhu. Ak nosíte náhrdelník s výrazným príveskom, malé kruhy mu nekonkurujú a nechajú ho vyniknúť.\n\nStarostlivosť. Hladké zlato bez kameňov je najmenej náročný šperk, aký môžete mať. Stačí utrieť mäkkou handričkou. Ak lesk vybledne od kozmetiky, vráti ho vlažná voda s kvapkou saponátu a dôkladné vysušenie.",
+        "imageAlts": [
+          "Malé zlaté náušnice 14k s lesklými kruhmi, pohľad spredu",
+          "Hladký lesklý povrch malého zlatého kruhu 14k – detail",
+          "Malé zlaté kruhy 14k z profilu – hrúbka a priemer",
+          "Zapínanie malých zlatých kruhov 14k – detail mechanizmu",
+          "Malé lesklé zlaté kruhy 14k na uchu – veľkosť v porovnaní s uchom"
+        ],
+        "jsonLd": {
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "name": "Malé lesklé kruhy zo zlata 14k",
+          "image": [
+            "[doplniť z crawlu: URL fotiek produktu]"
+          ],
+          "description": "Drobné kruhy zo zlata 14k s hladkým lesklým povrchom, na denné nosenie.",
+          "sku": "[doplniť z crawlu: SKU]",
+          "material": "Zlato 14k (585)",
+          "brand": {
+            "@type": "Brand",
+            "name": "Šperky-eshop.sk"
+          },
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "EUR",
+            "price": "[doplniť z crawlu]",
+            "availability": "https://schema.org/InStock",
+            "url": "https://sperky-eshop.sk/40138-zlate-nausnice-14k-male-leskle-kruhy.html"
+          }
+        },
+        "internalLinks": [
+          {
+            "path": "/94-zlate-nausnice-kruhy",
+            "anchor": "zlaté kruhy všetkých veľkostí",
+            "why": "presná podkategória"
+          },
+          {
+            "path": "/77-zlate-nausnice",
+            "anchor": "zlaté náušnice",
+            "why": "nadradená kategória"
+          },
+          {
+            "path": "/93-detske-zlate-nausnice",
+            "anchor": "detské zlaté náušnice",
+            "why": "malé kruhy sú prechod z detských puzetiek, 7 804 impresií"
+          }
+        ]
+      },
+      "needsVerification": [
+        "priemer v mm",
+        "hmotnosť za pár",
+        "typ zapínania",
+        "cena a dostupnosť",
+        "URL fotiek",
+        "SKU"
+      ],
+      "structuralFinding": "Produkty 40138 a 36995 sú obidva 'malé zlaté kruhy 14k' a súťažia o rovnaké dopyty ('male zlate nausnice', 'zlate nausnice kruhy male'). Odlíšiť ich musí rozmer v title: 40138 bez uvedeného priemeru, 36995 s '10 mm'. Bez toho si navzájom rozdeľujú kliky."
+    },
+    {
+      "productId": "36995",
+      "url": "https://sperky-eshop.sk/36995-klbove-14k-zlate-nausnice-male-kruhy-s-lesklym-gravirovanim-10-mm.html",
+      "rank": 4,
+      "gsc": {
+        "impressions": 674,
+        "clicks": 0,
+        "ctrPercent": 0.0,
+        "position": 6.76,
+        "expectedCtrPercent": 3.49,
+        "missedClicks": 23.5,
+        "keywordsCount": 15
+      },
+      "primaryQuery": "malé zlaté náušnice",
+      "secondaryQueries": [
+        {
+          "q": "male nausnice",
+          "imp": 151,
+          "clicks": 0,
+          "ctr": 0.0,
+          "pos": 7.92
+        },
+        {
+          "q": "zlate nausnice male kruhy",
+          "imp": 107,
+          "clicks": 0,
+          "ctr": 0.0,
+          "pos": 3.74
+        },
+        {
+          "q": "zlate male nausnice",
+          "imp": 93,
+          "clicks": 0,
+          "ctr": 0.0,
+          "pos": 5.05
+        },
+        {
+          "q": "zlate nausnice kruhy male",
+          "imp": 79,
+          "clicks": 0,
+          "ctr": 0.0,
+          "pos": 3.16
+        },
+        {
+          "q": "male kruhy nausnice",
+          "imp": 19,
+          "clicks": 0,
+          "ctr": 0.0,
+          "pos": 1.21
+        }
+      ],
+      "diagnosis": "674 impresií, 15 dopytov, pozície od 1,21 do 16,7 — a nula klikov. Ani jeden. Nula klikov pri pozícii 1,21 na dopyte 'male kruhy nausnice' nie je vysvetliteľná slabým titulkom; taký snippet by nejaký klik dostal. Toto je podozrenie na technický problém: vypredaná zásoba, chýbajúci alebo duplicitný snippet, alebo cena mimo očakávania. Overiť pred prepisom textu.",
+      "materialFacts": [
+        "zlato rýdzosti 14k (585)",
+        "malé kruhy, priemer 10 mm",
+        "lesklé gravírovanie",
+        "kĺbové zapínanie"
+      ],
+      "proposed": {
+        "metaTitle": "Malé zlaté náušnice 14k – kruhy 10 mm | Šperky-eshop",
+        "h1": "Kĺbové zlaté náušnice 14k – malé kruhy s gravírovaním, 10 mm",
+        "metaDescription": "Kruhy s priemerom 10 mm zo zlata 14k, po povrchu jemne gravírované. Kĺbové zapínanie zaklapne a drží, takže kruh nevypadne ani pri obliekaní.",
+        "shortDescription": "Malé zlaté kruhy 14k s priemerom 10 mm a lesklým gravírovaním po povrchu. Kĺbové zapínanie sa zaklapne, takže náušnica drží pevne aj pri celodennom nosení bez toho, aby ste ju kontrolovali.",
+        "longDescription": "Kĺbové zlaté kruhy 14k s priemerom 10 mm sú malá náušnica s jedným odlišujúcim detailom. Je to gravírovanie, ktoré po povrchu kruhu vytvára lesklú kresbu. Pri desiatich milimetroch je to celý zdobný prvok, aký sa na kruh zmestí, a presne preto funguje.\n\nMateriál a rýdzosť. Zlato 14k má rýdzosť 585, teda 58,5 percenta čistého zlata. Gravírovanie na tomto zlate drží lesk dlhšie než na nižších rýdzostiach, pretože povrch tmavne pomalšie. Farba je žltá, bez rodiovania.\n\nRozmery a zapínanie. Priemer kruhu je 10 mm — rozmer, ktorý sedí do prvej dierky aj do hornej časti ucha. Hmotnosť je [doplniť z crawlu: g] za pár. Zapínanie je kĺbové: kruh sa zaklapne do zámku, čo drží bezpečnejšie než háčik a nevyžaduje osobitnú zarážku.\n\nPre koho a na akú príležitosť. Desiatka je najuniverzálnejší rozmer malého kruhu. Je viditeľná, ale nezasahuje do líca ani do vlasov. Nosí sa samostatne, v páre s väčším kruhom v tom istom uchu, alebo ako trvalá náušnica, ktorú nevyberáte.\n\nČím sa líšia od hladkých kruhov. Hladký kruh odráža svetlo ako celok, gravírovaný ho láme na menšie plochy. Výsledok je, že sa šperk zdá živší, aj keď je rovnako veľký. Pri desiatich milimetroch je to rozdiel, ktorý si všimne aj ten, kto sa o šperky nezaujíma.\n\nStarostlivosť. Gravírované drážky sú jediné miesto, kde sa drží nečistota. Raz za mesiac pomôže vlažná voda so saponátom a mäkká zubná kefka; potom dôkladne vysušiť, aby v drážkach nezostala voda.",
+        "imageAlts": [
+          "Kĺbové zlaté náušnice 14k, malé kruhy 10 mm s gravírovaním, spredu",
+          "Lesklé gravírovanie na zlatom kruhu 14k – detail kresby povrchu",
+          "Kĺbové zapínanie zlatého kruhu 14k – detail zaklapávacieho zámku",
+          "Zlatý kruh 14k s priemerom 10 mm z profilu – hrúbka a rozmer",
+          "Malé gravírované zlaté kruhy 14k na uchu – 10 mm v nosení"
+        ],
+        "jsonLd": {
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "name": "Kĺbové zlaté náušnice 14k – malé kruhy s gravírovaním, 10 mm",
+          "image": [
+            "[doplniť z crawlu: URL fotiek produktu]"
+          ],
+          "description": "Kruhy s priemerom 10 mm zo zlata 14k s lesklým gravírovaním a kĺbovým zapínaním.",
+          "sku": "[doplniť z crawlu: SKU]",
+          "material": "Zlato 14k (585)",
+          "size": "10 mm",
+          "brand": {
+            "@type": "Brand",
+            "name": "Šperky-eshop.sk"
+          },
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "EUR",
+            "price": "[doplniť z crawlu]",
+            "availability": "[doplniť z crawlu: overiť, či nie je vypredané]",
+            "url": "https://sperky-eshop.sk/36995-klbove-14k-zlate-nausnice-male-kruhy-s-lesklym-gravirovanim-10-mm.html"
+          }
+        },
+        "internalLinks": [
+          {
+            "path": "/94-zlate-nausnice-kruhy",
+            "anchor": "zlaté náušnice kruhy",
+            "why": "presná podkategória"
+          },
+          {
+            "path": "/77-zlate-nausnice",
+            "anchor": "zlaté náušnice zo 14k zlata",
+            "why": "nadradená kategória"
+          },
+          {
+            "path": "/92-damske-zlate-nausnice",
+            "anchor": "dámske zlaté náušnice",
+            "why": "podkategória podľa cieľovej skupiny"
+          }
+        ]
+      },
+      "needsVerification": [
+        "PRIORITA: či je produkt vypredaný — nula klikov pri 674 impresiách",
+        "či sa snippet v SERP vôbec renderuje",
+        "hmotnosť za pár",
+        "cena",
+        "URL fotiek",
+        "SKU"
+      ],
+      "structuralFinding": "Nula klikov pri 674 impresiách a priemernej pozícii 6,76 je štatisticky takmer nemožná pri fungujúcej stránke. Pred akýmkoľvek prepisom textu spustiť gsc_inspect na tejto URL a overiť dostupnosť produktu. Ak je vypredaný, správna oprava nie je nový title, ale naskladnenie alebo presmerovanie."
+    },
+    {
+      "productId": "32102",
+      "url": "https://sperky-eshop.sk/32102-visiace-zlate-nausnice-585-velke-dvojfarebne-zrnko-s-vyrezmi.html",
+      "rank": 5,
+      "gsc": {
+        "impressions": 864,
+        "clicks": 2,
+        "ctrPercent": 0.23,
+        "position": 8.83,
+        "expectedCtrPercent": 2.49,
+        "missedClicks": 19.5,
+        "keywordsCount": 16
+      },
+      "primaryQuery": "veľké visiace zlaté náušnice",
+      "secondaryQueries": [
+        {
+          "q": "akcia na zlate nausnice",
+          "imp": 232,
+          "clicks": 1,
+          "ctr": 0.43,
+          "pos": 1.84
+        },
+        {
+          "q": "velke zlate nausnice",
+          "imp": 209,
+          "clicks": 0,
+          "ctr": 0.0,
+          "pos": 12.89
+        },
+        {
+          "q": "zlate nausnice velke",
+          "imp": 104,
+          "clicks": 0,
+          "ctr": 0.0,
+          "pos": 21.42
+        },
+        {
+          "q": "zlate nausnice 585",
+          "imp": 100,
+          "clicks": 1,
+          "ctr": 1.0,
+          "pos": 6.58
+        },
+        {
+          "q": "zlaté náušnice 585",
+          "imp": 78,
+          "clicks": 0,
+          "ctr": 0.0,
+          "pos": 5.31
+        },
+        {
+          "q": "visiace zlate nausnice",
+          "imp": 34,
+          "clicks": 0,
+          "ctr": 0.0,
+          "pos": 3.68
+        }
+      ],
+      "diagnosis": "Stránka obsluhuje tri rôzne intencie naraz: akciu (232 impresií), veľkosť (313 impresií pre 'velke zlate nausnice' v dvoch variantoch) a rýdzosť (178 impresií pre '585'). Title musí uniesť aspoň veľkosť a rýdzosť, pretože to sú dopyty, kde stránka reálne rankuje. Intencia akcie patrí inam.",
+      "materialFacts": [
+        "zlato rýdzosti 585 (14 karátov)",
+        "visiace náušnice",
+        "veľké zrnko",
+        "dvojfarebné zlato",
+        "výrezy v zrnku"
+      ],
+      "proposed": {
+        "metaTitle": "Veľké visiace zlaté náušnice 585 – zrnko s výrezmi",
+        "h1": "Veľké visiace zlaté náušnice 585 – dvojfarebné zrnko s výrezmi",
+        "metaDescription": "Visiace zrnko z dvojfarebného zlata 585 s výrezmi, ktoré šperk odľahčia. Výrazná náušnica, ktorá je aj pri svojej veľkosti ľahká na nosenie.",
+        "shortDescription": "Veľké visiace náušnice zo zlata 585 v tvare zrnka. Dvojfarebné zlato a výrezy v ploche zrnka dávajú šperku objem bez váhy. Výrazný kus, ktorý nesie celý outfit sám.",
+        "longDescription": "Veľké visiace zlaté náušnice 585 s dvojfarebným zrnkom sú šperk pre situácie, keď má byť náušnica to prvé, čo si niekto všimne. Zrnko je klasický tvar slovenského zlatníctva a výrezy v jeho ploche ho odľahčujú — opticky aj v skutočnej hmotnosti.\n\nMateriál a rýdzosť. Zlato 585 znamená 58,5 percenta čistého zlata a je to najbežnejšia rýdzosť pre šperky na denné nosenie na Slovensku. Náušnice kombinujú dva odtiene zlata, takže vo tvare zrnka vzniká kontrast, ktorý jednofarebný šperk nedosiahne. Práve preto sa hodia aj k bielemu, aj k žltému zlatu.\n\nRozmery a zapínanie. Celková dĺžka je [doplniť z crawlu: mm] a pár váži [doplniť z crawlu: g]. Zapínanie je [doplniť z crawlu: puzetka alebo háčik]. Výrezy v zrnku sú dôvodom, prečo veľká náušnica netlačí — plocha zostáva veľká, ale materiálu je menej.\n\nPre koho a na akú príležitosť. Visiace zrnko je náušnica na večer, na svadbu, na oslavu. Funguje k vysokému účesu a k výstrihu bez náhrdelníka, kde má priestor. Ako darček je to voľba pre niekoho, kto šperky nosí rád a nebojí sa ich vidieť.\n\nStarostlivosť. Dvojfarebné zlato si drží kontrast, ak sa oba odtiene čistia rovnako. Utrite náušnice po nosení mäkkou handričkou a raz za čas ich umyte vlažnou vodou so saponátom. Do výrezov sa dostane mäkká zubná kefka; ostré nástroje na hranách výrezov nepoužívajte.",
+        "imageAlts": [
+          "Veľké visiace zlaté náušnice 585 – dvojfarebné zrnko s výrezmi, spredu",
+          "Dvojfarebné zlato 585 na zrnku – detail kontrastu dvoch odtieňov",
+          "Výrezy v ploche zlatého zrnka 585 – detail odľahčenia šperku",
+          "Visiace zlaté náušnice 585 z profilu – dĺžka a zapínanie",
+          "Veľké visiace zlaté zrnko 585 na uchu – skutočná veľkosť a pohyb"
+        ],
+        "jsonLd": {
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "name": "Veľké visiace zlaté náušnice 585 – dvojfarebné zrnko s výrezmi",
+          "image": [
+            "[doplniť z crawlu: URL fotiek produktu]"
+          ],
+          "description": "Visiace zrnko z dvojfarebného zlata 585 s výrezmi, ktoré šperk odľahčia.",
+          "sku": "[doplniť z crawlu: SKU]",
+          "material": "Zlato 585 (14 karátov)",
+          "brand": {
+            "@type": "Brand",
+            "name": "Šperky-eshop.sk"
+          },
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "EUR",
+            "price": "[doplniť z crawlu]",
+            "availability": "https://schema.org/InStock",
+            "url": "https://sperky-eshop.sk/32102-visiace-zlate-nausnice-585-velke-dvojfarebne-zrnko-s-vyrezmi.html"
+          }
+        },
+        "internalLinks": [
+          {
+            "path": "/77-zlate-nausnice",
+            "anchor": "všetky zlaté náušnice 585",
+            "why": "nadradená kategória"
+          },
+          {
+            "path": "/92-damske-zlate-nausnice",
+            "anchor": "dámske zlaté náušnice",
+            "why": "podkategória podľa cieľovej skupiny"
+          },
+          {
+            "path": "/110-vypredaj-skladu",
+            "anchor": "zlaté šperky vo výpredaji",
+            "why": "obsluhuje intenciu akcie, ktorá na túto stránku dopadá s 232 impresiami"
+          },
+          {
+            "path": "/74-zlato",
+            "anchor": "zlaté šperky rýdzosti 585",
+            "why": "rodičovská kategória materiálu"
+          }
+        ]
+      },
+      "needsVerification": [
+        "celková dĺžka v mm",
+        "hmotnosť za pár",
+        "typ zapínania",
+        "cena a dostupnosť",
+        "URL fotiek",
+        "SKU",
+        "či je produkt reálne v akcii"
+      ],
+      "structuralFinding": "Rovnaká kanibalizácia ako pri 32023: 'akcia na zlate nausnice' na pozícii 1,84 s 232 impresiami. Dva produkty a kategória si delia jeden dopyt s deal intenciou. Riešenie je na úrovni informačnej architektúry, nie textu."
+    }
+  ]
+}

@@ -1,0 +1,1212 @@
+<title>Zlaté náušnice — SEO konzola</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+  --brass:#b8912f; --brass-lo:#8d6f24; --assay:#0d8b91; --assay-lo:#0a6c71;
+  --ground:#f5f7f7; --surface:#ffffff; --surface2:#eef2f2;
+  --line:#d9e2e1; --line-hi:#c3d1d0;
+  --ink:#0f1716; --ink2:#425855; --dim:#6b8280;
+  --good:#2f7d52; --warn:#a8791f; --bad:#a94238;
+  --good-bg:#e7f2eb; --warn-bg:#f7efdd; --bad-bg:#f7e6e4;
+  --shadow:0 1px 2px rgba(15,23,22,.05), 0 8px 24px -16px rgba(15,23,22,.18);
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --body:"Public Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --disp:"Fraunces",Georgia,"Times New Roman",serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --brass:#d4ae56; --brass-lo:#a8862f; --assay:#2fb3ba; --assay-lo:#17888e;
+    --ground:#0b1211; --surface:#111a19; --surface2:#16211f;
+    --line:#233130; --line-hi:#324442;
+    --ink:#e7f0ef; --ink2:#a6bfbc; --dim:#7a9391;
+    --good:#4fa871; --warn:#cfa03c; --bad:#cf6157;
+    --good-bg:#12261b; --warn-bg:#2a2113; --bad-bg:#2b1614;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -18px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --brass:#d4ae56; --brass-lo:#a8862f; --assay:#2fb3ba; --assay-lo:#17888e;
+  --ground:#0b1211; --surface:#111a19; --surface2:#16211f;
+  --line:#233130; --line-hi:#324442;
+  --ink:#e7f0ef; --ink2:#a6bfbc; --dim:#7a9391;
+  --good:#4fa871; --warn:#cfa03c; --bad:#cf6157;
+  --good-bg:#12261b; --warn-bg:#2a2113; --bad-bg:#2b1614;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -18px rgba(0,0,0,.7);
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:var(--body); font-size:15px; line-height:1.55;
+  font-variant-numeric:tabular-nums; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px; margin:0 auto; padding:0 24px 72px}
+h1,h2,h3,h4{font-family:var(--disp); text-wrap:balance; margin:0}
+code,pre,.stamp,.num,.meter-num{font-family:var(--mono)}
+a{color:var(--assay)}
+:focus-visible{outline:2px solid var(--brass); outline-offset:2px; border-radius:3px}
+
+/* ─── header ─── */
+header{padding:56px 0 30px; border-bottom:1px solid var(--line)}
+.eyebrow{
+  font-family:var(--mono); font-size:11px; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--brass-lo); display:flex; gap:14px; flex-wrap:wrap; margin-bottom:16px;
+}
+.eyebrow span{position:relative; padding-left:14px}
+.eyebrow span:first-child{padding-left:0}
+.eyebrow span:not(:first-child)::before{
+  content:""; position:absolute; left:0; top:50%; width:5px; height:1px; background:var(--line-hi);
+}
+h1{font-size:clamp(34px,5.4vw,54px); font-weight:600; letter-spacing:-.02em; line-height:1.04}
+.lede{color:var(--ink2); font-size:17px; max-width:60ch; margin:14px 0 0}
+.lede b{color:var(--ink); font-weight:600}
+
+/* ─── sections ─── */
+section{padding:44px 0 4px}
+.shead{display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin-bottom:20px; flex-wrap:wrap}
+h2{font-size:clamp(21px,2.5vw,27px); font-weight:600; letter-spacing:-.012em}
+.shead p{margin:0; color:var(--dim); font-size:13.5px; max-width:52ch}
+
+/* ─── status plate ─── */
+.plate{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1px;
+  background:var(--line); border:1px solid var(--line); border-radius:4px; overflow:hidden}
+.st{background:var(--surface); padding:15px 17px 16px; display:flex; flex-direction:column; gap:6px}
+.st-top{display:flex; align-items:center; justify-content:space-between; gap:10px}
+.st-label{font-size:12.5px; font-weight:600; letter-spacing:.01em}
+.st-detail{color:var(--dim); font-size:12.5px; line-height:1.45; margin:0}
+.pill{
+  font-family:var(--mono); font-size:10.5px; font-weight:500; letter-spacing:.05em; text-transform:uppercase;
+  padding:3px 8px; border-radius:3px; white-space:nowrap; border:1px solid transparent;
+}
+.pill.good{background:var(--good-bg); color:var(--good); border-color:color-mix(in srgb,var(--good) 26%,transparent)}
+.pill.warn{background:var(--warn-bg); color:var(--warn); border-color:color-mix(in srgb,var(--warn) 26%,transparent)}
+.pill.bad{background:var(--bad-bg); color:var(--bad); border-color:color-mix(in srgb,var(--bad) 26%,transparent)}
+
+/* ─── KPI ─── */
+.kpis{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:1px;
+  background:var(--line); border:1px solid var(--line); border-radius:4px; overflow:hidden; margin-bottom:8px}
+.kpi{background:var(--surface); padding:16px 17px 15px}
+.kpi b{display:block; font-family:var(--mono); font-size:26px; font-weight:600; letter-spacing:-.02em; line-height:1.1}
+.kpi i{display:block; font-style:normal; font-size:11.5px; color:var(--dim); margin-top:5px; letter-spacing:.01em}
+.kpi.hero b{color:var(--brass)}
+
+/* ─── settings ─── */
+.settings{border:1px solid var(--line); border-radius:4px; background:var(--surface); overflow:hidden}
+.srow{display:grid; grid-template-columns:minmax(180px,240px) 1fr; gap:18px;
+  padding:15px 18px; border-bottom:1px solid var(--line); align-items:start}
+.srow:last-child{border-bottom:none}
+.srow > .k{font-size:13px; font-weight:600; padding-top:3px}
+.srow .k small{display:block; font-weight:400; color:var(--dim); font-size:12px; margin-top:2px; line-height:1.4}
+.opts{display:flex; flex-wrap:wrap; gap:8px 18px}
+.opt{display:flex; align-items:center; gap:7px; font-size:13.5px; cursor:pointer}
+.opt input{accent-color:var(--assay); width:15px; height:15px; margin:0; cursor:pointer}
+input[type=text],input[type=number]{
+  font-family:var(--mono); font-size:13.5px; padding:6px 9px; border:1px solid var(--line-hi);
+  border-radius:3px; background:var(--surface2); color:var(--ink); max-width:100%;
+}
+input[type=number]{width:80px}
+.w-url{width:min(320px,100%)}
+.w-time{width:110px}
+.guard{background:var(--warn-bg); border-left:2px solid var(--warn)}
+.guard .k small{color:var(--warn)}
+
+/* ─── cards ─── */
+.cards{display:flex; flex-direction:column; gap:10px}
+.card{border:1px solid var(--line); border-radius:4px; background:var(--surface); box-shadow:var(--shadow)}
+.card[data-status="approved"]{border-left:3px solid var(--good)}
+.card[data-status="rejected"]{border-left:3px solid var(--bad); opacity:.66}
+.card[data-status="pending"]{border-left:3px solid var(--brass)}
+.card > summary{
+  display:flex; gap:14px; align-items:center; padding:14px 17px; cursor:pointer; list-style:none;
+}
+.card > summary::-webkit-details-marker{display:none}
+.card > summary:hover{background:var(--surface2)}
+.rank{
+  font-family:var(--mono); font-size:12px; font-weight:600; color:var(--brass-lo);
+  width:24px; height:24px; flex:0 0 24px; display:grid; place-items:center;
+  border:1px solid var(--line-hi); border-radius:2px;
+}
+.sum-main{flex:1 1 auto; min-width:0}
+.sum-title{display:block; font-family:var(--disp); font-size:16px; font-weight:600; line-height:1.3}
+.sum-meta{display:flex; gap:12px; flex-wrap:wrap; margin-top:4px; font-size:11.5px; color:var(--dim)}
+.sum-meta code{font-size:11px; color:var(--ink2)}
+.sum-num{font-family:var(--mono)}
+.stamp{
+  font-size:10px; font-weight:600; letter-spacing:.06em; padding:1px 6px; border-radius:2px;
+  border:1px solid var(--brass); color:var(--brass); background:color-mix(in srgb,var(--brass) 9%,transparent);
+}
+.sum-right{display:flex; align-items:center; gap:14px; flex:0 0 auto}
+.missed{text-align:right}
+.missed b{display:block; font-family:var(--mono); font-size:19px; font-weight:600; color:var(--bad); line-height:1}
+.missed i{display:block; font-style:normal; font-size:10px; color:var(--dim); margin-top:3px}
+.status-pill{background:var(--warn-bg); color:var(--warn); border:1px solid color-mix(in srgb,var(--warn) 26%,transparent)}
+.card[data-status="approved"] .status-pill{background:var(--good-bg); color:var(--good); border-color:color-mix(in srgb,var(--good) 26%,transparent)}
+.card[data-status="rejected"] .status-pill{background:var(--bad-bg); color:var(--bad); border-color:color-mix(in srgb,var(--bad) 26%,transparent)}
+
+.card-body{padding:4px 17px 20px; border-top:1px solid var(--line)}
+.card-body h4{
+  font-family:var(--body); font-size:11px; font-weight:700; letter-spacing:.09em; text-transform:uppercase;
+  color:var(--dim); margin:24px 0 9px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+}
+.wc{font-family:var(--mono); font-size:10.5px; font-weight:400; letter-spacing:.02em; text-transform:none; color:var(--dim)}
+.diag{margin-top:18px; padding:13px 15px; background:var(--surface2); border-radius:3px; border-left:2px solid var(--assay)}
+.diag h4{margin:0 0 6px}
+.diag p{margin:0; font-size:14px; line-height:1.6; color:var(--ink2)}
+
+.twrap{overflow-x:auto; border:1px solid var(--line); border-radius:3px}
+table.data{width:100%; border-collapse:collapse; font-size:13px; min-width:460px}
+table.data th{
+  text-align:left; font-family:var(--body); font-size:10.5px; font-weight:700; letter-spacing:.07em;
+  text-transform:uppercase; color:var(--dim); padding:8px 11px; background:var(--surface2);
+  border-bottom:1px solid var(--line); white-space:nowrap;
+}
+table.data td{padding:7px 11px; border-bottom:1px solid var(--line); vertical-align:top}
+table.data tr:last-child td{border-bottom:none}
+table.data .num{text-align:right; font-family:var(--mono); white-space:nowrap}
+table.data .num.bad{color:var(--bad)}
+table.data .why{color:var(--dim); font-size:12px}
+table.data code{font-size:11.5px}
+
+dl.proposal{margin:0; display:grid; grid-template-columns:minmax(120px,150px) 1fr; gap:0}
+dl.proposal dt{
+  font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--dim);
+  padding:11px 0; border-top:1px solid var(--line);
+}
+dl.proposal dd{margin:0; padding:11px 0; border-top:1px solid var(--line); display:flex; flex-wrap:wrap; gap:8px 12px; align-items:center}
+.val{font-size:14.5px; line-height:1.5; flex:1 1 320px; min-width:0}
+dl.proposal dt:first-of-type,dl.proposal dd:first-of-type{border-top:none}
+.mrow{display:flex; align-items:center; gap:8px; flex:0 0 auto}
+.meter{position:relative; display:block; width:110px; height:5px; background:var(--surface2);
+  border:1px solid var(--line); border-radius:3px}
+.meter-band{position:absolute; top:0; bottom:0; background:color-mix(in srgb,var(--good) 32%,transparent)}
+.meter-pin{position:absolute; top:-3px; width:2px; height:11px; background:var(--assay); border-radius:1px}
+.meter-pin.bad{background:var(--bad)}
+.meter-num{font-size:11.5px; color:var(--good); font-weight:500}
+.meter-num.bad{color:var(--bad)}
+.meter-lim{color:var(--dim); font-weight:400}
+
+.longdesc{border:1px solid var(--line); border-radius:3px; padding:14px 16px; background:var(--surface2)}
+.longdesc p{margin:0 0 11px; font-size:14px; line-height:1.62; max-width:66ch}
+.longdesc p:last-child{margin-bottom:0}
+
+ol.alts{margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:1px;
+  background:var(--line); border:1px solid var(--line); border-radius:3px; overflow:hidden}
+ol.alts li{background:var(--surface); padding:8px 11px; display:flex; gap:11px; align-items:center; font-size:13.5px}
+.alt-n{font-family:var(--mono); font-size:11px; color:var(--dim); flex:0 0 16px}
+.alt-t{flex:1 1 auto; min-width:0}
+
+pre.code{
+  margin:0; overflow-x:auto; background:var(--surface2); border:1px solid var(--line); border-radius:3px;
+  padding:13px 15px; font-size:12px; line-height:1.55; color:var(--ink2);
+}
+.verify,.finding{margin-top:22px; padding:13px 15px; border-radius:3px; font-size:13.5px}
+.verify{background:var(--warn-bg); border-left:2px solid var(--warn)}
+.verify h4,.finding h4{margin:0 0 7px}
+.verify ul{margin:0; padding-left:19px; color:var(--ink2)}
+.verify li{margin-bottom:3px}
+.finding{background:var(--surface2); border-left:2px solid var(--brass)}
+.finding p{margin:0; color:var(--ink2); line-height:1.6}
+
+.actions{display:flex; gap:9px; margin-top:24px; padding-top:17px; border-top:1px solid var(--line); flex-wrap:wrap}
+.btn{
+  font-family:var(--body); font-size:13px; font-weight:600; padding:8px 15px; border-radius:3px;
+  border:1px solid var(--line-hi); background:var(--surface); color:var(--ink); cursor:pointer;
+  transition:background .14s,border-color .14s,color .14s;
+}
+.btn:hover{background:var(--surface2)}
+.btn.approve{border-color:color-mix(in srgb,var(--good) 42%,transparent); color:var(--good)}
+.btn.approve:hover{background:var(--good-bg)}
+.btn.reject{border-color:color-mix(in srgb,var(--bad) 42%,transparent); color:var(--bad)}
+.btn.reject:hover{background:var(--bad-bg)}
+.btn.reset{color:var(--dim)}
+.copy{
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.04em; padding:3px 8px; border-radius:2px;
+  border:1px solid var(--line-hi); background:transparent; color:var(--dim); cursor:pointer; flex:0 0 auto;
+  transition:color .14s,border-color .14s;
+}
+.copy:hover{color:var(--assay); border-color:var(--assay)}
+
+/* ─── findings band ─── */
+.finds{display:flex; flex-direction:column; gap:10px}
+.find{border:1px solid var(--line); border-left:3px solid var(--bad); border-radius:4px;
+  background:var(--surface); padding:16px 18px}
+.find h3{font-size:16px; font-weight:600; margin-bottom:7px}
+.find p{margin:0 0 9px; font-size:14px; color:var(--ink2); line-height:1.6; max-width:70ch}
+.find p:last-child{margin-bottom:0}
+.find .tag{font-family:var(--mono); font-size:10px; letter-spacing:.07em; text-transform:uppercase;
+  color:var(--bad); display:block; margin-bottom:5px}
+.find.med{border-left-color:var(--warn)} .find.med .tag{color:var(--warn)}
+
+/* ─── local chrome ─── */
+.localbar{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:14px;
+  font-size:12.5px; color:var(--dim)}
+.tally{font-family:var(--mono); font-size:12px; color:var(--ink2)}
+.tally b{color:var(--ink)}
+.synced{font-family:var(--mono); font-size:10.5px; letter-spacing:.04em; padding:3px 8px; border-radius:2px;
+  border:1px solid var(--line-hi); color:var(--dim)}
+.synced[data-on="1"]{color:var(--good); border-color:color-mix(in srgb,var(--good) 36%,transparent)}
+.synced[data-on="0"]{color:var(--warn); border-color:color-mix(in srgb,var(--warn) 36%,transparent)}
+
+footer{margin-top:52px; padding-top:22px; border-top:1px solid var(--line); color:var(--dim); font-size:12.5px}
+footer dl{display:grid; grid-template-columns:minmax(140px,190px) 1fr; gap:6px 18px; margin:0}
+footer dt{font-weight:600; color:var(--ink2)}
+footer dd{margin:0}
+.toast{
+  position:fixed; left:50%; bottom:26px; transform:translateX(-50%);
+  background:var(--ink); color:var(--ground); font-size:13px; font-weight:500;
+  padding:9px 17px; border-radius:3px; z-index:99; box-shadow:var(--shadow);
+}
+@media (prefers-reduced-motion:reduce){*{transition:none !important; animation:none !important}}
+@media (max-width:640px){
+  dl.proposal,.srow,footer dl{grid-template-columns:1fr; gap:4px}
+  dl.proposal dd{border-top:none; padding-top:0}
+  .srow{gap:8px}
+  .card > summary{flex-wrap:wrap}
+  .sum-right{width:100%; justify-content:space-between; padding-left:38px}
+}
+</style>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">
+    <span>SEO ACE</span><span>Dávka 1</span><span>20. augusta 2026</span><span>Zlaté náušnice</span>
+  </div>
+  <h1>Zlaté náušnice</h1>
+  <p class="lede">Päť produktov, ktoré Google už zobrazuje — a na ktoré nikto neklikne.
+    Spolu <b>5 037 impresií</b> a <b>17 klikov</b> za posledný kvartál.
+    Pri CTR, ktoré tieto pozície bežne dosahujú, tu chýba <b>184 klikov</b>.</p>
+</header>
+
+<section id="sumar">
+  <div class="shead">
+    <h2>Rozsah dávky</h2>
+    <p>Premrhané kliky = impresie × rozdiel medzi CTR, ktoré e-shop na danej pozícii bežne má, a tým, ktoré stránka reálne dosahuje.</p>
+  </div>
+  <div class="kpis">
+    <div class="kpi"><b>5</b><i>produktov v dávke</i></div>
+    <div class="kpi"><b>5 037</b><i>impresií za kvartál</i></div>
+    <div class="kpi"><b>17</b><i>klikov za kvartál</i></div>
+    <div class="kpi"><b>0.34&nbsp;%</b><i>priemerné CTR</i></div>
+    <div class="kpi hero"><b>184</b><i>premrhaných klikov</i></div>
+  </div>
+</section>
+
+<section id="stav">
+  <div class="shead">
+    <h2>Stav pipeline</h2>
+    <p>Čo v tejto chvíli funguje a čo blokuje ďalší krok.</p>
+  </div>
+  <div class="plate">
+    <div class="st">
+      <div class="st-top"><span class="st-label">GSC cez Ahrefs</span><span class="pill good">Funkčné</span></div>
+      <p class="st-detail">Projekt 9364794, 626 keywordov. Endpointy nespotrebúvajú API units.</p>
+    </div>
+    <div class="st">
+      <div class="st-top"><span class="st-label">Ahrefs platené endpointy</span><span class="pill warn">Vyčerpané</span></div>
+      <p class="st-detail">401 648 z 400 000 units. Objemy a difficulty pribudnú po 29. augusta 2026.</p>
+    </div>
+    <div class="st">
+      <div class="st-top"><span class="st-label">Crawl e-shopu</span><span class="pill bad">Blokovaný</span></div>
+      <p class="st-detail">Cloudová session má domény blokované egress proxy. Rieši GitHub Actions alebo lokálny MCP server.</p>
+    </div>
+    <div class="st">
+      <div class="st-top"><span class="st-label">GitHub Actions</span><span class="pill bad">Nespustené</span></div>
+      <p class="st-detail">Workflow nie je na default branchi, preto ho nemožno dispatchnúť. Vyrieši merge tohto branchu.</p>
+    </div>
+    <div class="st">
+      <div class="st-top"><span class="st-label">Site Audit</span><span class="pill bad">2 / 100</span></div>
+      <p class="st-detail">Crawl z 1. 8. 2026: 9 792 z 10 019 URL má chyby. Systémový problém mimo tejto dávky.</p>
+    </div>
+    <div class="st">
+      <div class="st-top"><span class="st-label">Lokálny MCP server</span><span class="pill good">9 nástrojov</span></div>
+      <p class="st-detail">Selftest prechádza 9/9. Po gsc_login pridá URL Inspection a presné query dáta.</p>
+    </div>
+  </div>
+</section>
+
+<section id="nastavenia">
+  <div class="shead">
+    <h2>Nastavenia</h2>
+    <p>Zmeny sa ukladajú do dokumentu a načítam ich pri ďalšom dennom behu. Nič sa nezapisuje do e-shopu.</p>
+  </div>
+  <div class="settings">
+    <div class="srow">
+      <span class="k">Produktov denne<small>Koľko produktov spracovať v jednej dávke</small></span>
+      <span><input type="number" name="productsPerDay" min="1" max="20" value="5"></span>
+    </div>
+    <div class="srow">
+      <span class="k">Kategória<small>Cesta v e-shope, z ktorej sa vyberá</small></span>
+      <span><input type="text" class="w-url" name="categoryPath" value="/77-zlate-nausnice"></span>
+    </div>
+    <div class="srow">
+      <span class="k">Priorita výberu<small>Podľa čoho sa vyberá päťka na dnes</small></span>
+      <span class="opts">
+        <label class="opt">
+          <input type="radio" name="priorita" value="impressions_x_ctr_gap" checked>
+          <span>Impresie × rozdiel CTR</span>
+        </label>
+        <label class="opt">
+          <input type="radio" name="priorita" value="position_edge">
+          <span>Na hranici prvej strany</span>
+        </label>
+        <label class="opt">
+          <input type="radio" name="priorita" value="missing_meta">
+          <span>Chýbajúce meta tagy</span>
+        </label>
+        <label class="opt">
+          <input type="radio" name="priorita" value="bestsellers">
+          <span>Bestsellery a marža</span>
+        </label></span>
+    </div>
+    <div class="srow">
+      <span class="k">Tón textov<small>Ovplyvňuje každý napísaný popis</small></span>
+      <span class="opts">
+        <label class="opt">
+          <input type="radio" name="ton" value="selling_accessible" checked>
+          <span>Predávajúci a prístupný, vykanie</span>
+        </label>
+        <label class="opt">
+          <input type="radio" name="ton" value="luxury_restrained">
+          <span>Luxusný a zdržanlivý</span>
+        </label>
+        <label class="opt">
+          <input type="radio" name="ton" value="technical">
+          <span>Vecný a technický</span>
+        </label>
+        <label class="opt">
+          <input type="radio" name="ton" value="match_existing">
+          <span>Zachovať existujúci štýl</span>
+        </label></span>
+    </div>
+    <div class="srow">
+      <span class="k">Čas denného behu<small>UTC; crawl beží dve hodiny pred generovaním</small></span>
+      <span><input type="text" class="w-time" name="runTime" value="05:23" inputmode="numeric" pattern="[0-9]{2}:[0-9]{2}"></span>
+    </div>
+    <div class="srow">
+      <span class="k">Doručenie reportu<small>Kam poslať dennú dávku</small></span>
+      <span class="opts">
+        <label class="opt"><input type="checkbox" name="ch-repo" checked><span>Commit do repozitára</span></label>
+        <label class="opt"><input type="checkbox" name="ch-artifact" checked><span>HTML konzola (táto stránka)</span></label>
+        <label class="opt"><input type="checkbox" name="ch-slack" checked><span>Slack správa</span></label>
+        <label class="opt"><input type="checkbox" name="ch-drive" checked><span>Google Drive dokument</span></label>
+        <label class="opt"><input type="checkbox" name="ch-pr" checked><span>GitHub Pull Request</span></label>
+      </span>
+    </div>
+    <div class="srow">
+      <span class="k">Ahrefs platené endpointy<small>Objemy a difficulty; zapnúť po 29. augusta 2026</small></span>
+      <span class="opts"><label class="opt"><input type="checkbox" name="ahrefsPaid"><span>Zapnuté</span></label></span>
+    </div>
+    <div class="srow guard">
+      <span class="k">Automatický zápis do e-shopu<small>Zámerne vypnuté. Každá dávka ide na schválenie.</small></span>
+      <span class="opts"><label class="opt"><input type="checkbox" name="autoPublish"><span>Povoliť zápis bez schválenia</span></label></span>
+    </div>
+  </div>
+</section>
+
+<section id="davka">
+  <div class="shead">
+    <h2>Dávka na schválenie</h2>
+    <p>Každý návrh prešiel validátorom podľa playbooku: dĺžky, zakázané tvrdenia, unikátne alt texty, JSON-LD bez vymysleného hodnotenia.</p>
+  </div>
+  <artifact-local>
+    <div class="localbar">
+      <span class="tally" id="tally">Čaká <b>5</b> · schválené <b>0</b> · zamietnuté <b>0</b></span>
+      <span class="synced" id="synced" data-on="0">stav ukladania sa zisťuje</span>
+    </div>
+  </artifact-local>
+  <div class="cards">
+      <details class="card" id="p-32023" data-status="pending" data-purity="585">
+        <summary>
+          <span class="rank">1</span>
+          <span class="sum-main">
+            <span class="sum-title">Zlaté náušnice 585 – ovál s vlnkou a zirkónovými slzičkami</span>
+            <span class="sum-meta">
+              <code>32023</code>
+              <span class="stamp">585</span>
+              <span class="sum-num">432 impresií</span>
+              <span class="sum-num">CTR 0.46&nbsp;%</span>
+              <span class="sum-num">poz. 1.83</span>
+            </span>
+          </span>
+          <span class="sum-right">
+            <span class="missed"><b>66</b><i>premrhaných klikov</i></span>
+            <span class="pill status-pill">Čaká</span>
+          </span>
+        </summary>
+
+        <div class="card-body">
+          <div class="diag">
+            <h4>Diagnóza</h4>
+            <p>Stránka je na pozícii 1,8 pre dopyt s intenciou akcie a berie 430 z 432 impresií tejto stránky. CTR 0,47 % nie je chyba textu — je to nezhoda intencie. Kto hľadá 'akcia na zlate nausnice', chce výpis zliav, nie jeden produkt. Toto je najväčšia CTR anomália v dávke a title ju sám nevyrieši.</p>
+          </div>
+
+          <h4>Čo Google reálne zobrazuje na túto URL</h4>
+          <div class="twrap">
+            <table class="data">
+              <thead><tr><th>Dopyt</th><th class="num">Impresie</th><th class="num">Kliky</th><th class="num">CTR</th><th class="num">Pozícia</th></tr></thead>
+              <tbody><tr><td>akcia na zlate nausnice</td><td class="num">430</td><td class="num">2</td>
+        <td class="num bad">0.47&nbsp;%</td><td class="num">1.77</td></tr><tr><td>zlate nausnice akcia</td><td class="num">1</td><td class="num">0</td>
+        <td class="num bad">0.00&nbsp;%</td><td class="num">19.00</td></tr></tbody>
+            </table>
+          </div>
+
+          <h4>Návrh</h4>
+          <dl class="proposal">
+            <dt>Meta title</dt>
+            <dd>
+              <span class="val" id="p32023-title">Zlaté náušnice 585 ovál so zirkónmi | Šperky-eshop.sk</span>
+              <button type="button" class="copy" data-copy="p32023-title" aria-label="Skopírovať">Kopírovať</button>
+              <span class="mrow"><span class="meter" role="img" aria-label="53 znakov, povolené 45 až 60">
+      <span class="meter-band" style="left:30.0%;width:25.0%"></span>
+      <span class="meter-pin" style="left:43.3%"></span>
+    </span><span class="meter-num">53<span class="meter-lim">/45–60</span></span></span>
+            </dd>
+            <dt>H1</dt>
+            <dd>
+              <span class="val" id="p32023-h1">Zlaté náušnice 585 – ovál s vlnkou a zirkónovými slzičkami</span>
+              <button type="button" class="copy" data-copy="p32023-h1" aria-label="Skopírovať">Kopírovať</button>
+              <span class="mrow"><span class="meter" role="img" aria-label="58 znakov, povolené 20 až 70">
+      <span class="meter-band" style="left:8.9%;width:55.6%"></span>
+      <span class="meter-pin" style="left:51.1%"></span>
+    </span><span class="meter-num">58<span class="meter-lim">/20–70</span></span></span>
+            </dd>
+            <dt>Meta description</dt>
+            <dd>
+              <span class="val" id="p32023-desc">Ovál s vlnkou zo žltého, bieleho a ružového zlata 585, zdobený zirkónovými slzičkami. Ladia s každým odtieňom zlata, ktorý už nosíte.</span>
+              <button type="button" class="copy" data-copy="p32023-desc" aria-label="Skopírovať">Kopírovať</button>
+              <span class="mrow"><span class="meter" role="img" aria-label="133 znakov, povolené 130 až 155">
+      <span class="meter-band" style="left:35.4%;width:17.0%"></span>
+      <span class="meter-pin" style="left:37.4%"></span>
+    </span><span class="meter-num">133<span class="meter-lim">/130–155</span></span></span>
+            </dd>
+            <dt>Krátky popis</dt>
+            <dd>
+              <span class="val" id="p32023-short">Náušnice zo zlata 585 v tvare ovála s jemnou vlnkou. Kombinujú žlté, biele a ružové zlato a dopĺňajú ich zirkónové slzičky. Vďaka trom odtieňom zlata sa hodia ku každému šperku, ktorý už máte.</span>
+              <button type="button" class="copy" data-copy="p32023-short" aria-label="Skopírovať">Kopírovať</button>
+              <span class="mrow"><span class="wc">33 slov</span></span>
+            </dd>
+          </dl>
+
+          <h4>Dlhý popis <span class="wc">208 slov</span> <button type="button" class="copy" data-copy="p32023-long" aria-label="Skopírovať">Kopírovať</button></h4>
+          <div class="longdesc" id="p32023-long"><p>Zlaté náušnice 585 v tvare ovála s vlnkou patria k šperkom, ktoré si nájdu miesto v každodennom nosení aj na slávnostnú príležitosť. Tvar je jemný a nenápadný, ale kombinácia troch odtieňov zlata mu dodáva hĺbku, akú jednofarebný šperk nemá.</p><p>Materiál a rýdzosť. Náušnice sú vyrobené zo zlata s rýdzosťou 585, čo znamená 58,5 percenta čistého zlata — na Slovensku najbežnejšia rýdzosť pre šperky na denné nosenie. Kombinujú žlté, biele a ružové zlato, takže ladia so žltým aj bielym zlatom, ktoré už vlastníte.</p><p>Rozmery a zapínanie. Ovál má výšku [doplniť z crawlu: mm] a náušnice vážia [doplniť z crawlu: g] za pár. Zapínanie je [doplniť z crawlu: puzetka alebo francúzsky zámok], takže sa dajú nosiť celý deň bez toho, aby ťahali ucho.</p><p>Pre koho a na akú príležitosť. Ovál s vlnkou je vďačný tvar — nekonkuruje výraznému náhrdelníku ani účesu, a zároveň je viditeľný. Sadne k práci aj k svadbe. Ako darček funguje k narodeninám či k okrúhlemu jubileu, keď hľadáte šperk, o ktorom viete, že sa bude nosiť.</p><p>Starostlivosť. Zlato 585 je odolné, ale zirkóny stratia lesk od krému, parfumu a chlóru. Náušnice preto odložte pred sprchou a plávaním. Na čistenie stačí vlažná voda s kvapkou saponátu a mäkká handrička; ultrazvukovú čističku nechajte na hladké zlato bez kameňov.</p></div>
+
+          <h4>Alt texty obrázkov</h4>
+          <ol class="alts"><li><span class="alt-n">1</span><span class="alt-t" id="p32023-alt0">Zlaté náušnice 585 – ovál s vlnkou a zirkónovými slzičkami, pohľad spredu</span><button type="button" class="copy" data-copy="p32023-alt0" aria-label="Skopírovať">Kopírovať</button></li><li><span class="alt-n">2</span><span class="alt-t" id="p32023-alt1">Trojfarebné zlato 585 na náušniciach – detail žltého, bieleho a ružového odtieňa</span><button type="button" class="copy" data-copy="p32023-alt1" aria-label="Skopírovať">Kopírovať</button></li><li><span class="alt-n">3</span><span class="alt-t" id="p32023-alt2">Zirkónové slzičky v ovále zo zlata 585 – detail osadenia kameňov</span><button type="button" class="copy" data-copy="p32023-alt2" aria-label="Skopírovať">Kopírovať</button></li><li><span class="alt-n">4</span><span class="alt-t" id="p32023-alt3">Zlaté náušnice 585 ovál s vlnkou – zapínanie z profilu</span><button type="button" class="copy" data-copy="p32023-alt3" aria-label="Skopírovať">Kopírovať</button></li><li><span class="alt-n">5</span><span class="alt-t" id="p32023-alt4">Zlaté náušnice 585 s vlnkou a zirkónmi na uchu – veľkosť v nosení</span><button type="button" class="copy" data-copy="p32023-alt4" aria-label="Skopírovať">Kopírovať</button></li></ol>
+
+          <h4>JSON-LD <span class="wc">bez aggregateRating — hodnotenia sa nevymýšľajú</span> <button type="button" class="copy" data-copy="p32023-ld" aria-label="Skopírovať">Kopírovať</button></h4>
+          <pre class="code" id="p32023-ld">{
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;@type&quot;: &quot;Product&quot;,
+  &quot;name&quot;: &quot;Zlaté náušnice 585 – ovál s vlnkou a zirkónovými slzičkami&quot;,
+  &quot;image&quot;: [
+    &quot;[doplniť z crawlu: URL fotiek produktu]&quot;
+  ],
+  &quot;description&quot;: &quot;Ovál s vlnkou zo žltého, bieleho a ružového zlata 585, zdobený zirkónovými slzičkami.&quot;,
+  &quot;sku&quot;: &quot;[doplniť z crawlu: SKU]&quot;,
+  &quot;material&quot;: &quot;Zlato 585 (14 karátov)&quot;,
+  &quot;brand&quot;: {
+    &quot;@type&quot;: &quot;Brand&quot;,
+    &quot;name&quot;: &quot;Šperky-eshop.sk&quot;
+  },
+  &quot;offers&quot;: {
+    &quot;@type&quot;: &quot;Offer&quot;,
+    &quot;priceCurrency&quot;: &quot;EUR&quot;,
+    &quot;price&quot;: &quot;[doplniť z crawlu]&quot;,
+    &quot;availability&quot;: &quot;https://schema.org/InStock&quot;,
+    &quot;url&quot;: &quot;https://sperky-eshop.sk/32023-zlate-nausnice-585-oval-s-vlnkou-a-zirkonovymi-slzickami-zlte-biele-a-ruzove-zlato.html&quot;
+  }
+}</pre>
+
+          <h4>Interné odkazy</h4>
+          <div class="twrap">
+            <table class="data">
+              <thead><tr><th>Cieľ</th><th>Anchor text</th><th>Prečo</th></tr></thead>
+              <tbody><tr><td><code>/77-zlate-nausnice</code></td><td>všetky zlaté náušnice</td><td class="why">nadradená kategória, 16 800 impresií</td></tr><tr><td><code>/92-damske-zlate-nausnice</code></td><td>dámske zlaté náušnice</td><td class="why">najbližšia podkategória</td></tr><tr><td><code>/110-vypredaj-skladu</code></td><td>zlaté náušnice vo výpredaji</td><td class="why">obsluhuje intenciu akcie, ktorá na túto stránku dopadá</td></tr><tr><td><code>/74-zlato</code></td><td>šperky zo zlata 585</td><td class="why">rodičovská kategória materiálu</td></tr></tbody>
+            </table>
+          </div>
+
+          <div class="verify">
+            <h4>Treba overiť crawlom</h4>
+            <ul><li>rozmer ovála v mm</li><li>hmotnosť za pár</li><li>typ zapínania</li><li>cena a dostupnosť</li><li>URL fotiek a ich počet</li><li>SKU</li><li>či je produkt reálne v akcii</li></ul>
+          </div>
+
+          <div class="finding">
+            <h4>Štrukturálne zistenie</h4>
+            <p>Dopyt 'akcia na zlate nausnice' (454 impresií celkovo) si delia tri URL: kategória /77 na pozícii 2,42, tento produkt na 1,77 a produkt 32102 na 1,84. Všetky tri majú CTR pod 0,5 %. Kanibalizácia — dopyt patrí na /110-vypredaj-skladu, ktoré už pre 'zlate nausnice vypredaj' drží CTR 2,14 %.</p>
+          </div>
+
+          <div class="actions">
+            <button type="button" class="btn approve" data-act="approved">Schváliť</button>
+            <button type="button" class="btn reject" data-act="rejected">Zamietnuť</button>
+            <button type="button" class="btn reset" data-act="pending">Vrátiť na čaká</button>
+          </div>
+        </div>
+      </details>
+
+      <details class="card" id="p-40226" data-status="pending" data-purity="14k">
+        <summary>
+          <span class="rank">2</span>
+          <span class="sum-main">
+            <span class="sum-title">Zlaté náušnice 14k – zatočené kruhy</span>
+            <span class="sum-meta">
+              <code>40226</code>
+              <span class="stamp">14k</span>
+              <span class="sum-num">2 515 impresií</span>
+              <span class="sum-num">CTR 0.48&nbsp;%</span>
+              <span class="sum-num">poz. 10.73</span>
+            </span>
+          </span>
+          <span class="sum-right">
+            <span class="missed"><b>47</b><i>premrhaných klikov</i></span>
+            <span class="pill status-pill">Čaká</span>
+          </span>
+        </summary>
+
+        <div class="card-body">
+          <div class="diag">
+            <h4>Diagnóza</h4>
+            <p>Vzorec je čitateľný. Kde dopyt presne opisuje produkt ('zlate nausnice kruhy 14k', pozícia 1,9), CTR je 6,4 % — funguje. Kde je dopyt všeobecný ('zlate nausnice 14k', pozícia 3,3, 215 impresií), CTR je nula. Stránka drží top pozície na hlavových dopytoch, ale snippet na nich nepresvedčí. Rozdiel medzi 6,4 % a 0 % je čisto text v SERP.</p>
+          </div>
+
+          <h4>Čo Google reálne zobrazuje na túto URL</h4>
+          <div class="twrap">
+            <table class="data">
+              <thead><tr><th>Dopyt</th><th class="num">Impresie</th><th class="num">Kliky</th><th class="num">CTR</th><th class="num">Pozícia</th></tr></thead>
+              <tbody><tr><td>náušnice zlaté</td><td class="num">666</td><td class="num">2</td>
+        <td class="num bad">0.30&nbsp;%</td><td class="num">7.50</td></tr><tr><td>14k zlato</td><td class="num">237</td><td class="num">0</td>
+        <td class="num bad">0.00&nbsp;%</td><td class="num">9.03</td></tr><tr><td>zlate nausnice 14k</td><td class="num">215</td><td class="num">0</td>
+        <td class="num bad">0.00&nbsp;%</td><td class="num">3.29</td></tr><tr><td>náušnice zlato</td><td class="num">182</td><td class="num">0</td>
+        <td class="num bad">0.00&nbsp;%</td><td class="num">28.82</td></tr><tr><td>zlate damske nausnice 14k</td><td class="num">167</td><td class="num">2</td>
+        <td class="num">1.20&nbsp;%</td><td class="num">1.63</td></tr><tr><td>zlate nausnice kruhy 14k</td><td class="num">47</td><td class="num">3</td>
+        <td class="num">6.38&nbsp;%</td><td class="num">1.87</td></tr></tbody>
+            </table>
+          </div>
+
+          <h4>Návrh</h4>
+          <dl class="proposal">
+            <dt>Meta title</dt>
+            <dd>
+              <span class="val" id="p40226-title">Zlaté náušnice 14k – zatočené kruhy | Šperky-eshop.sk</span>
+              <button type="button" class="copy" data-copy="p40226-title" aria-label="Skopírovať">Kopírovať</button>
+              <span class="mrow"><span class="meter" role="img" aria-label="53 znakov, povolené 45 až 60">
+      <span class="meter-band" style="left:30.0%;width:25.0%"></span>
+      <span class="meter-pin" style="left:43.3%"></span>
+    </span><span class="meter-num">53<span class="meter-lim">/45–60</span></span></span>
+            </dd>
+            <dt>H1</dt>
+            <dd>
+              <span class="val" id="p40226-h1">Zlaté náušnice 14k – zatočené kruhy</span>
+              <button type="button" class="copy" data-copy="p40226-h1" aria-label="Skopírovať">Kopírovať</button>
+              <span class="mrow"><span class="meter" role="img" aria-label="35 znakov, povolené 20 až 70">
+      <span class="meter-band" style="left:8.9%;width:55.6%"></span>
+      <span class="meter-pin" style="left:25.6%"></span>
+    </span><span class="meter-num">35<span class="meter-lim">/20–70</span></span></span>
+            </dd>
+            <dt>Meta description</dt>
+            <dd>
+              <span class="val" id="p40226-desc">Kruhy zo zlata 14k so zatočeným profilom, ktorý zachytáva svetlo z každého uhla. Ľahké na celodenné nosenie, výrazné aj bez ďalších šperkov.</span>
+              <button type="button" class="copy" data-copy="p40226-desc" aria-label="Skopírovať">Kopírovať</button>
+              <span class="mrow"><span class="meter" role="img" aria-label="140 znakov, povolené 130 až 155">
+      <span class="meter-band" style="left:35.4%;width:17.0%"></span>
+      <span class="meter-pin" style="left:42.2%"></span>
+    </span><span class="meter-num">140<span class="meter-lim">/130–155</span></span></span>
+            </dd>
+            <dt>Krátky popis</dt>
+            <dd>
+              <span class="val" id="p40226-short">Kruhové náušnice zo zlata 14k so zatočeným povrchom. Profil kruhu je stočený, takže sa v ňom svetlo láme a šperk vyzerá výraznejšie, než by čakal jeho rozmer. Klasika, ktorá sa nosí každý deň.</span>
+              <button type="button" class="copy" data-copy="p40226-short" aria-label="Skopírovať">Kopírovať</button>
+              <span class="mrow"><span class="wc">33 slov</span></span>
+            </dd>
+          </dl>
+
+          <h4>Dlhý popis <span class="wc">208 slov</span> <button type="button" class="copy" data-copy="p40226-long" aria-label="Skopírovať">Kopírovať</button></h4>
+          <div class="longdesc" id="p40226-long"><p>Zlaté náušnice 14k so zatočenými kruhmi sú z tých šperkov, ktoré nevyjdú z módy. Kruh je najstarší tvar náušnice a zatočený profil mu pridáva to, čo hladký kruh nemá — hru svetla, ktorá sa mení s každým pohybom hlavy.</p><p>Materiál a rýdzosť. Zlato 14k má rýdzosť 585, teda 58,5 percenta čistého zlata. Je to pomer, ktorý drží zlatú farbu a zároveň znesie denné nosenie bez ohýbania a škrabancov. Ide o žlté zlato, takže ladí s ostatnými zlatými šperkami bez ohľadu na ich rýdzosť.</p><p>Rozmery a zapínanie. Priemer kruhu je [doplniť z crawlu: mm] a pár váži [doplniť z crawlu: g]. Zapínanie je [doplniť z crawlu: kĺbové alebo francúzsky zámok]. Zatočený profil znamená, že kruh je pri rovnakej hmotnosti opticky väčší než hladký.</p><p>Pre koho a na akú príležitosť. Zatočené kruhy fungujú ako šperk, ktorý si dáte ráno a celý deň naň nemyslíte. Sadnú k rifliam aj ku košeli, k vlasom zopnutým aj rozpusteným. Ako darček sú bezpečná voľba, pretože kruhy nosí takmer každá — nemusíte hádať vkus.</p><p>Starostlivosť. Zlato bez kameňov je nenáročné. Utrite náušnice mäkkou handričkou po každom nosení, aby ste zbavili povrch mastnoty z pokožky. Raz za čas pomôže vlažná voda so saponátom a mäkká zubná kefka na drážky zatočeného profilu, kde sa nečistota drží najviac.</p></div>
+
+          <h4>Alt texty obrázkov</h4>
+          <ol class="alts"><li><span class="alt-n">1</span><span class="alt-t" id="p40226-alt0">Zlaté náušnice 14k so zatočenými kruhmi, pohľad spredu</span><button type="button" class="copy" data-copy="p40226-alt0" aria-label="Skopírovať">Kopírovať</button></li><li><span class="alt-n">2</span><span class="alt-t" id="p40226-alt1">Zatočený profil zlatého kruhu 14k – detail povrchu a hry svetla</span><button type="button" class="copy" data-copy="p40226-alt1" aria-label="Skopírovať">Kopírovať</button></li><li><span class="alt-n">3</span><span class="alt-t" id="p40226-alt2">Zlaté kruhy 14k z profilu – tvar a hrúbka kruhu</span><button type="button" class="copy" data-copy="p40226-alt2" aria-label="Skopírovať">Kopírovať</button></li><li><span class="alt-n">4</span><span class="alt-t" id="p40226-alt3">Zapínanie zlatých náušníc 14k so zatočenými kruhmi – detail</span><button type="button" class="copy" data-copy="p40226-alt3" aria-label="Skopírovať">Kopírovať</button></li><li><span class="alt-n">5</span><span class="alt-t" id="p40226-alt4">Zatočené zlaté kruhy 14k na uchu – skutočná veľkosť v nosení</span><button type="button" class="copy" data-copy="p40226-alt4" aria-label="Skopírovať">Kopírovať</button></li></ol>
+
+          <h4>JSON-LD <span class="wc">bez aggregateRating — hodnotenia sa nevymýšľajú</span> <button type="button" class="copy" data-copy="p40226-ld" aria-label="Skopírovať">Kopírovať</button></h4>
+          <pre class="code" id="p40226-ld">{
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;@type&quot;: &quot;Product&quot;,
+  &quot;name&quot;: &quot;Zlaté náušnice 14k – zatočené kruhy&quot;,
+  &quot;image&quot;: [
+    &quot;[doplniť z crawlu: URL fotiek produktu]&quot;
+  ],
+  &quot;description&quot;: &quot;Kruhy zo zlata 14k so zatočeným profilom, ktorý zachytáva svetlo z každého uhla.&quot;,
+  &quot;sku&quot;: &quot;[doplniť z crawlu: SKU]&quot;,
+  &quot;material&quot;: &quot;Zlato 14k (585)&quot;,
+  &quot;brand&quot;: {
+    &quot;@type&quot;: &quot;Brand&quot;,
+    &quot;name&quot;: &quot;Šperky-eshop.sk&quot;
+  },
+  &quot;offers&quot;: {
+    &quot;@type&quot;: &quot;Offer&quot;,
+    &quot;priceCurrency&quot;: &quot;EUR&quot;,
+    &quot;price&quot;: &quot;[doplniť z crawlu]&quot;,
+    &quot;availability&quot;: &quot;https://schema.org/InStock&quot;,
+    &quot;url&quot;: &quot;https://sperky-eshop.sk/40226-zlate-nausnice-14k-zlato-zatocene-kruhy.html&quot;
+  }
+}</pre>
+
+          <h4>Interné odkazy</h4>
+          <div class="twrap">
+            <table class="data">
+              <thead><tr><th>Cieľ</th><th>Anchor text</th><th>Prečo</th></tr></thead>
+              <tbody><tr><td><code>/94-zlate-nausnice-kruhy</code></td><td>zlaté náušnice kruhy</td><td class="why">presná podkategória, 6 413 impresií</td></tr><tr><td><code>/77-zlate-nausnice</code></td><td>celá kolekcia zlatých náušníc</td><td class="why">nadradená kategória</td></tr><tr><td><code>/92-damske-zlate-nausnice</code></td><td>dámske zlaté náušnice 14k</td><td class="why">obsluhuje dopyt 'zlate damske nausnice 14k' s CTR 1,2 %</td></tr><tr><td><code>/74-zlato</code></td><td>všetko zo zlata 14k</td><td class="why">rodičovská kategória materiálu</td></tr></tbody>
+            </table>
+          </div>
+
+          <div class="verify">
+            <h4>Treba overiť crawlom</h4>
+            <ul><li>priemer kruhu v mm</li><li>hmotnosť za pár</li><li>typ zapínania</li><li>cena a dostupnosť</li><li>URL fotiek</li><li>SKU</li></ul>
+          </div>
+
+          <div class="finding">
+            <h4>Štrukturálne zistenie</h4>
+            <p>Dopyt 'náušnice zlaté' s 666 impresiami na pozícii 7,5 dopadá na jeden produkt namiesto kategórie. Hlavový dopyt patrí na /77-zlate-nausnice. Interný odkaz s týmto anchorom z produktu pomôže Googlu prehodnotiť, ktorá URL má na dopyt odpovedať.</p>
+          </div>
+
+          <div class="actions">
+            <button type="button" class="btn approve" data-act="approved">Schváliť</button>
+            <button type="button" class="btn reject" data-act="rejected">Zamietnuť</button>
+            <button type="button" class="btn reset" data-act="pending">Vrátiť na čaká</button>
+          </div>
+        </div>
+      </details>
+
+      <details class="card" id="p-40138" data-status="pending" data-purity="14k">
+        <summary>
+          <span class="rank">3</span>
+          <span class="sum-main">
+            <span class="sum-title">Malé lesklé kruhy zo zlata 14k</span>
+            <span class="sum-meta">
+              <code>40138</code>
+              <span class="stamp">14k</span>
+              <span class="sum-num">552 impresií</span>
+              <span class="sum-num">CTR 0.18&nbsp;%</span>
+              <span class="sum-num">poz. 5.06</span>
+            </span>
+          </span>
+          <span class="sum-right">
+            <span class="missed"><b>28</b><i>premrhaných klikov</i></span>
+            <span class="pill status-pill">Čaká</span>
+          </span>
+        </summary>
+
+        <div class="card-body">
+          <div class="diag">
+            <h4>Diagnóza</h4>
+            <p>Priemerná pozícia 5,06 pri CTR 0,18 % je najhoršia disproporcia v dávke po produkte 32023. Na dopyte 'zlate nausnice 14k' je stránka na pozícii 2,58 so 153 impresiami a nulou klikov. Slovo 'malé' je pritom pre túto stránku rozlišovací znak — ak nie je v title, používateľ nemá ako poznať, že našel presne to, čo hľadal.</p>
+          </div>
+
+          <h4>Čo Google reálne zobrazuje na túto URL</h4>
+          <div class="twrap">
+            <table class="data">
+              <thead><tr><th>Dopyt</th><th class="num">Impresie</th><th class="num">Kliky</th><th class="num">CTR</th><th class="num">Pozícia</th></tr></thead>
+              <tbody><tr><td>male zlate nausnice</td><td class="num">236</td><td class="num">1</td>
+        <td class="num bad">0.42&nbsp;%</td><td class="num">5.79</td></tr><tr><td>zlate nausnice 14k</td><td class="num">153</td><td class="num">0</td>
+        <td class="num bad">0.00&nbsp;%</td><td class="num">2.58</td></tr><tr><td>zlate nausnice male</td><td class="num">36</td><td class="num">0</td>
+        <td class="num bad">0.00&nbsp;%</td><td class="num">3.83</td></tr><tr><td>malé zlaté náušnice</td><td class="num">27</td><td class="num">0</td>
+        <td class="num bad">0.00&nbsp;%</td><td class="num">2.89</td></tr><tr><td>zlaté náušnice kruhy malé</td><td class="num">11</td><td class="num">0</td>
+        <td class="num bad">0.00&nbsp;%</td><td class="num">1.73</td></tr></tbody>
+            </table>
+          </div>
+
+          <h4>Návrh</h4>
+          <dl class="proposal">
+            <dt>Meta title</dt>
+            <dd>
+              <span class="val" id="p40138-title">Malé zlaté náušnice 14k – lesklé kruhy | Šperky-eshop</span>
+              <button type="button" class="copy" data-copy="p40138-title" aria-label="Skopírovať">Kopírovať</button>
+              <span class="mrow"><span class="meter" role="img" aria-label="53 znakov, povolené 45 až 60">
+      <span class="meter-band" style="left:30.0%;width:25.0%"></span>
+      <span class="meter-pin" style="left:43.3%"></span>
+    </span><span class="meter-num">53<span class="meter-lim">/45–60</span></span></span>
+            </dd>
+            <dt>H1</dt>
+            <dd>
+              <span class="val" id="p40138-h1">Malé lesklé kruhy zo zlata 14k</span>
+              <button type="button" class="copy" data-copy="p40138-h1" aria-label="Skopírovať">Kopírovať</button>
+              <span class="mrow"><span class="meter" role="img" aria-label="30 znakov, povolené 20 až 70">
+      <span class="meter-band" style="left:8.9%;width:55.6%"></span>
+      <span class="meter-pin" style="left:20.0%"></span>
+    </span><span class="meter-num">30<span class="meter-lim">/20–70</span></span></span>
+            </dd>
+            <dt>Meta description</dt>
+            <dd>
+              <span class="val" id="p40138-desc">Drobné kruhy zo zlata 14k s hladkým lesklým povrchom. Sadnú na každý deň, k práci aj do prvej dierky, a nechajú priestor ďalším náušniciam.</span>
+              <button type="button" class="copy" data-copy="p40138-desc" aria-label="Skopírovať">Kopírovať</button>
+              <span class="mrow"><span class="meter" role="img" aria-label="139 znakov, povolené 130 až 155">
+      <span class="meter-band" style="left:35.4%;width:17.0%"></span>
+      <span class="meter-pin" style="left:41.5%"></span>
+    </span><span class="meter-num">139<span class="meter-lim">/130–155</span></span></span>
+            </dd>
+            <dt>Krátky popis</dt>
+            <dd>
+              <span class="val" id="p40138-short">Malé kruhy zo zlata 14k s hladkým leskom. Rozmer je zámerne drobný, takže sa dajú nosiť samostatne aj ako súčasť viacerých náušníc v jednom uchu. Nenápadný šperk na denné nosenie.</span>
+              <button type="button" class="copy" data-copy="p40138-short" aria-label="Skopírovať">Kopírovať</button>
+              <span class="mrow"><span class="wc">30 slov</span></span>
+            </dd>
+          </dl>
+
+          <h4>Dlhý popis <span class="wc">236 slov</span> <button type="button" class="copy" data-copy="p40138-long" aria-label="Skopírovať">Kopírovať</button></h4>
+          <div class="longdesc" id="p40138-long"><p>Malé zlaté kruhy 14k sú náušnice, ktoré si dáte a zabudnete na ne. Presne to je ich zmysel — drobný rozmer a hladký lesklý povrch bez ozdôb znamenajú šperk, ktorý neprekáža pri práci, pri športe ani v spánku.</p><p>Materiál a rýdzosť. Rýdzosť 14k, teda 585, je 58,5 percenta čistého zlata. Pri malých kruhoch je to podstatné: nižšia rýdzosť by pri tenkom profile stmavla, vyššia by sa ohýbala. Povrch je hladký a lesklý, bez gravírovania a bez kameňov, takže sa nemá čo zachytiť o vlasy či oblečenie.</p><p>Rozmery a zapínanie. Priemer je [doplniť z crawlu: mm] a hmotnosť [doplniť z crawlu: g] za pár. Zapínanie je [doplniť z crawlu: kĺbové alebo puzetka]. Pri malom kruhu je typ zapínania dôležitejší než pri veľkom, pretože rozhoduje o tom, či sa dá nosiť nepretržite.</p><p>Pre koho a na akú príležitosť. Malé kruhy sú vďačná prvá zlatá náušnica po detských puzetkách, aj bezpečný darček pre niekoho, koho vkus nepoznáte. Fungujú v uchu samostatne, aj ako druhá či tretia náušnica k výraznejšiemu kusu.</p><p>Ako ich kombinovať. Malý kruh je základ, na ktorý sa dá stavať. V jednom uchu znesie spoločnosť puzetky so zirkónom aj druhého, väčšieho kruhu. Ak nosíte náhrdelník s výrazným príveskom, malé kruhy mu nekonkurujú a nechajú ho vyniknúť.</p><p>Starostlivosť. Hladké zlato bez kameňov je najmenej náročný šperk, aký môžete mať. Stačí utrieť mäkkou handričkou. Ak lesk vybledne od kozmetiky, vráti ho vlažná voda s kvapkou saponátu a dôkladné vysušenie.</p></div>
+
+          <h4>Alt texty obrázkov</h4>
+          <ol class="alts"><li><span class="alt-n">1</span><span class="alt-t" id="p40138-alt0">Malé zlaté náušnice 14k s lesklými kruhmi, pohľad spredu</span><button type="button" class="copy" data-copy="p40138-alt0" aria-label="Skopírovať">Kopírovať</button></li><li><span class="alt-n">2</span><span class="alt-t" id="p40138-alt1">Hladký lesklý povrch malého zlatého kruhu 14k – detail</span><button type="button" class="copy" data-copy="p40138-alt1" aria-label="Skopírovať">Kopírovať</button></li><li><span class="alt-n">3</span><span class="alt-t" id="p40138-alt2">Malé zlaté kruhy 14k z profilu – hrúbka a priemer</span><button type="button" class="copy" data-copy="p40138-alt2" aria-label="Skopírovať">Kopírovať</button></li><li><span class="alt-n">4</span><span class="alt-t" id="p40138-alt3">Zapínanie malých zlatých kruhov 14k – detail mechanizmu</span><button type="button" class="copy" data-copy="p40138-alt3" aria-label="Skopírovať">Kopírovať</button></li><li><span class="alt-n">5</span><span class="alt-t" id="p40138-alt4">Malé lesklé zlaté kruhy 14k na uchu – veľkosť v porovnaní s uchom</span><button type="button" class="copy" data-copy="p40138-alt4" aria-label="Skopírovať">Kopírovať</button></li></ol>
+
+          <h4>JSON-LD <span class="wc">bez aggregateRating — hodnotenia sa nevymýšľajú</span> <button type="button" class="copy" data-copy="p40138-ld" aria-label="Skopírovať">Kopírovať</button></h4>
+          <pre class="code" id="p40138-ld">{
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;@type&quot;: &quot;Product&quot;,
+  &quot;name&quot;: &quot;Malé lesklé kruhy zo zlata 14k&quot;,
+  &quot;image&quot;: [
+    &quot;[doplniť z crawlu: URL fotiek produktu]&quot;
+  ],
+  &quot;description&quot;: &quot;Drobné kruhy zo zlata 14k s hladkým lesklým povrchom, na denné nosenie.&quot;,
+  &quot;sku&quot;: &quot;[doplniť z crawlu: SKU]&quot;,
+  &quot;material&quot;: &quot;Zlato 14k (585)&quot;,
+  &quot;brand&quot;: {
+    &quot;@type&quot;: &quot;Brand&quot;,
+    &quot;name&quot;: &quot;Šperky-eshop.sk&quot;
+  },
+  &quot;offers&quot;: {
+    &quot;@type&quot;: &quot;Offer&quot;,
+    &quot;priceCurrency&quot;: &quot;EUR&quot;,
+    &quot;price&quot;: &quot;[doplniť z crawlu]&quot;,
+    &quot;availability&quot;: &quot;https://schema.org/InStock&quot;,
+    &quot;url&quot;: &quot;https://sperky-eshop.sk/40138-zlate-nausnice-14k-male-leskle-kruhy.html&quot;
+  }
+}</pre>
+
+          <h4>Interné odkazy</h4>
+          <div class="twrap">
+            <table class="data">
+              <thead><tr><th>Cieľ</th><th>Anchor text</th><th>Prečo</th></tr></thead>
+              <tbody><tr><td><code>/94-zlate-nausnice-kruhy</code></td><td>zlaté kruhy všetkých veľkostí</td><td class="why">presná podkategória</td></tr><tr><td><code>/77-zlate-nausnice</code></td><td>zlaté náušnice</td><td class="why">nadradená kategória</td></tr><tr><td><code>/93-detske-zlate-nausnice</code></td><td>detské zlaté náušnice</td><td class="why">malé kruhy sú prechod z detských puzetiek, 7 804 impresií</td></tr></tbody>
+            </table>
+          </div>
+
+          <div class="verify">
+            <h4>Treba overiť crawlom</h4>
+            <ul><li>priemer v mm</li><li>hmotnosť za pár</li><li>typ zapínania</li><li>cena a dostupnosť</li><li>URL fotiek</li><li>SKU</li></ul>
+          </div>
+
+          <div class="finding">
+            <h4>Štrukturálne zistenie</h4>
+            <p>Produkty 40138 a 36995 sú obidva 'malé zlaté kruhy 14k' a súťažia o rovnaké dopyty ('male zlate nausnice', 'zlate nausnice kruhy male'). Odlíšiť ich musí rozmer v title: 40138 bez uvedeného priemeru, 36995 s '10 mm'. Bez toho si navzájom rozdeľujú kliky.</p>
+          </div>
+
+          <div class="actions">
+            <button type="button" class="btn approve" data-act="approved">Schváliť</button>
+            <button type="button" class="btn reject" data-act="rejected">Zamietnuť</button>
+            <button type="button" class="btn reset" data-act="pending">Vrátiť na čaká</button>
+          </div>
+        </div>
+      </details>
+
+      <details class="card" id="p-36995" data-status="pending" data-purity="14k">
+        <summary>
+          <span class="rank">4</span>
+          <span class="sum-main">
+            <span class="sum-title">Kĺbové zlaté náušnice 14k – malé kruhy s gravírovaním, 10 mm</span>
+            <span class="sum-meta">
+              <code>36995</code>
+              <span class="stamp">14k</span>
+              <span class="sum-num">674 impresií</span>
+              <span class="sum-num">CTR 0.00&nbsp;%</span>
+              <span class="sum-num">poz. 6.76</span>
+            </span>
+          </span>
+          <span class="sum-right">
+            <span class="missed"><b>24</b><i>premrhaných klikov</i></span>
+            <span class="pill status-pill">Čaká</span>
+          </span>
+        </summary>
+
+        <div class="card-body">
+          <div class="diag">
+            <h4>Diagnóza</h4>
+            <p>674 impresií, 15 dopytov, pozície od 1,21 do 16,7 — a nula klikov. Ani jeden. Nula klikov pri pozícii 1,21 na dopyte 'male kruhy nausnice' nie je vysvetliteľná slabým titulkom; taký snippet by nejaký klik dostal. Toto je podozrenie na technický problém: vypredaná zásoba, chýbajúci alebo duplicitný snippet, alebo cena mimo očakávania. Overiť pred prepisom textu.</p>
+          </div>
+
+          <h4>Čo Google reálne zobrazuje na túto URL</h4>
+          <div class="twrap">
+            <table class="data">
+              <thead><tr><th>Dopyt</th><th class="num">Impresie</th><th class="num">Kliky</th><th class="num">CTR</th><th class="num">Pozícia</th></tr></thead>
+              <tbody><tr><td>male nausnice</td><td class="num">151</td><td class="num">0</td>
+        <td class="num bad">0.00&nbsp;%</td><td class="num">7.92</td></tr><tr><td>zlate nausnice male kruhy</td><td class="num">107</td><td class="num">0</td>
+        <td class="num bad">0.00&nbsp;%</td><td class="num">3.74</td></tr><tr><td>zlate male nausnice</td><td class="num">93</td><td class="num">0</td>
+        <td class="num bad">0.00&nbsp;%</td><td class="num">5.05</td></tr><tr><td>zlate nausnice kruhy male</td><td class="num">79</td><td class="num">0</td>
+        <td class="num bad">0.00&nbsp;%</td><td class="num">3.16</td></tr><tr><td>male kruhy nausnice</td><td class="num">19</td><td class="num">0</td>
+        <td class="num bad">0.00&nbsp;%</td><td class="num">1.21</td></tr></tbody>
+            </table>
+          </div>
+
+          <h4>Návrh</h4>
+          <dl class="proposal">
+            <dt>Meta title</dt>
+            <dd>
+              <span class="val" id="p36995-title">Malé zlaté náušnice 14k – kruhy 10 mm | Šperky-eshop</span>
+              <button type="button" class="copy" data-copy="p36995-title" aria-label="Skopírovať">Kopírovať</button>
+              <span class="mrow"><span class="meter" role="img" aria-label="52 znakov, povolené 45 až 60">
+      <span class="meter-band" style="left:30.0%;width:25.0%"></span>
+      <span class="meter-pin" style="left:41.7%"></span>
+    </span><span class="meter-num">52<span class="meter-lim">/45–60</span></span></span>
+            </dd>
+            <dt>H1</dt>
+            <dd>
+              <span class="val" id="p36995-h1">Kĺbové zlaté náušnice 14k – malé kruhy s gravírovaním, 10 mm</span>
+              <button type="button" class="copy" data-copy="p36995-h1" aria-label="Skopírovať">Kopírovať</button>
+              <span class="mrow"><span class="meter" role="img" aria-label="60 znakov, povolené 20 až 70">
+      <span class="meter-band" style="left:8.9%;width:55.6%"></span>
+      <span class="meter-pin" style="left:53.3%"></span>
+    </span><span class="meter-num">60<span class="meter-lim">/20–70</span></span></span>
+            </dd>
+            <dt>Meta description</dt>
+            <dd>
+              <span class="val" id="p36995-desc">Kruhy s priemerom 10 mm zo zlata 14k, po povrchu jemne gravírované. Kĺbové zapínanie zaklapne a drží, takže kruh nevypadne ani pri obliekaní.</span>
+              <button type="button" class="copy" data-copy="p36995-desc" aria-label="Skopírovať">Kopírovať</button>
+              <span class="mrow"><span class="meter" role="img" aria-label="141 znakov, povolené 130 až 155">
+      <span class="meter-band" style="left:35.4%;width:17.0%"></span>
+      <span class="meter-pin" style="left:42.9%"></span>
+    </span><span class="meter-num">141<span class="meter-lim">/130–155</span></span></span>
+            </dd>
+            <dt>Krátky popis</dt>
+            <dd>
+              <span class="val" id="p36995-short">Malé zlaté kruhy 14k s priemerom 10 mm a lesklým gravírovaním po povrchu. Kĺbové zapínanie sa zaklapne, takže náušnica drží pevne aj pri celodennom nosení bez toho, aby ste ju kontrolovali.</span>
+              <button type="button" class="copy" data-copy="p36995-short" aria-label="Skopírovať">Kopírovať</button>
+              <span class="mrow"><span class="wc">31 slov</span></span>
+            </dd>
+          </dl>
+
+          <h4>Dlhý popis <span class="wc">235 slov</span> <button type="button" class="copy" data-copy="p36995-long" aria-label="Skopírovať">Kopírovať</button></h4>
+          <div class="longdesc" id="p36995-long"><p>Kĺbové zlaté kruhy 14k s priemerom 10 mm sú malá náušnica s jedným odlišujúcim detailom. Je to gravírovanie, ktoré po povrchu kruhu vytvára lesklú kresbu. Pri desiatich milimetroch je to celý zdobný prvok, aký sa na kruh zmestí, a presne preto funguje.</p><p>Materiál a rýdzosť. Zlato 14k má rýdzosť 585, teda 58,5 percenta čistého zlata. Gravírovanie na tomto zlate drží lesk dlhšie než na nižších rýdzostiach, pretože povrch tmavne pomalšie. Farba je žltá, bez rodiovania.</p><p>Rozmery a zapínanie. Priemer kruhu je 10 mm — rozmer, ktorý sedí do prvej dierky aj do hornej časti ucha. Hmotnosť je [doplniť z crawlu: g] za pár. Zapínanie je kĺbové: kruh sa zaklapne do zámku, čo drží bezpečnejšie než háčik a nevyžaduje osobitnú zarážku.</p><p>Pre koho a na akú príležitosť. Desiatka je najuniverzálnejší rozmer malého kruhu. Je viditeľná, ale nezasahuje do líca ani do vlasov. Nosí sa samostatne, v páre s väčším kruhom v tom istom uchu, alebo ako trvalá náušnica, ktorú nevyberáte.</p><p>Čím sa líšia od hladkých kruhov. Hladký kruh odráža svetlo ako celok, gravírovaný ho láme na menšie plochy. Výsledok je, že sa šperk zdá živší, aj keď je rovnako veľký. Pri desiatich milimetroch je to rozdiel, ktorý si všimne aj ten, kto sa o šperky nezaujíma.</p><p>Starostlivosť. Gravírované drážky sú jediné miesto, kde sa drží nečistota. Raz za mesiac pomôže vlažná voda so saponátom a mäkká zubná kefka; potom dôkladne vysušiť, aby v drážkach nezostala voda.</p></div>
+
+          <h4>Alt texty obrázkov</h4>
+          <ol class="alts"><li><span class="alt-n">1</span><span class="alt-t" id="p36995-alt0">Kĺbové zlaté náušnice 14k, malé kruhy 10 mm s gravírovaním, spredu</span><button type="button" class="copy" data-copy="p36995-alt0" aria-label="Skopírovať">Kopírovať</button></li><li><span class="alt-n">2</span><span class="alt-t" id="p36995-alt1">Lesklé gravírovanie na zlatom kruhu 14k – detail kresby povrchu</span><button type="button" class="copy" data-copy="p36995-alt1" aria-label="Skopírovať">Kopírovať</button></li><li><span class="alt-n">3</span><span class="alt-t" id="p36995-alt2">Kĺbové zapínanie zlatého kruhu 14k – detail zaklapávacieho zámku</span><button type="button" class="copy" data-copy="p36995-alt2" aria-label="Skopírovať">Kopírovať</button></li><li><span class="alt-n">4</span><span class="alt-t" id="p36995-alt3">Zlatý kruh 14k s priemerom 10 mm z profilu – hrúbka a rozmer</span><button type="button" class="copy" data-copy="p36995-alt3" aria-label="Skopírovať">Kopírovať</button></li><li><span class="alt-n">5</span><span class="alt-t" id="p36995-alt4">Malé gravírované zlaté kruhy 14k na uchu – 10 mm v nosení</span><button type="button" class="copy" data-copy="p36995-alt4" aria-label="Skopírovať">Kopírovať</button></li></ol>
+
+          <h4>JSON-LD <span class="wc">bez aggregateRating — hodnotenia sa nevymýšľajú</span> <button type="button" class="copy" data-copy="p36995-ld" aria-label="Skopírovať">Kopírovať</button></h4>
+          <pre class="code" id="p36995-ld">{
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;@type&quot;: &quot;Product&quot;,
+  &quot;name&quot;: &quot;Kĺbové zlaté náušnice 14k – malé kruhy s gravírovaním, 10 mm&quot;,
+  &quot;image&quot;: [
+    &quot;[doplniť z crawlu: URL fotiek produktu]&quot;
+  ],
+  &quot;description&quot;: &quot;Kruhy s priemerom 10 mm zo zlata 14k s lesklým gravírovaním a kĺbovým zapínaním.&quot;,
+  &quot;sku&quot;: &quot;[doplniť z crawlu: SKU]&quot;,
+  &quot;material&quot;: &quot;Zlato 14k (585)&quot;,
+  &quot;size&quot;: &quot;10 mm&quot;,
+  &quot;brand&quot;: {
+    &quot;@type&quot;: &quot;Brand&quot;,
+    &quot;name&quot;: &quot;Šperky-eshop.sk&quot;
+  },
+  &quot;offers&quot;: {
+    &quot;@type&quot;: &quot;Offer&quot;,
+    &quot;priceCurrency&quot;: &quot;EUR&quot;,
+    &quot;price&quot;: &quot;[doplniť z crawlu]&quot;,
+    &quot;availability&quot;: &quot;[doplniť z crawlu: overiť, či nie je vypredané]&quot;,
+    &quot;url&quot;: &quot;https://sperky-eshop.sk/36995-klbove-14k-zlate-nausnice-male-kruhy-s-lesklym-gravirovanim-10-mm.html&quot;
+  }
+}</pre>
+
+          <h4>Interné odkazy</h4>
+          <div class="twrap">
+            <table class="data">
+              <thead><tr><th>Cieľ</th><th>Anchor text</th><th>Prečo</th></tr></thead>
+              <tbody><tr><td><code>/94-zlate-nausnice-kruhy</code></td><td>zlaté náušnice kruhy</td><td class="why">presná podkategória</td></tr><tr><td><code>/77-zlate-nausnice</code></td><td>zlaté náušnice zo 14k zlata</td><td class="why">nadradená kategória</td></tr><tr><td><code>/92-damske-zlate-nausnice</code></td><td>dámske zlaté náušnice</td><td class="why">podkategória podľa cieľovej skupiny</td></tr></tbody>
+            </table>
+          </div>
+
+          <div class="verify">
+            <h4>Treba overiť crawlom</h4>
+            <ul><li>PRIORITA: či je produkt vypredaný — nula klikov pri 674 impresiách</li><li>či sa snippet v SERP vôbec renderuje</li><li>hmotnosť za pár</li><li>cena</li><li>URL fotiek</li><li>SKU</li></ul>
+          </div>
+
+          <div class="finding">
+            <h4>Štrukturálne zistenie</h4>
+            <p>Nula klikov pri 674 impresiách a priemernej pozícii 6,76 je štatisticky takmer nemožná pri fungujúcej stránke. Pred akýmkoľvek prepisom textu spustiť gsc_inspect na tejto URL a overiť dostupnosť produktu. Ak je vypredaný, správna oprava nie je nový title, ale naskladnenie alebo presmerovanie.</p>
+          </div>
+
+          <div class="actions">
+            <button type="button" class="btn approve" data-act="approved">Schváliť</button>
+            <button type="button" class="btn reject" data-act="rejected">Zamietnuť</button>
+            <button type="button" class="btn reset" data-act="pending">Vrátiť na čaká</button>
+          </div>
+        </div>
+      </details>
+
+      <details class="card" id="p-32102" data-status="pending" data-purity="585">
+        <summary>
+          <span class="rank">5</span>
+          <span class="sum-main">
+            <span class="sum-title">Veľké visiace zlaté náušnice 585 – dvojfarebné zrnko s výrezmi</span>
+            <span class="sum-meta">
+              <code>32102</code>
+              <span class="stamp">585</span>
+              <span class="sum-num">864 impresií</span>
+              <span class="sum-num">CTR 0.23&nbsp;%</span>
+              <span class="sum-num">poz. 8.83</span>
+            </span>
+          </span>
+          <span class="sum-right">
+            <span class="missed"><b>20</b><i>premrhaných klikov</i></span>
+            <span class="pill status-pill">Čaká</span>
+          </span>
+        </summary>
+
+        <div class="card-body">
+          <div class="diag">
+            <h4>Diagnóza</h4>
+            <p>Stránka obsluhuje tri rôzne intencie naraz: akciu (232 impresií), veľkosť (313 impresií pre 'velke zlate nausnice' v dvoch variantoch) a rýdzosť (178 impresií pre '585'). Title musí uniesť aspoň veľkosť a rýdzosť, pretože to sú dopyty, kde stránka reálne rankuje. Intencia akcie patrí inam.</p>
+          </div>
+
+          <h4>Čo Google reálne zobrazuje na túto URL</h4>
+          <div class="twrap">
+            <table class="data">
+              <thead><tr><th>Dopyt</th><th class="num">Impresie</th><th class="num">Kliky</th><th class="num">CTR</th><th class="num">Pozícia</th></tr></thead>
+              <tbody><tr><td>akcia na zlate nausnice</td><td class="num">232</td><td class="num">1</td>
+        <td class="num bad">0.43&nbsp;%</td><td class="num">1.84</td></tr><tr><td>velke zlate nausnice</td><td class="num">209</td><td class="num">0</td>
+        <td class="num bad">0.00&nbsp;%</td><td class="num">12.89</td></tr><tr><td>zlate nausnice velke</td><td class="num">104</td><td class="num">0</td>
+        <td class="num bad">0.00&nbsp;%</td><td class="num">21.42</td></tr><tr><td>zlate nausnice 585</td><td class="num">100</td><td class="num">1</td>
+        <td class="num">1.00&nbsp;%</td><td class="num">6.58</td></tr><tr><td>zlaté náušnice 585</td><td class="num">78</td><td class="num">0</td>
+        <td class="num bad">0.00&nbsp;%</td><td class="num">5.31</td></tr><tr><td>visiace zlate nausnice</td><td class="num">34</td><td class="num">0</td>
+        <td class="num bad">0.00&nbsp;%</td><td class="num">3.68</td></tr></tbody>
+            </table>
+          </div>
+
+          <h4>Návrh</h4>
+          <dl class="proposal">
+            <dt>Meta title</dt>
+            <dd>
+              <span class="val" id="p32102-title">Veľké visiace zlaté náušnice 585 – zrnko s výrezmi</span>
+              <button type="button" class="copy" data-copy="p32102-title" aria-label="Skopírovať">Kopírovať</button>
+              <span class="mrow"><span class="meter" role="img" aria-label="50 znakov, povolené 45 až 60">
+      <span class="meter-band" style="left:30.0%;width:25.0%"></span>
+      <span class="meter-pin" style="left:38.3%"></span>
+    </span><span class="meter-num">50<span class="meter-lim">/45–60</span></span></span>
+            </dd>
+            <dt>H1</dt>
+            <dd>
+              <span class="val" id="p32102-h1">Veľké visiace zlaté náušnice 585 – dvojfarebné zrnko s výrezmi</span>
+              <button type="button" class="copy" data-copy="p32102-h1" aria-label="Skopírovať">Kopírovať</button>
+              <span class="mrow"><span class="meter" role="img" aria-label="62 znakov, povolené 20 až 70">
+      <span class="meter-band" style="left:8.9%;width:55.6%"></span>
+      <span class="meter-pin" style="left:55.6%"></span>
+    </span><span class="meter-num">62<span class="meter-lim">/20–70</span></span></span>
+            </dd>
+            <dt>Meta description</dt>
+            <dd>
+              <span class="val" id="p32102-desc">Visiace zrnko z dvojfarebného zlata 585 s výrezmi, ktoré šperk odľahčia. Výrazná náušnica, ktorá je aj pri svojej veľkosti ľahká na nosenie.</span>
+              <button type="button" class="copy" data-copy="p32102-desc" aria-label="Skopírovať">Kopírovať</button>
+              <span class="mrow"><span class="meter" role="img" aria-label="140 znakov, povolené 130 až 155">
+      <span class="meter-band" style="left:35.4%;width:17.0%"></span>
+      <span class="meter-pin" style="left:42.2%"></span>
+    </span><span class="meter-num">140<span class="meter-lim">/130–155</span></span></span>
+            </dd>
+            <dt>Krátky popis</dt>
+            <dd>
+              <span class="val" id="p32102-short">Veľké visiace náušnice zo zlata 585 v tvare zrnka. Dvojfarebné zlato a výrezy v ploche zrnka dávajú šperku objem bez váhy. Výrazný kus, ktorý nesie celý outfit sám.</span>
+              <button type="button" class="copy" data-copy="p32102-short" aria-label="Skopírovať">Kopírovať</button>
+              <span class="mrow"><span class="wc">28 slov</span></span>
+            </dd>
+          </dl>
+
+          <h4>Dlhý popis <span class="wc">216 slov</span> <button type="button" class="copy" data-copy="p32102-long" aria-label="Skopírovať">Kopírovať</button></h4>
+          <div class="longdesc" id="p32102-long"><p>Veľké visiace zlaté náušnice 585 s dvojfarebným zrnkom sú šperk pre situácie, keď má byť náušnica to prvé, čo si niekto všimne. Zrnko je klasický tvar slovenského zlatníctva a výrezy v jeho ploche ho odľahčujú — opticky aj v skutočnej hmotnosti.</p><p>Materiál a rýdzosť. Zlato 585 znamená 58,5 percenta čistého zlata a je to najbežnejšia rýdzosť pre šperky na denné nosenie na Slovensku. Náušnice kombinujú dva odtiene zlata, takže vo tvare zrnka vzniká kontrast, ktorý jednofarebný šperk nedosiahne. Práve preto sa hodia aj k bielemu, aj k žltému zlatu.</p><p>Rozmery a zapínanie. Celková dĺžka je [doplniť z crawlu: mm] a pár váži [doplniť z crawlu: g]. Zapínanie je [doplniť z crawlu: puzetka alebo háčik]. Výrezy v zrnku sú dôvodom, prečo veľká náušnica netlačí — plocha zostáva veľká, ale materiálu je menej.</p><p>Pre koho a na akú príležitosť. Visiace zrnko je náušnica na večer, na svadbu, na oslavu. Funguje k vysokému účesu a k výstrihu bez náhrdelníka, kde má priestor. Ako darček je to voľba pre niekoho, kto šperky nosí rád a nebojí sa ich vidieť.</p><p>Starostlivosť. Dvojfarebné zlato si drží kontrast, ak sa oba odtiene čistia rovnako. Utrite náušnice po nosení mäkkou handričkou a raz za čas ich umyte vlažnou vodou so saponátom. Do výrezov sa dostane mäkká zubná kefka; ostré nástroje na hranách výrezov nepoužívajte.</p></div>
+
+          <h4>Alt texty obrázkov</h4>
+          <ol class="alts"><li><span class="alt-n">1</span><span class="alt-t" id="p32102-alt0">Veľké visiace zlaté náušnice 585 – dvojfarebné zrnko s výrezmi, spredu</span><button type="button" class="copy" data-copy="p32102-alt0" aria-label="Skopírovať">Kopírovať</button></li><li><span class="alt-n">2</span><span class="alt-t" id="p32102-alt1">Dvojfarebné zlato 585 na zrnku – detail kontrastu dvoch odtieňov</span><button type="button" class="copy" data-copy="p32102-alt1" aria-label="Skopírovať">Kopírovať</button></li><li><span class="alt-n">3</span><span class="alt-t" id="p32102-alt2">Výrezy v ploche zlatého zrnka 585 – detail odľahčenia šperku</span><button type="button" class="copy" data-copy="p32102-alt2" aria-label="Skopírovať">Kopírovať</button></li><li><span class="alt-n">4</span><span class="alt-t" id="p32102-alt3">Visiace zlaté náušnice 585 z profilu – dĺžka a zapínanie</span><button type="button" class="copy" data-copy="p32102-alt3" aria-label="Skopírovať">Kopírovať</button></li><li><span class="alt-n">5</span><span class="alt-t" id="p32102-alt4">Veľké visiace zlaté zrnko 585 na uchu – skutočná veľkosť a pohyb</span><button type="button" class="copy" data-copy="p32102-alt4" aria-label="Skopírovať">Kopírovať</button></li></ol>
+
+          <h4>JSON-LD <span class="wc">bez aggregateRating — hodnotenia sa nevymýšľajú</span> <button type="button" class="copy" data-copy="p32102-ld" aria-label="Skopírovať">Kopírovať</button></h4>
+          <pre class="code" id="p32102-ld">{
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;@type&quot;: &quot;Product&quot;,
+  &quot;name&quot;: &quot;Veľké visiace zlaté náušnice 585 – dvojfarebné zrnko s výrezmi&quot;,
+  &quot;image&quot;: [
+    &quot;[doplniť z crawlu: URL fotiek produktu]&quot;
+  ],
+  &quot;description&quot;: &quot;Visiace zrnko z dvojfarebného zlata 585 s výrezmi, ktoré šperk odľahčia.&quot;,
+  &quot;sku&quot;: &quot;[doplniť z crawlu: SKU]&quot;,
+  &quot;material&quot;: &quot;Zlato 585 (14 karátov)&quot;,
+  &quot;brand&quot;: {
+    &quot;@type&quot;: &quot;Brand&quot;,
+    &quot;name&quot;: &quot;Šperky-eshop.sk&quot;
+  },
+  &quot;offers&quot;: {
+    &quot;@type&quot;: &quot;Offer&quot;,
+    &quot;priceCurrency&quot;: &quot;EUR&quot;,
+    &quot;price&quot;: &quot;[doplniť z crawlu]&quot;,
+    &quot;availability&quot;: &quot;https://schema.org/InStock&quot;,
+    &quot;url&quot;: &quot;https://sperky-eshop.sk/32102-visiace-zlate-nausnice-585-velke-dvojfarebne-zrnko-s-vyrezmi.html&quot;
+  }
+}</pre>
+
+          <h4>Interné odkazy</h4>
+          <div class="twrap">
+            <table class="data">
+              <thead><tr><th>Cieľ</th><th>Anchor text</th><th>Prečo</th></tr></thead>
+              <tbody><tr><td><code>/77-zlate-nausnice</code></td><td>všetky zlaté náušnice 585</td><td class="why">nadradená kategória</td></tr><tr><td><code>/92-damske-zlate-nausnice</code></td><td>dámske zlaté náušnice</td><td class="why">podkategória podľa cieľovej skupiny</td></tr><tr><td><code>/110-vypredaj-skladu</code></td><td>zlaté šperky vo výpredaji</td><td class="why">obsluhuje intenciu akcie, ktorá na túto stránku dopadá s 232 impresiami</td></tr><tr><td><code>/74-zlato</code></td><td>zlaté šperky rýdzosti 585</td><td class="why">rodičovská kategória materiálu</td></tr></tbody>
+            </table>
+          </div>
+
+          <div class="verify">
+            <h4>Treba overiť crawlom</h4>
+            <ul><li>celková dĺžka v mm</li><li>hmotnosť za pár</li><li>typ zapínania</li><li>cena a dostupnosť</li><li>URL fotiek</li><li>SKU</li><li>či je produkt reálne v akcii</li></ul>
+          </div>
+
+          <div class="finding">
+            <h4>Štrukturálne zistenie</h4>
+            <p>Rovnaká kanibalizácia ako pri 32023: 'akcia na zlate nausnice' na pozícii 1,84 s 232 impresiami. Dva produkty a kategória si delia jeden dopyt s deal intenciou. Riešenie je na úrovni informačnej architektúry, nie textu.</p>
+          </div>
+
+          <div class="actions">
+            <button type="button" class="btn approve" data-act="approved">Schváliť</button>
+            <button type="button" class="btn reject" data-act="rejected">Zamietnuť</button>
+            <button type="button" class="btn reset" data-act="pending">Vrátiť na čaká</button>
+          </div>
+        </div>
+      </details>
+  </div>
+</section>
+
+<section id="zistenia">
+  <div class="shead">
+    <h2>Zistenia mimo tejto dávky</h2>
+    <p>Veci, ktoré nespraví denná päťka a treba ich riešiť na úrovni šablóny alebo architektúry.</p>
+  </div>
+  <div class="finds">
+    <div class="find">
+      <span class="tag">Kanibalizácia · vysoká priorita</span>
+      <h3>Tri URL súťažia o jeden dopyt s intenciou akcie</h3>
+      <p>Dopyt <code>akcia na zlate nausnice</code> má 454 impresií a rozdeľuje sa medzi kategóriu
+        <code>/77-zlate-nausnice</code> (pozícia 2,42), produkt 32023 (1,77) a produkt 32102 (1,84).
+        Všetky tri majú CTR pod 0,5 %.</p>
+      <p>Kto takto hľadá, chce výpis zliav. Dostane jeden produkt. Stránka <code>/110-vypredaj-skladu</code>
+        pritom na dopyte <code>zlate nausnice vypredaj</code> drží CTR 2,14 % — päťnásobok.
+        Dopyt patrí tam, a žiadny prepis titulku to nevyrieši.</p>
+    </div>
+    <div class="find">
+      <span class="tag">Podozrenie na technický problém</span>
+      <h3>Produkt 36995: 674 impresií, nula klikov</h3>
+      <p>Pätnásť dopytov, pozície od 1,21 do 16,7, a ani jeden klik. Nula klikov pri pozícii 1,21
+        nie je vysvetliteľná slabým titulkom — taký snippet by nejaký klik dostal.</p>
+      <p>Pred prepisom textu treba overiť dostupnosť produktu a to, či sa snippet v SERP vôbec
+        renderuje. Ak je vypredaný, správna oprava nie je nový title.</p>
+    </div>
+    <div class="find med">
+      <span class="tag">Indexácia</span>
+      <h3>Parametrické URL sú v indexe a kanibalizujú kategóriu</h3>
+      <p>V Search Console majú reálne impresie stránky ako
+        <code>/77-zlate-nausnice?p=1&amp;ob=2&amp;ow=1&amp;os=0&amp;pp=5-1035</code> (102 impresií) —
+        filtrované varianty tej istej kategórie. Patria do pravidiel <code>robots.txt</code>
+        alebo canonical, nie do indexu.</p>
+    </div>
+    <div class="find med">
+      <span class="tag">Zvyšok po starej verzii</span>
+      <h3>Mobilná vetva <code>/mobile/</code> je stále indexovaná</h3>
+      <p>Napríklad <code>/mobile/4077-piercing-do-pupku-penis-so-zirkonom.html</code> má 127 impresií
+        a 5 klikov. Samostatná mobilná vetva by pri responzívnom e-shope už nemala existovať.</p>
+    </div>
+    <div class="find med">
+      <span class="tag">Systémový dlh</span>
+      <h3>Site Audit: health score 2 zo 100</h3>
+      <p>Crawl z 1. 8. 2026 našiel chyby na 9 792 z 10 019 URL. Denná dávka piatich produktov je
+        liečba symptómov. Duplicitné meta tagy na tisícoch URL sa opravujú v šablóne PrestaShopu,
+        nie produkt po produkte — je to oddelená úloha s vlastným rozsahom.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <dl>
+    <dt>Zdroj dopytov</dt><dd>Ahrefs MCP gsc-pages + gsc-keywords, projekt 9364794, 2026-05-20..2026-08-18, 0 API units</dd>
+    <dt>CTR benchmark</dt><dd>gsc-ctr-by-position, izotonicky vyhladena krivka</dd>
+    <dt>Ahrefs platené</dt><dd>nedostupne — API units vycerpane do 2026-08-29</dd>
+    <dt>Crawl produktov</dt><dd>CHYBA — cloudova session ma domenu blokovanu, GitHub Actions workflow nie je na default branchi</dd>
+    <dt>Pravidlá písania</dt><dd>docs/SEO_PLAYBOOK.md · validované scripts/validate-seo.mjs</dd>
+  </dl>
+</footer>
+</div>
+
+<script>
+(function () {
+  var toastEl = null, toastT = null;
+  function toast(msg) {
+    if (!toastEl) { toastEl = document.createElement('div'); toastEl.className = 'toast'; document.body.appendChild(toastEl); }
+    toastEl.textContent = msg;
+    toastEl.hidden = false;
+    clearTimeout(toastT);
+    toastT = setTimeout(function () { toastEl.hidden = true; }, 1900);
+  }
+
+  // Copy buttons: read the rendered text, never a JS copy of it.
+  document.addEventListener('click', function (ev) {
+    var btn = ev.target.closest('.copy');
+    if (!btn) return;
+    ev.preventDefault();
+    ev.stopPropagation();
+    var src = document.getElementById(btn.dataset.copy);
+    if (!src) return;
+    var text = src.tagName === 'PRE' ? src.textContent : src.innerText.trim();
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(text).then(
+        function () { toast('Skopírované'); },
+        function () { toast('Kopírovanie zablokoval prehliadač'); }
+      );
+    } else {
+      toast('Kopírovanie tu nie je dostupné');
+    }
+  });
+
+  // Approve / reject: mutate the card's data-status directly so the change is
+  // part of the document, not a JS-side model.
+  document.addEventListener('click', function (ev) {
+    var btn = ev.target.closest('.btn[data-act]');
+    if (!btn) return;
+    var card = btn.closest('.card');
+    if (!card) return;
+    card.dataset.status = btn.dataset.act;
+    var pill = card.querySelector('.status-pill');
+    if (pill) pill.textContent = btn.dataset.act === 'approved' ? 'Schválené'
+      : btn.dataset.act === 'rejected' ? 'Zamietnuté' : 'Čaká';
+    tally();
+  });
+
+  // The tally lives inside <artifact-local>, so rendering it from script is safe.
+  function tally() {
+    var el = document.getElementById('tally');
+    if (!el) return;
+    var cards = document.querySelectorAll('.card');
+    var a = 0, r = 0, p = 0;
+    cards.forEach(function (c) {
+      var s = c.dataset.status;
+      if (s === 'approved') a++; else if (s === 'rejected') r++; else p++;
+    });
+    el.innerHTML = 'Čaká <b>' + p + '</b> · schválené <b>' + a + '</b> · zamietnuté <b>' + r + '</b>';
+  }
+  tally();
+
+  // Saving state: report honestly whether edits are being captured.
+  var syncEl = document.getElementById('synced');
+  function setSync(on, label) {
+    if (!syncEl) return;
+    syncEl.dataset.on = on ? '1' : '0';
+    syncEl.textContent = label;
+  }
+  document.addEventListener('claude:sync-off', function () { setSync(false, 'ukladanie vypnuté'); });
+  document.addEventListener('claude:sync-lost', function () { setSync(false, 'ukladanie sa opakuje'); });
+  document.addEventListener('claude:edit', function () { tally(); });
+
+  if (window.claude && typeof window.claude.use === 'function') {
+    window.claude.use('artifact').then(function (a) {
+      setSync(!!a, a ? 'zmeny sa ukladajú' : 'iba na čítanie');
+    }, function () { setSync(false, 'iba na čítanie'); });
+  } else {
+    setSync(false, 'iba na čítanie');
+  }
+})();
+</script>
