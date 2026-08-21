@@ -1,0 +1,633 @@
+{
+  "source": "Ahrefs MCP gsc-pages",
+  "projectId": 9364794,
+  "property": "sperky-eshop.sk",
+  "dateFrom": "2026-05-20",
+  "dateTo": "2026-08-18",
+  "filter": "url contains 'nausnice' AND '.html', locally filtered to gold",
+  "fetchedAt": "2026-08-20",
+  "apiUnitsCost": 0,
+  "pages": [
+    {
+      "page": "https://sperky-eshop.sk/40226-zlate-nausnice-14k-zlato-zatocene-kruhy.html",
+      "keywords_count": 46,
+      "top_keyword": "zlate nausnice kruhy 14k",
+      "clicks": 12,
+      "impressions": 2544,
+      "ctr": 0.4717,
+      "position": 10.708
+    },
+    {
+      "page": "https://sperky-eshop.sk/36995-klbove-14k-zlate-nausnice-male-kruhy-s-lesklym-gravirovanim-10-mm.html",
+      "keywords_count": 15,
+      "top_keyword": "male zlate nausnice",
+      "clicks": 0,
+      "impressions": 692,
+      "ctr": 0.0,
+      "position": 6.762
+    },
+    {
+      "page": "https://sperky-eshop.sk/32102-visiace-zlate-nausnice-585-velke-dvojfarebne-zrnko-s-vyrezmi.html",
+      "keywords_count": 16,
+      "top_keyword": "akcia na zlate nausnice",
+      "clicks": 2,
+      "impressions": 887,
+      "ctr": 0.2255,
+      "position": 8.753
+    },
+    {
+      "page": "https://sperky-eshop.sk/37110-briliantove-nausnice-z-375-zlata-kvetinka-okruhle-cire-diamanty-puzetky.html",
+      "keywords_count": 2,
+      "top_keyword": "briliantové náušnice",
+      "clicks": 0,
+      "impressions": 578,
+      "ctr": 0.0,
+      "position": 10.536
+    },
+    {
+      "page": "https://sperky-eshop.sk/40138-zlate-nausnice-14k-male-leskle-kruhy.html",
+      "keywords_count": 20,
+      "top_keyword": "male zlate nausnice",
+      "clicks": 1,
+      "impressions": 562,
+      "ctr": 0.1779,
+      "position": 5.087
+    },
+    {
+      "page": "https://sperky-eshop.sk/22821-zlate-visiace-nausnice-14k-zrnko-retiazka-zirkony.html",
+      "keywords_count": 25,
+      "top_keyword": "zlate nausnice visiace",
+      "clicks": 1,
+      "impressions": 546,
+      "ctr": 0.1831,
+      "position": 16.947
+    },
+    {
+      "page": "https://sperky-eshop.sk/35317-zlate-14k-nausnice-pravidelne-srdce-s-vypuklym-syntetickym-bielym-opalom-puzetky.html",
+      "keywords_count": 7,
+      "top_keyword": "zlate nausnice s modrym opalom",
+      "clicks": 0,
+      "impressions": 481,
+      "ctr": 0.0,
+      "position": 14.817
+    },
+    {
+      "page": "https://sperky-eshop.sk/32023-zlate-nausnice-585-oval-s-vlnkou-a-zirkonovymi-slzickami-zlte-biele-a-ruzove-zlato.html",
+      "keywords_count": 3,
+      "top_keyword": "akcia na zlate nausnice",
+      "clicks": 2,
+      "impressions": 441,
+      "ctr": 0.4534,
+      "position": 1.834
+    },
+    {
+      "page": "https://sperky-eshop.sk/36363-zlate-nausnice-v-14k-zlate-kruhy-s-priveskom-srdiecka-francuzsky-zamok-12-mm.html",
+      "keywords_count": 14,
+      "top_keyword": "náušnice",
+      "clicks": 0,
+      "impressions": 437,
+      "ctr": 0.0,
+      "position": 10.657
+    },
+    {
+      "page": "https://sperky-eshop.sk/25117-luxusne-nausnice-v-zltom-14k-zlate-spiralovito-stocene-linie-so-zirkonikmi-haciky.html",
+      "keywords_count": 4,
+      "top_keyword": "luxusne zlate nausnice",
+      "clicks": 0,
+      "impressions": 402,
+      "ctr": 0.0,
+      "position": 2.918
+    },
+    {
+      "page": "https://sperky-eshop.sk/40330-zlate-visiace-nausnice-14k-zirkony-linia.html",
+      "keywords_count": 15,
+      "top_keyword": "bizuteria zlata",
+      "clicks": 0,
+      "impressions": 384,
+      "ctr": 0.0,
+      "position": 14.026
+    },
+    {
+      "page": "https://sperky-eshop.sk/23186-visiace-nausnice-v-zltom-14k-zlate-hladky-kruzok-ciry-zirkon-leskle-vlnky.html",
+      "keywords_count": 10,
+      "top_keyword": "zlaté visiace dámske náušnice",
+      "clicks": 0,
+      "impressions": 351,
+      "ctr": 0.0,
+      "position": 7.786
+    },
+    {
+      "page": "https://sperky-eshop.sk/30466-zlate-nausnice-585-leskle-dvojfarebne-vlnky-s-cirymi-zirkonmi.html",
+      "keywords_count": 2,
+      "top_keyword": "zlate nausnice do 100 eur",
+      "clicks": 5,
+      "impressions": 343,
+      "ctr": 1.4576,
+      "position": 3.606
+    },
+    {
+      "page": "https://sperky-eshop.sk/30124-nausnice-z-bieleho-zlata-375-biele-keramicke-polkruhy-cira-zirkonova-linia.html",
+      "keywords_count": 3,
+      "top_keyword": "zlate nausnice polkruhy",
+      "clicks": 0,
+      "impressions": 336,
+      "ctr": 0.0,
+      "position": 24.062
+    },
+    {
+      "page": "https://sperky-eshop.sk/30697-briliantove-zlate-nausnice-585-leskly-kruh-s-visiacim-diamantom-a-srdieckami.html",
+      "keywords_count": 2,
+      "top_keyword": "zlate nausnice s diamantom",
+      "clicks": 1,
+      "impressions": 319,
+      "ctr": 0.3135,
+      "position": 12.248
+    },
+    {
+      "page": "https://sperky-eshop.sk/30929-zlate-nausnice-585-ciry-obluk-zo-swarovski-kristalov-leskle-okraje.html",
+      "keywords_count": 10,
+      "top_keyword": "swarovski nausnice zlate",
+      "clicks": 0,
+      "impressions": 285,
+      "ctr": 0.0,
+      "position": 10.119
+    },
+    {
+      "page": "https://sperky-eshop.sk/36222-detske-nausnice-v-zltom-585-zlate-male-kruzky-leskle-zaoblene-ramena-10-mm.html",
+      "keywords_count": 6,
+      "top_keyword": "detske nausnice kruzky",
+      "clicks": 0,
+      "impressions": 257,
+      "ctr": 0.0,
+      "position": 4.35
+    },
+    {
+      "page": "https://sperky-eshop.sk/28757-zlate-nausnice-585-s-cirym-diamantom-kontury-slziciek-rozsireny-pas-z-bieleho-zlata.html",
+      "keywords_count": 5,
+      "top_keyword": "zlate nausnice 585",
+      "clicks": 0,
+      "impressions": 240,
+      "ctr": 0.0,
+      "position": 18.221
+    },
+    {
+      "page": "https://sperky-eshop.sk/32110-visiace-nausnice-v-14k-zlate-uzka-kvapka-so-zarezmi-a-bielym-zlatom.html",
+      "keywords_count": 8,
+      "top_keyword": "zlaté visiace dámske náušnice",
+      "clicks": 0,
+      "impressions": 231,
+      "ctr": 0.0,
+      "position": 22.022
+    },
+    {
+      "page": "https://sperky-eshop.sk/40152-zlate-nausnice-14k-stvorlistok-prirodna-perlet.html",
+      "keywords_count": 6,
+      "top_keyword": "zlate nausnice stvorlistok",
+      "clicks": 2,
+      "impressions": 230,
+      "ctr": 0.8695,
+      "position": 2.904
+    },
+    {
+      "page": "https://sperky-eshop.sk/14530-nausnice-zo-zlteho-9k-zlata-ploche-glazurovane-margaretky.html",
+      "keywords_count": 4,
+      "top_keyword": "sperky eshop nausnice",
+      "clicks": 0,
+      "impressions": 220,
+      "ctr": 0.0,
+      "position": 45.314
+    },
+    {
+      "page": "https://sperky-eshop.sk/19168-zlate-visiace-nausnice-375-ligotava-mala-gulicka-zdobena-cirymi-zirkonmi.html",
+      "keywords_count": 7,
+      "top_keyword": "zlaté náušnice visiace",
+      "clicks": 1,
+      "impressions": 204,
+      "ctr": 0.4902,
+      "position": 15.789
+    },
+    {
+      "page": "https://sperky-eshop.sk/32086-visiace-zlate-nausnice-585-zvlneny-obrys-zrnka-s-filigranom-a-bielym-zlatom.html",
+      "keywords_count": 7,
+      "top_keyword": "visiace zlate nausnice",
+      "clicks": 1,
+      "impressions": 183,
+      "ctr": 0.5464,
+      "position": 21.454
+    },
+    {
+      "page": "https://sperky-eshop.sk/36643-9k-nausnice-v-zltom-zlate-kruhy-s-visiacim-priveskom-s-kruzkom-listkami-a-zirkonikmi.html",
+      "keywords_count": 5,
+      "top_keyword": "zlate nausnice s priveskom",
+      "clicks": 0,
+      "impressions": 175,
+      "ctr": 0.0,
+      "position": 2.846
+    },
+    {
+      "page": "https://sperky-eshop.sk/38608-zlate-9k-nausnice-zlte-zlato-skakajuci-delfin-ciry-zirkon-puzetky.html",
+      "keywords_count": 3,
+      "top_keyword": "náušnice delfín",
+      "clicks": 0,
+      "impressions": 174,
+      "ctr": 0.0,
+      "position": 11.408
+    },
+    {
+      "page": "https://sperky-eshop.sk/40312-zlate-nausnice-14k-kruhy-bocne-ryhovanie-20mm.html",
+      "keywords_count": 4,
+      "top_keyword": "náušnice kruhy zlate",
+      "clicks": 0,
+      "impressions": 166,
+      "ctr": 0.0,
+      "position": 17.687
+    },
+    {
+      "page": "https://sperky-eshop.sk/40203-zlate-nausnice-14k-modry-topas-zirkon.html",
+      "keywords_count": 4,
+      "top_keyword": "zlate nausnice topas",
+      "clicks": 0,
+      "impressions": 123,
+      "ctr": 0.0,
+      "position": 20.545
+    },
+    {
+      "page": "https://sperky-eshop.sk/37135-diamantove-nausnice-z-bieleho-14k-zlata-male-srdce-s-briliantom-puzetky.html",
+      "keywords_count": 6,
+      "top_keyword": "diamantove nausnice biele zlato",
+      "clicks": 0,
+      "impressions": 121,
+      "ctr": 0.0,
+      "position": 18.868
+    },
+    {
+      "page": "https://sperky-eshop.sk/32014-zlate-nausnice-585-ligotavy-listok-so-zirkonmi-zlte-biele-a-ruzove-zlato.html",
+      "keywords_count": 3,
+      "top_keyword": "zlate hranate nausnice",
+      "clicks": 0,
+      "impressions": 119,
+      "ctr": 0.0,
+      "position": 47.613
+    },
+    {
+      "page": "https://sperky-eshop.sk/38015-nausnice-zo-14k-zlteho-zlata-kruhy-hranate-ramena-cire-zirkony-19-mm.html",
+      "keywords_count": 3,
+      "top_keyword": "sperky eshop nausnice",
+      "clicks": 0,
+      "impressions": 118,
+      "ctr": 0.0,
+      "position": 3.864
+    },
+    {
+      "page": "https://sperky-eshop.sk/29386-nausnice-v-zltom-14k-zlate-male-polkruhy-zdobene-cirymi-zirkonmi.html",
+      "keywords_count": 1,
+      "top_keyword": "zlate nausnice polkruhy",
+      "clicks": 0,
+      "impressions": 116,
+      "ctr": 0.0,
+      "position": 11.957
+    },
+    {
+      "page": "https://sperky-eshop.sk/20464-zlate-nausnice-9k-kombinovane-prekrizene-linie-zirkony.html",
+      "keywords_count": 3,
+      "top_keyword": "zlate nausnice 9k",
+      "clicks": 0,
+      "impressions": 109,
+      "ctr": 0.0,
+      "position": 15.835
+    },
+    {
+      "page": "https://sperky-eshop.sk/38736-nausnice-v-zltom-zlate-585-oblucik-so-zirkonmi-zeleny-kamen-v-tvare-zrnka.html",
+      "keywords_count": 6,
+      "top_keyword": "zlaté náušnice zelený kámen",
+      "clicks": 0,
+      "impressions": 102,
+      "ctr": 0.0,
+      "position": 22.559
+    },
+    {
+      "page": "https://sperky-eshop.sk/35457-zlate-14k-nausnice-velke-anjelske-kridla-leskly-povrch-afrohacik.html",
+      "keywords_count": 6,
+      "top_keyword": "nausnice anjelske kridla",
+      "clicks": 0,
+      "impressions": 102,
+      "ctr": 0.0,
+      "position": 15.637
+    },
+    {
+      "page": "https://sperky-eshop.sk/39341-puzetove-nausnice-v-zltom-14k-zlate-obluky-s-prirodnou-bielou-perletou.html",
+      "keywords_count": 2,
+      "top_keyword": "puzetove nausnice",
+      "clicks": 0,
+      "impressions": 93,
+      "ctr": 0.0,
+      "position": 7.172
+    },
+    {
+      "page": "https://sperky-eshop.sk/40317-zlate-nausnice-14k-prirodny-rubin.html",
+      "keywords_count": 3,
+      "top_keyword": "zlate nausnice s rubinom",
+      "clicks": 0,
+      "impressions": 90,
+      "ctr": 0.0,
+      "position": 20.011
+    },
+    {
+      "page": "https://sperky-eshop.sk/35640-prevliekacie-nausnice-zo-14k-zlata-kruzok-s-jemnym-ryhovanim-retiazka.html",
+      "keywords_count": 1,
+      "top_keyword": "prevliekacie nausnice",
+      "clicks": 1,
+      "impressions": 89,
+      "ctr": 1.1235,
+      "position": 1.303
+    },
+    {
+      "page": "https://sperky-eshop.sk/30950-nausnice-v-zltom-14k-zlate-male-polkruhy-vykladane-cirymi-zirkonmi.html",
+      "keywords_count": 1,
+      "top_keyword": "zlate nausnice polkruhy",
+      "clicks": 0,
+      "impressions": 78,
+      "ctr": 0.0,
+      "position": 3.436
+    },
+    {
+      "page": "https://sperky-eshop.sk/36224-okruhle-nausnice-v-585-zlate-tenke-hranate-ramena-leskly-povrch-14-mm.html",
+      "keywords_count": 5,
+      "top_keyword": "hranaté náušnice",
+      "clicks": 0,
+      "impressions": 76,
+      "ctr": 0.0,
+      "position": 9.526
+    },
+    {
+      "page": "https://sperky-eshop.sk/24683-nausnice-zlte-9k-zlato-latinsky-kriz-so-zirkonmi.html",
+      "keywords_count": 3,
+      "top_keyword": "zlate nausnice kriz",
+      "clicks": 0,
+      "impressions": 76,
+      "ctr": 0.0,
+      "position": 9.618
+    },
+    {
+      "page": "https://sperky-eshop.sk/35177-zlate-nausnice-z-9k-zlata-krizik-zdobeny-trblietavymi-zirkonikmi-leskly-povrch.html",
+      "keywords_count": 2,
+      "top_keyword": "zlate nausnice krizik",
+      "clicks": 0,
+      "impressions": 75,
+      "ctr": 0.0,
+      "position": 3.96
+    },
+    {
+      "page": "https://sperky-eshop.sk/40323-zlate-nausnice-14k-kruh-srdce-privesok.html",
+      "keywords_count": 2,
+      "top_keyword": "zlate nausnice kruhy s priveskom",
+      "clicks": 1,
+      "impressions": 73,
+      "ctr": 1.3698,
+      "position": 1.507
+    },
+    {
+      "page": "https://sperky-eshop.sk/30482-zlate-nausnice-585-vetvicka-s-listami-zeleny-smaragd-ciry-diamant.html",
+      "keywords_count": 3,
+      "top_keyword": "zlate nausnice zeleny kamen",
+      "clicks": 0,
+      "impressions": 68,
+      "ctr": 0.0,
+      "position": 19.221
+    },
+    {
+      "page": "https://sperky-eshop.sk/34743-zlate-nausnice-375-leziaca-osmicka-vykladana-zirkonmi-v-cirom-odtieni.html",
+      "keywords_count": 2,
+      "top_keyword": "leziaca osmicka",
+      "clicks": 0,
+      "impressions": 52,
+      "ctr": 0.0,
+      "position": 3.942
+    },
+    {
+      "page": "https://sperky-eshop.sk/35344-nausnice-zo-14k-zlata-vypukly-synteticky-opal-v-okruhlej-objimke-afrohacik.html",
+      "keywords_count": 2,
+      "top_keyword": "opal nausnice",
+      "clicks": 0,
+      "impressions": 50,
+      "ctr": 0.0,
+      "position": 4.08
+    },
+    {
+      "page": "https://sperky-eshop.sk/30991-nausnice-v-zltom-14k-zlate-srdiecka-visiace-na-retiazke-puzetky.html",
+      "keywords_count": 3,
+      "top_keyword": "zlate nausnice srdiecka",
+      "clicks": 0,
+      "impressions": 49,
+      "ctr": 0.0,
+      "position": 15.551
+    },
+    {
+      "page": "https://sperky-eshop.sk/38363-nausnice-zo-zlteho-zlata-375-symbol-nekonecna-spiralovito-zatocene-rameno.html",
+      "keywords_count": 3,
+      "top_keyword": "zlato 375",
+      "clicks": 0,
+      "impressions": 48,
+      "ctr": 0.0,
+      "position": 58.938
+    },
+    {
+      "page": "https://sperky-eshop.sk/40206-zlate-nausnice-14k-jednorozec.html",
+      "keywords_count": 6,
+      "top_keyword": "náušnice jednorožec",
+      "clicks": 1,
+      "impressions": 43,
+      "ctr": 2.3256,
+      "position": 7.349
+    },
+    {
+      "page": "https://sperky-eshop.sk/30997-visiace-zlate-nausnice-585-leskla-gulicka-na-retiazke-biele-zlato-puzetky.html",
+      "keywords_count": 2,
+      "top_keyword": "visiace nausnice biele zlato",
+      "clicks": 0,
+      "impressions": 43,
+      "ctr": 0.0,
+      "position": 3.233
+    },
+    {
+      "page": "https://sperky-eshop.sk/35627-nausnice-zo-14k-zlata-hudobny-motiv-huslovy-kluc-slzicka-hladky-a-leskly-povrch.html",
+      "keywords_count": 1,
+      "top_keyword": "nausnice huslovy kluc",
+      "clicks": 1,
+      "impressions": 34,
+      "ctr": 2.9411,
+      "position": 4.324
+    },
+    {
+      "page": "https://sperky-eshop.sk/40858-zlate-nausnice-14k-smaragd-slza-zirkon.html",
+      "keywords_count": 1,
+      "top_keyword": "zlaté náušnice so smaragdom",
+      "clicks": 0,
+      "impressions": 28,
+      "ctr": 0.0,
+      "position": 18.964
+    },
+    {
+      "page": "https://sperky-eshop.sk/40186-zlate-nausnice-9k-motyl-jemne-vyrezy.html",
+      "keywords_count": 5,
+      "top_keyword": "zlate nausnice motyl",
+      "clicks": 0,
+      "impressions": 26,
+      "ctr": 0.0,
+      "position": 21.346
+    },
+    {
+      "page": "https://sperky-eshop.sk/29618-diamantove-zlate-nausnice-585-leskly-motyl-s-vyrezavanou-castou-ciry-briliant.html",
+      "keywords_count": 3,
+      "top_keyword": "zlaté náušnice motýl",
+      "clicks": 0,
+      "impressions": 24,
+      "ctr": 0.0,
+      "position": 7.625
+    },
+    {
+      "page": "https://sperky-eshop.sk/29400-visiace-zlate-nausnice-585-leskla-spirala-s-bielou-gulatou-perlou-haciky.html",
+      "keywords_count": 3,
+      "top_keyword": "visiace zlaté náušnice",
+      "clicks": 0,
+      "impressions": 24,
+      "ctr": 0.0,
+      "position": 6.208
+    },
+    {
+      "page": "https://sperky-eshop.sk/14712-zlate-nausnice-585-pravidelne-leskle-srdce-zirkonova-kontura.html",
+      "keywords_count": 2,
+      "top_keyword": "zlaté náušnice srdce",
+      "clicks": 0,
+      "impressions": 24,
+      "ctr": 0.0,
+      "position": 35.292
+    },
+    {
+      "page": "https://sperky-eshop.sk/38961-zlate-9k-nausnice-zo-zlteho-zlata-okruhle-zirkony-sikma-palicka.html",
+      "keywords_count": 2,
+      "top_keyword": "šperky z 9 karátového zlata",
+      "clicks": 2,
+      "impressions": 22,
+      "ctr": 9.0909,
+      "position": 7.909
+    },
+    {
+      "page": "https://sperky-eshop.sk/36947-14k-zlate-nausnice-male-kruhy-motylik-s-cirymi-zirkonmi-11-mm.html",
+      "keywords_count": 1,
+      "top_keyword": "zlate nausnice kruhy male",
+      "clicks": 0,
+      "impressions": 20,
+      "ctr": 0.0,
+      "position": 13.5
+    },
+    {
+      "page": "https://sperky-eshop.sk/31987-zlate-nausnice-585-macka-vykladana-cirymi-zirkonmi-hladky-okraj.html",
+      "keywords_count": 1,
+      "top_keyword": "nausnice macka",
+      "clicks": 0,
+      "impressions": 20,
+      "ctr": 0.0,
+      "position": 4.05
+    },
+    {
+      "page": "https://sperky-eshop.sk/40151-zlate-nausnice-14k-okruhly-zirkon.html",
+      "keywords_count": 5,
+      "top_keyword": "nausnice so zirkonmi",
+      "clicks": 0,
+      "impressions": 17,
+      "ctr": 0.0,
+      "position": 26.0
+    },
+    {
+      "page": "https://sperky-eshop.sk/24325-zlate-nausnice-375-keramicke-polkruhy-bielej-farby-trblietava-maslicka.html",
+      "keywords_count": 1,
+      "top_keyword": "zlate nausnice polkruhy",
+      "clicks": 0,
+      "impressions": 16,
+      "ctr": 0.0,
+      "position": 11.75
+    },
+    {
+      "page": "https://sperky-eshop.sk/29487-zlate-nausnice-585-ligotave-vlnky-visiace-na-lesklej-kvapke-kristaliky-swarovski.html",
+      "keywords_count": 2,
+      "top_keyword": "zlate náušnice swarovski",
+      "clicks": 0,
+      "impressions": 16,
+      "ctr": 0.0,
+      "position": 11.875
+    },
+    {
+      "page": "https://sperky-eshop.sk/40335-zlate-nausnice-14k-sesticipa-hviezda-zirkonovy-kvet.html",
+      "keywords_count": 3,
+      "top_keyword": "šesťcípa hviezda",
+      "clicks": 0,
+      "impressions": 14,
+      "ctr": 0.0,
+      "position": 1.571
+    },
+    {
+      "page": "https://sperky-eshop.sk/41213-zlate-nausnice-9k-z-bieleho-zlata-so-zirkonom.html",
+      "keywords_count": 1,
+      "top_keyword": "zlate nausnice biele zlato 9k",
+      "clicks": 0,
+      "impressions": 14,
+      "ctr": 0.0,
+      "position": 2.071
+    },
+    {
+      "page": "https://sperky-eshop.sk/40202-zlate-nausnice-14k-ovalny-ametyst-zirkon.html",
+      "keywords_count": 4,
+      "top_keyword": "zlate nausnice ametyst",
+      "clicks": 1,
+      "impressions": 13,
+      "ctr": 7.6923,
+      "position": 43.615
+    },
+    {
+      "page": "https://sperky-eshop.sk/38382-nausnice-zo-zlteho-zlata-585-kruhy-francuzske-zapinanie-30-mm.html",
+      "keywords_count": 4,
+      "top_keyword": "zlate nausnice kruhy 30 mm",
+      "clicks": 2,
+      "impressions": 7,
+      "ctr": 28.5714,
+      "position": 9.714
+    },
+    {
+      "page": "https://sperky-eshop.sk/32144-zlate-nausnice-585-pasy-v-zltom-a-bielom-zlate-ligotave-zarezy.html",
+      "keywords_count": 2,
+      "top_keyword": "zlate nausnice pasy",
+      "clicks": 1,
+      "impressions": 2,
+      "ctr": 50.0,
+      "position": 4.0
+    },
+    {
+      "page": "https://sperky-eshop.sk/24408-zlate-nausnice-14k-kvet-s-okruhlym-olivinom-a-zirkonmi-puzety.html",
+      "keywords_count": 2,
+      "top_keyword": "zlate nausnice olivin",
+      "clicks": 1,
+      "impressions": 2,
+      "ctr": 50.0,
+      "position": 24.5
+    },
+    {
+      "page": "https://sperky-eshop.sk/14163-zlate-nausnice-14k-zlte-zlato-korytnacky-s-cirym-zirkonom.html",
+      "keywords_count": 2,
+      "top_keyword": "14 karatove zlato",
+      "clicks": 1,
+      "impressions": 2,
+      "ctr": 50.0,
+      "position": 6.0
+    },
+    {
+      "page": "https://sperky-eshop.sk/20394-zlate-nausnice-9k-kvet-citrin-zirkony.html",
+      "keywords_count": 1,
+      "top_keyword": "zlate nausnice citrin",
+      "clicks": 1,
+      "impressions": 1,
+      "ctr": 100.0,
+      "position": 2.0
+    }
+  ]
+}
