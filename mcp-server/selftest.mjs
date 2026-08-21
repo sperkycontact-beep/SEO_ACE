@@ -58,7 +58,7 @@ check('ping', !!pong.result);
 
 const list = await call('tools/list', {});
 const names = (list.result?.tools ?? []).map((t) => t.name);
-check('tools/list vracia nástroje', names.length >= 8, `${names.length}: ${names.join(', ')}`);
+check('tools/list vracia nástroje', names.length >= 11, `${names.length}: ${names.join(', ')}`);
 check(
   'každý nástroj má popis a schému',
   (list.result?.tools ?? []).every((t) => t.description && t.inputSchema?.type === 'object')
@@ -72,6 +72,19 @@ const readEmpty = await call('tools/call', {
   arguments: { date: '1999-01-01' },
 });
 check('read_batch_data zvládne prázdny dátum', !readEmpty.result?.isError);
+
+const qEmpty = await call('tools/call', { name: 'queue_process', arguments: {} });
+const qText = qEmpty.result?.content?.[0]?.text ?? '';
+check('queue_process na prázdnom fronte nekončí chybou', !qEmpty.result?.isError && qText.includes('processed'));
+
+const qReject = await call('tools/call', {
+  name: 'queue_add',
+  arguments: { urls: ['https://www.google.com/', '/77-zlate-nausnice'] },
+});
+const qrText = qReject.result?.content?.[0]?.text ?? '';
+const qr = (() => { try { return JSON.parse(qrText); } catch { return {}; } })();
+check('queue_add odmietne cudziu doménu a prijme vlastnú', qr.added === 1 && qr.rejected?.length === 1,
+  `pridané ${qr.added}, odmietnuté ${qr.rejected?.length}`);
 
 const gscStatus = await call('tools/call', { name: 'gsc_status', arguments: {} });
 const gscText = gscStatus.result?.content?.[0]?.text ?? '';

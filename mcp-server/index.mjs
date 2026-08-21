@@ -241,6 +241,86 @@ const tools = [
       gsc.inspectUrl({ siteUrl: cfg.dataSources.gsc.propertyUrl, inspectionUrl: absolute(url) }),
   },
   {
+    name: 'queue_add',
+    description:
+      'Prida jednu alebo viac URL do frontu na spracovanie (data/url-queue.json). Prijima len URL z vlastnej domeny. Nespracuje ich — na to je queue_process.',
+    inputSchema: {
+      type: 'object',
+      properties: { urls: { type: 'array', items: { type: 'string' }, description: 'URL alebo cesty' } },
+      required: ['urls'],
+    },
+    handler({ urls }) {
+      const qp = resolve(ROOT, 'data/url-queue.json');
+      const q = existsSync(qp) ? JSON.parse(readFileSync(qp, 'utf8')) : { items: [] };
+      const host = cfg.site.canonicalHost.replace(/^www\./, '');
+      const added = [];
+      const rejected = [];
+      for (const u of urls) {
+        let ok = false;
+        try {
+          ok = new URL(absolute(u)).host.replace(/^www\./, '') === host;
+        } catch {
+          ok = false;
+        }
+        if (!ok) {
+          rejected.push(u);
+          continue;
+        }
+        if (!q.items.some((i) => i.url === u && i.status === 'pending')) {
+          q.items.push({ url: u, addedAt: new Date().toISOString(), status: 'pending', result: null });
+          added.push(u);
+        }
+      }
+      q.updatedAt = new Date().toISOString();
+      writeFileSync(qp, JSON.stringify(q, null, 2) + '\n');
+      return { added: added.length, rejected, pending: q.items.filter((i) => i.status === 'pending').length };
+    },
+  },
+  {
+    name: 'queue_process',
+    description:
+      'Nacita vsetky cakajuce URL z frontu, urobi diagnostiku a zapise vysledky. Toto je nastroj za pokynom "spracuj front".',
+    inputSchema: { type: 'object', properties: {} },
+    async handler() {
+      const qp = resolve(ROOT, 'data/url-queue.json');
+      const q = existsSync(qp) ? JSON.parse(readFileSync(qp, 'utf8')) : { items: [] };
+      const pending = q.items.filter((i) => i.status === 'pending');
+      if (!pending.length) return { processed: 0, note: 'Front je prazdny.' };
+      const out = [];
+      for (const item of pending) {
+        try {
+          const { body, finalUrl, status } = await get(absolute(item.url));
+          const parsed = parseProduct(body, finalUrl);
+          const errors = parsed.diagnostics.filter((d) => d.level === 'error').length;
+          const warns = parsed.diagnostics.filter((d) => d.level === 'warn').length;
+          item.status = 'done';
+          item.processedAt = new Date().toISOString();
+          item.httpStatus = status;
+          item.productId = parsed.productId;
+          item.reference = parsed.current.jsonLd.product?.sku ?? null;
+          item.result = `${errors} chyb, ${warns} upozorneni`;
+          item.diagnostics = parsed.diagnostics;
+          const dir = resolve(ROOT, 'data/products', today());
+          mkdirSync(dir, { recursive: true });
+          writeFileSync(
+            resolve(dir, `${parsed.productId ?? 'page'}-${(parsed.slug ?? 'index').slice(0, 40)}.json`),
+            JSON.stringify(parsed, null, 2) + '\n'
+          );
+          out.push({ url: item.url, ok: true, errors, warnings: warns, reference: item.reference });
+        } catch (err) {
+          item.status = 'error';
+          item.processedAt = new Date().toISOString();
+          item.result = String(err.message ?? err);
+          out.push({ url: item.url, ok: false, error: item.result });
+        }
+        await sleep(1500);
+      }
+      q.updatedAt = new Date().toISOString();
+      writeFileSync(qp, JSON.stringify(q, null, 2) + '\n');
+      return { processed: out.length, results: out };
+    },
+  },
+  {
     name: 'read_batch_data',
     description: 'Prečíta uložené rozbory produktov pre daný dátum, aby ich Claude mohol použiť bez opätovného crawlu.',
     inputSchema: { type: 'object', properties: { date: { type: 'string' } } },

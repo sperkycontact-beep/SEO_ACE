@@ -20,16 +20,37 @@ Nič sa nepublikuje automaticky. Každá dávka ide na schválenie.
 config/seo-ace.config.json     centrálna konfigurácia — kategória, tón, rozsah, doručenie
 docs/SEO_PLAYBOOK.md           pravidlá pre písanie (kontrakt, nie inšpirácia)
 docs/ARCHITECTURE.md           prečo je to postavené takto
+docs/KONZOLA.md                ovládacia konzola a front URL
+docs/ROUTINE_SETUP.md          denný cron a jeho obmedzenie
 scripts/lib/parse-product.mjs  parser PrestaShop stránok, bez závislostí
 scripts/lib/ctr-benchmark.mjs  CTR krivka z vlastných GSC dát + izotonické vyhladenie
+scripts/lib/classify.mjs       rýdzosť, tvar, motív a slovenský názov zo slugu
 scripts/select-batch.mjs       výber dennej dávky
-scripts/crawl-batch.mjs        crawl dávky (beží v GitHub Actions)
-mcp-server/                    lokálny MCP server — crawl + Search Console OAuth
+scripts/crawl-batch.mjs        crawl dávky
+scripts/process-queue.mjs      spracovanie frontu URL z konzoly
+scripts/build-registry.mjs     evidencia produktov a log udalostí
+scripts/validate-seo.mjs       vynucuje playbook na návrhoch
+scripts/build-console.mjs      generuje ovládaciu konzolu
+scripts/build-report.mjs       generuje markdown report
+mcp-server/                    lokálny MCP server — 11 nástrojov, crawl + GSC OAuth
+data/registry.json             evidencia produktov (záznam pravdy)
+data/log.jsonl                 log udalostí
+data/url-queue.json            front URL na spracovanie
 data/queue.json                fronta dávok a história
-data/products/<dátum>/         crawlnuté dáta produktov
-reports/                       vygenerované reporty
-.github/workflows/             denný crawl
+data/products/<dátum>/         crawlnuté rozbory stránok
+reports/console.html           ovládacia konzola
+.github/workflows/             denný crawl, front a evidencia
 ```
+
+## Ovládacia konzola
+
+Jedna trvalá adresa: **https://claude.ai/code/artifact/fe0e63ef-b770-4156-8e5f-c2bf53a34ebe**
+
+Päť záložiek — Dávka, Evidencia (69 produktov), Log, Front URL, Nastavenia.
+Podrobne v [docs/KONZOLA.md](docs/KONZOLA.md).
+
+Front URL funguje na zavolanie: vložíš adresu v konzole, napíšeš „spracuj front"
+a pipeline ju načíta, urobí diagnostiku a doplní dopyty zo Search Console.
 
 ## Prvé spustenie
 
@@ -61,8 +82,11 @@ Token neopustí tvoj počítač.
 ### 3. Overenie
 
 ```bash
-node mcp-server/selftest.mjs      # protokol MCP servera
+node mcp-server/selftest.mjs      # protokol MCP servera, 11 testov
 node scripts/select-batch.mjs     # výber dávky z GSC snapshotu
+node scripts/build-registry.mjs   # evidencia a log
+node scripts/validate-seo.mjs     # návrhy proti playbooku
+node scripts/process-queue.mjs    # front URL (potrebuje prístup na web)
 ```
 
 ## Denný beh

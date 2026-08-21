@@ -1,0 +1,15 @@
+{"at": "2026-08-20T13:45:00Z", "kind": "pipeline.run", "phase": "prieskum", "note": "Zisteny egress blok na sperky-eshop.sk, Ahrefs units vycerpane 401648/400000, GSC cez Ahrefs funkcne s nulovou cenou"}
+{"at": "2026-08-20T13:52:00Z", "kind": "pipeline.run", "phase": "vyber-davky", "candidates": 20, "selected": 5, "strategy": "impressions_x_ctr_gap"}
+{"at": "2026-08-20T13:58:00Z", "kind": "seo.written", "productId": "32023", "fields": 8}
+{"at": "2026-08-20T13:58:00Z", "kind": "seo.written", "productId": "40226", "fields": 8}
+{"at": "2026-08-20T13:58:00Z", "kind": "seo.written", "productId": "40138", "fields": 8}
+{"at": "2026-08-20T13:58:00Z", "kind": "seo.written", "productId": "36995", "fields": 8}
+{"at": "2026-08-20T13:58:00Z", "kind": "seo.written", "productId": "32102", "fields": 8}
+{"at": "2026-08-20T14:00:00Z", "kind": "validation", "result": "fail", "problems": 2, "detail": "longDescription 198 a 192 slov proti minimu 200"}
+{"at": "2026-08-20T14:02:00Z", "kind": "validation", "result": "pass", "products": 5}
+{"at": "2026-08-20T14:05:00Z", "kind": "crawl.blocked", "reason": "EGRESS_BLOCKED v cloudovej session; GitHub Actions workflow nie je na default branchi (404 pri dispatch)"}
+{"at": "2026-08-20T14:15:00Z", "kind": "delivery", "channels": "repo, artifact, slack, drive, PR", "detail": "Davka 1 dorucena vsetkymi piatimi kanalmi"}
+{"at": "2026-08-20T14:15:31Z", "kind": "cron.created", "routineId": "trig_01HSnCqkkDMwMFSNuC9r4JjM", "cron": "23 5 * * * UTC", "warning": "Routine neuchovava MCP konektory"}
+{"at":"2026-08-20T14:00:00.000Z","kind":"registry.seeded","products":69,"source":"GSC kategoria Zlate nausnice","missedClicks":425}
+{"at":"2026-08-20T14:00:00.000Z","kind":"registry.rebuilt","added":69,"metricsChanged":0,"total":69,"missedClicks":425}
+{"at":"2026-08-20T14:00:00.000Z","kind":"registry.rebuilt","added":0,"metricsChanged":0,"total":69,"missedClicks":425}

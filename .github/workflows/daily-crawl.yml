@@ -22,6 +22,11 @@ on:
         required: false
         default: true
         type: boolean
+      queue_only:
+        description: 'Spracovať iba front URL, bez dennej dávky'
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: write
@@ -55,16 +60,24 @@ jobs:
           fi
 
       - name: Vybrať dennú dávku
-        if: ${{ inputs.reselect != 'false' }}
+        if: ${{ inputs.reselect != 'false' && inputs.queue_only != 'true' }}
         env:
           SEO_ACE_DATE: ${{ inputs.date }}
           SEO_ACE_BATCH_SIZE: ${{ inputs.batch_size }}
         run: node scripts/select-batch.mjs
 
       - name: Crawl produktov
+        if: ${{ inputs.queue_only != 'true' }}
         env:
           SEO_ACE_DATE: ${{ inputs.date }}
         run: node scripts/crawl-batch.mjs
+
+      - name: Spracovať front URL
+        continue-on-error: true
+        run: node scripts/process-queue.mjs
+
+      - name: Prepočítať evidenciu
+        run: node scripts/build-registry.mjs
 
       - name: Súhrn do job summary
         if: always()
@@ -102,7 +115,7 @@ jobs:
             echo "Žiadne nové dáta."
             exit 0
           fi
-          git commit -m "data: crawl dávky $DATE"
+          git commit -m "data: crawl dávky $DATE, front a evidencia"
           for i in 1 2 3 4; do
             git push origin HEAD:claude/sperky-eshop-seo-workflow-sg70xu && exit 0
             echo "Push zlyhal, pokus $i — čakám $((2**i))s"
