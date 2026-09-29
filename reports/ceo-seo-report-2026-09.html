@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEO Report September 2026</title>
+<style>
+:root{
+  --teal:#05bcc4; --deep:#03797e; --gold:#d8b878; --slate:#98a2b3;
+  --good:#3fbf7f; --warn:#e2b23c; --risk:#e0554e;
+  --paper:#0e1413; --sheet:#131b1a; --ink:#e8f0ef; --ink2:#b9c9c7; --dim:#829896; --line:#243330; --track:#1b2523;
+}
+:root[data-theme="light"]{
+  --paper:#e9e5e8; --sheet:#fff; --ink:#131b1a; --ink2:#3b4a48; --dim:#667574; --line:#e2dae0; --track:#efe9ed;
+  --teal:#05a3ab; --gold:#b8923f; --slate:#7d879a; --good:#238a57; --warn:#a97c0c; --risk:#c93a33;
+}
+*{box-sizing:border-box}
+body{margin:0; background:var(--paper); color:var(--ink); font:12px/1.4 Inter,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; font-variant-numeric:tabular-nums; -webkit-font-smoothing:antialiased}
+.bar{max-width:794px; margin:0 auto; padding:10px 12px 0; display:flex; justify-content:flex-end; gap:6px}
+.bar button{border:1px solid var(--line); background:var(--sheet); color:var(--ink2); font:inherit; font-size:11px; padding:5px 12px; border-radius:999px; cursor:pointer}
+.bar button:hover,.bar button.on{color:var(--teal); border-color:var(--teal)}
+.sheet{max-width:794px; margin:10px auto 30px; background:var(--sheet); border:1px solid var(--line); border-radius:8px; padding:20px 24px 14px}
+header{display:flex; justify-content:space-between; align-items:flex-end; gap:10px; border-bottom:2px solid var(--teal); padding-bottom:8px; margin-bottom:10px}
+h1{font-size:19px; margin:0; letter-spacing:-.01em}
+.eyebrow{font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); margin-bottom:2px}
+.per{font-size:10px; color:var(--dim); text-align:right; line-height:1.5}
+h2{font-size:10px; letter-spacing:.13em; text-transform:uppercase; color:var(--teal); margin:11px 0 5px; display:flex; justify-content:space-between; align-items:baseline}
+h2 small{font-size:9px; letter-spacing:0; text-transform:none; color:var(--dim); font-weight:400}
+ul{margin:0; padding:0; list-style:none}
+.dot{display:inline-block; width:9px; height:9px; border-radius:50%; vertical-align:middle}
+.g{background:var(--good)} .y{background:var(--warn)} .r{background:var(--risk)}
+.tg{color:var(--good)} .ty{color:var(--warn)} .tr{color:var(--risk)}
+.sum li{display:flex; gap:8px; margin-bottom:4px; font-size:12px}
+.sum .dot{margin-top:4px; flex:none}
+table{width:100%; border-collapse:collapse; font-size:11px}
+th{font-size:8.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--dim); text-align:left; padding:3px 6px; border-bottom:1px solid var(--line); font-weight:600}
+td{padding:3px 6px; border-bottom:1px solid var(--line)}
+tr:last-child td{border-bottom:none}
+.n{text-align:right} th.n{text-align:right}
+tbody tr:hover{background:color-mix(in srgb,var(--teal) 7%,transparent)}
+.na{color:var(--dim); font-style:italic}
+.me td:first-child{color:var(--teal); font-weight:700}
+.cols{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+.cols>*{min-width:0}
+.card{border:1px solid var(--line); border-radius:6px; padding:5px 8px; margin-bottom:5px; font-size:10.5px; line-height:1.35}
+.card b{font-size:11px}
+.card .h{display:flex; justify-content:space-between; gap:6px}
+.card p{margin:1px 0 0; color:var(--ink2)}
+.win{border-left:3px solid var(--good)} .los{border-left:3px solid var(--risk)}
+.verdict{margin:6px 0 0; font-size:11.5px; font-weight:600; padding:5px 8px; border-left:3px solid var(--risk); background:color-mix(in srgb,var(--risk) 8%,transparent)}
+.trend p{margin:4px 0 0; font-size:11px; color:var(--ink2)}
+.chartwrap{position:relative}
+#tip{position:absolute; pointer-events:none; background:var(--sheet); border:1px solid var(--line); border-radius:5px; padding:4px 7px; font-size:10px; box-shadow:0 2px 8px rgba(0,0,0,.25); display:none; white-space:nowrap; z-index:5}
+.lg{display:flex; gap:12px; font-size:10px; color:var(--ink2)}
+.lg button{all:unset; cursor:pointer; display:inline-flex; align-items:center; gap:4px}
+.lg button.off{opacity:.35}
+.lg i{width:9px; height:9px; border-radius:2px; display:inline-block}
+svg text{fill:var(--dim); font-family:inherit}
+.plan li{display:grid; grid-template-columns:16px 1fr 54px; gap:6px; align-items:center; padding:3px 0; border-bottom:1px solid var(--line); font-size:11px}
+.plan li:last-child{border-bottom:none}
+.plan .num{color:var(--teal); font-weight:700}
+.plan span.o{color:var(--ink2)}
+.pri{font-size:8.5px; letter-spacing:.08em; text-transform:uppercase; text-align:center; padding:2px 0; border-radius:999px; font-weight:700}
+.pri.h{background:color-mix(in srgb,var(--risk) 16%,transparent); color:var(--risk)}
+.pri.m{background:color-mix(in srgb,var(--warn) 20%,transparent); color:var(--warn)}
+footer{margin-top:8px; padding-top:5px; border-top:1px solid var(--line); font-size:8.5px; color:var(--dim); line-height:1.35}
+@media(max-width:640px){.cols{grid-template-columns:1fr}.sheet{padding:14px}.per{display:none}table{font-size:10px}}
+@page{size:A4; margin:7mm}
+@media print{
+  :root,:root[data-theme="dark"]{--paper:#fff; --sheet:#fff; --ink:#111; --ink2:#333; --dim:#666; --line:#ddd; --track:#eee; --teal:#05939a; --gold:#a07a2c; --slate:#7d879a; --good:#238a57; --warn:#a97c0c; --risk:#c93a33}
+  body{background:#fff; font-size:8.6px; line-height:1.3}
+  .sheet{zoom:.9}
+  td,th{padding-top:1.5px;padding-bottom:1.5px}
+  .card p{font-size:8.6px} .card{padding:3px 6px}
+  .sum li{margin-bottom:2px;font-size:9.5px} .trend p{font-size:8.8px}
+  .plan li{padding:1.5px 0;font-size:9px} table{font-size:9px} footer{font-size:7px}
+  .bar{display:none}
+  .sheet{border:none; margin:0; padding:0; max-width:none; border-radius:0}
+  h2{margin:8px 0 3px} .card{margin-bottom:3px} tr,.card{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div class="bar"><button id="b-print">Tlačiť / PDF</button><button id="b-theme">Svetlý / tmavý režim</button></div>
+<div class="sheet">
+
+<header>
+  <div><div class="eyebrow">CEO SEO report · sperky-eshop.sk</div><h1>Prehľad organického výkonu — september 2026</h1></div>
+  <div class="per"><b>Aktuálne:</b> 30.8.–28.9.2026<br><b>M/M:</b> 30.7.–29.8.2026 · <b>R/R:</b> 30.8.–28.9.2025</div>
+</header>
+
+<h2>1 · Zhrnutie <small>Zdroje: Google Search Console a Ahrefs (626 sledovaných slov)</small></h2>
+<ul class="sum">
+  <li><span class="dot r"></span><span><b>Nerastieme: kliky z Google −22 % m/m a −47 % r/r</b> (1 654 vs. 2 129). Pozície sa zlepšili (10,2 → 9,0), ale zobrazení ubudlo o 27 % — zákazníci nás vidia menej, nie horšie.</span></li>
+  <li><span class="dot r"></span><span><b>Strácame podiel na trhu:</b> náš podiel viditeľnosti 3,75 % (−1,08 p.b.). Sofia rastie na 15,0 % (+1,44 p.b.), Izlato na 11,6 % (+0,69 p.b.).</span></li>
+  <li><span class="dot g"></span><span><b>Kvalita pozícií rastie:</b> sledovaných slov v Top 10 je o 16 % viac (306 → 354) a odhad návštevnosti domény rastie tretí mesiac po sebe (+3,5 %). Vplyv na tržby: <span class="na">dáta nedostupné tento mesiac.</span></span></li>
+</ul>
+
+<h2>2 · Kľúčové KPI <small>🟢 zlepšenie &gt; +3 % · 🟡 stabilné · 🔴 pokles &gt; −5 % (m/m)</small></h2>
+<table>
+<thead><tr><th>KPI</th><th class="n">Aktuálne</th><th class="n">M/M</th><th class="n">R/R</th><th>Stav</th></tr></thead>
+<tbody>
+<tr><td>Organická tržba</td><td class="n na" colspan="3">Dáta nedostupné tento mesiac</td><td>—</td></tr>
+<tr><td>Organické kliky (Google)</td><td class="n">1 654</td><td class="n tr">−22,3 %</td><td class="n tr">−47,3 %</td><td><span class="dot r"></span></td></tr>
+<tr><td>Transakcie</td><td class="n na" colspan="3">Dáta nedostupné tento mesiac</td><td>—</td></tr>
+<tr><td>Konverzný pomer</td><td class="n na" colspan="3">Dáta nedostupné tento mesiac</td><td>—</td></tr>
+<tr><td>Priemerná pozícia (626 slov)</td><td class="n">9,0</td><td class="n tg">o 1,2 lepšie</td><td class="n na">n/a*</td><td><span class="dot g"></span></td></tr>
+<tr><td>Viditeľnosť: podiel hlasu (Ahrefs)</td><td class="n">3,75 %</td><td class="n tr">−1,08 p.b.</td><td class="n na">n/a*</td><td><span class="dot r"></span></td></tr>
+<tr><td>Odhad. návštevnosť domény (Ahrefs)</td><td class="n">9 858</td><td class="n tg">+3,5 %</td><td class="n tr">−60,3 %</td><td><span class="dot g"></span></td></tr>
+<tr><td>Slová v Top 3 (Google)</td><td class="n">1 016</td><td class="n tr">−5,6 %</td><td class="n tr">−29,2 %</td><td><span class="dot r"></span></td></tr>
+<tr><td>Slová v Top 10 (Google)</td><td class="n">3 215</td><td class="n ty">−4,8 %</td><td class="n tr">−27,4 %</td><td><span class="dot y"></span></td></tr>
+</tbody></table>
+
+<h2>3 · Konkurencia <small>Sledovaná sada 626 slov, desktop · klik na riadok zvýrazní</small></h2>
+<table id="comp">
+<thead><tr><th>Doména</th><th class="n">Podiel hlasu</th><th class="n">M/M</th><th class="n">Top 3 slová</th><th class="n">Návštevnosť domény</th><th>Najväčší pohyb</th></tr></thead>
+<tbody>
+<tr class="me"><td>sperky-eshop.sk</td><td class="n">3,75 %</td><td class="n tr">−1,08 p.b.</td><td class="n">102 (±0)</td><td class="n">9 858 <span class="tg">(+3,5 %)</span></td><td>Top 10: +48 slov</td></tr>
+<tr><td>sofia.sk</td><td class="n">15,00 %</td><td class="n tg">+1,44 p.b.</td><td class="n">352 (+25)</td><td class="n">55 010 <span class="tg">(+9,1 %)</span></td><td class="tg">+25 slov v Top 3</td></tr>
+<tr><td>izlato.sk</td><td class="n">11,56 %</td><td class="n tg">+0,69 p.b.</td><td class="n">302 (−1)</td><td class="n">60 144 <span class="tr">(−2,8 %)</span></td><td>Pozícia 6,6 → 5,7</td></tr>
+<tr><td>olivie.sk</td><td class="n">3,00 %</td><td class="n tr">−0,84 p.b.</td><td class="n">95 (+5)</td><td class="n na">nedostupné</td><td class="tr">Traffic slov −27 %</td></tr>
+<tr><td>lotsi.sk</td><td class="n">2,83 %</td><td class="n tr">−0,64 p.b.</td><td class="n">29 (−9)</td><td class="n na">nedostupné</td><td class="tr">−9 slov v Top 3</td></tr>
+<tr><td>isperky.sk</td><td class="n">2,64 %</td><td class="n tg">+0,75 p.b.</td><td class="n">29 (+1)</td><td class="n na">nedostupné</td><td class="tg">Pozícia 11,5 → 9,8</td></tr>
+</tbody></table>
+<div class="verdict">Strácame podiel na trhu, pretože Sofia získala 25 nových Top 3 pozícií na našich kľúčových slovách a Izlato posilnilo pozíciu, kým naše Top 3 stagnujú na 102 a klesá počet zobrazení.</div>
+
+<h2>4 · Trend návštevnosti <small>Odhad. organická návštevnosť domén, posledných 7 mesiacov (Ahrefs) · klikni na legendu</small></h2>
+<div class="chartwrap">
+  <svg id="chart" viewBox="0 0 746 130" width="100%" preserveAspectRatio="none" role="img" aria-label="Trend odhadovanej organickej návštevnosti"></svg>
+  <div id="tip"></div>
+</div>
+<div class="lg" id="lg"></div>
+<div class="trend"><p>
+<b>Posledný mesiac:</b> naša návštevnosť rastie (8 646 v júni → 9 858 v septembri), no kliky z Google padli o 22 %, lebo zobrazení je o 27 % menej (118 tis. vs. 162 tis.) pri zlepšených pozíciách. <b>6 mesiacov:</b> od marca −20 % (12 286 → 9 858); Sofia po prepade v júni (26 tis.) rýchlo dobieha (55 tis.), Izlato pomaly klesá. Minulý rok návštevnosť v novembri–decembri stúpla o 15–17 % nad september, preto ide zrejme čiastočne o sezónu; nevieme však potvrdiť, koľko z poklesu spôsobil dopyt a koľko naša práca.
+</p></div>
+
+<h2>5 · Víťazi a porazení <small>Google Search Console, m/m</small></h2>
+<div class="cols">
+<div>
+  <div class="card win"><div class="h"><b>Slová v Top 10 (sledovaná sada)</b><span class="tg">+16 %</span></div><p>306 → 354 slov, pozícia 4–10: +48. Dopad: viac slov blízko Top 3, kde je najväčší zisk z návštevnosti.</p></div>
+  <div class="card win"><div class="h"><b>Wolfrámové obrúčky</b><span class="tg">+13 % klikov</span></div><p>15 → 17 klikov na pozícii 2,5 s 10 % CTR. Rýchla, marží dobrá kategória.</p></div>
+  <div class="card win"><div class="h"><b>Oceľové náramky („s steel“)</b><span class="tg">nové Top 2</span></div><p>Nové zásahy na pozícii 1,3–1,7 (13 klikov). Malý objem, no takmer bez konkurencie.</p></div>
+</div>
+<div>
+  <div class="card los"><div class="h"><b>Piercing (5 hlavných slov)</b><span class="tr">−52 klikov</span></div><p>Pozícia OK (2–3), padli zobrazenia o 16–32 %. Riziko: najsilnejšia kategória, pokles dopytu. Overiť sezónu, obnoviť stránky.</p></div>
+  <div class="card los"><div class="h"><b>Pánske strieborné retiazky</b><span class="tr">21 → &lt;5 klikov</span></div><p>Vypadli z 40 najlepších slov. Riziko: strata kategórie so stabilným dopytom. Preveriť stránku, zapracovať interné odkazy.</p></div>
+  <div class="card los"><div class="h"><b>Zlato: náušnice, retiazky</b><span class="tr">pozícia 10–11</span></div><p>3 600 zobrazení/mesiac s CTR 0,4–1,2 %. Riziko: vysokomaržový segment stojí na hrane 1. strany. Odporúčanie: posunúť do Top 5.</p></div>
+</div>
+</div>
+
+<div class="cols">
+<div>
+<h2>6 · Dokončená SEO práca</h2>
+<p class="na" style="margin:2px 0">Dáta nedostupné tento mesiac (zdroj úloh nie je pripojený). Nič nie je uvedené, kým nepotvrdíme dokončené úlohy.</p>
+</div>
+<div>
+<h2>Brand <small>hľadanie „sperky eshop“</small></h2>
+<p style="margin:2px 0; font-size:11px">113 klikov vs. 138 (<span class="tr">−18 %</span>). Pokles brandového dopytu pokračuje, ale už tvorí len 5 % mesačnej straty klikov.</p>
+</div>
+</div>
+
+<h2>7 · Plán na október <small>akcia → obchodný výsledok → priorita</small></h2>
+<ul class="plan">
+<li><span class="num">1</span><span><b>Posunúť zlaté náušnice, retiazky a prstene z pozície 10–11 do Top 5</b> <span class="o">→ viac klikov v najmaržovejšom segmente (3 600 zobrazení/mes.)</span></span><span class="pri h">Vysoká</span></li>
+<li><span class="num">2</span><span><b>Zmapovať 25 pozícií, ktoré získala Sofia, a brániť naše slová v pozíciách 4–10</b> <span class="o">→ zastaviť stratu podielu hlasu (3,75 %)</span></span><span class="pri h">Vysoká</span></li>
+<li><span class="num">3</span><span><b>Obnoviť kategórie piercing a pánske strieborné retiazky</b> <span class="o">→ vrátiť ~70 klikov mesačne</span></span><span class="pri h">Vysoká</span></li>
+<li><span class="num">4</span><span><b>Pripraviť darčekové stránky na vianočnú sezónu</b> <span class="o">→ zachytiť nárast dopytu z minulého roka (+15–17 % v nov.–dec.)</span></span><span class="pri m">Stredná</span></li>
+<li><span class="num">5</span><span><b>Pripojiť GA4, tržby a evidenciu SEO úloh</b> <span class="o">→ merať skutočné tržby zo SEO v ďalšom reporte</span></span><span class="pri m">Stredná</span></li>
+</ul>
+
+<footer>
+* R/R pre priemernú pozíciu a podiel hlasu nie je spoľahlivé (sledovaná sada bola vtedy menšia). Kliky, Top 3 a Top 10: Google Search Console cez Ahrefs, 30 dní. Podiel hlasu, pozície: Ahrefs Rank Tracker (626 slov, desktop; 28.9. vs. 29.8.2026). Návštevnosť domény je model Ahrefs, nie Google Analytics; jej rast a pokles klikov z Google sa preto nemusia zhodovať. Zdroje GA4, Merchant Center a interné tržby nie sú pripojené. Piercing = súčet 5 hlavných slov (piercing, do ucha, do nosa, do pupku, piercingy). Vygenerované 29.9.2026.
+</footer>
+</div>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  try{ if(localStorage.getItem('seo-theme')==='light') root.setAttribute('data-theme','light'); }catch(e){}
+  document.getElementById('b-theme').onclick=function(){
+    var t=root.getAttribute('data-theme')==='light'?'dark':'light';
+    root.setAttribute('data-theme',t);
+    try{localStorage.setItem('seo-theme',t)}catch(e){}
+  };
+  document.getElementById('b-print').onclick=function(){window.print()};
+
+  document.querySelectorAll('#comp tbody tr').forEach(function(tr){
+    tr.style.cursor='pointer';
+    tr.onclick=function(){
+      var on=tr.style.background;
+      document.querySelectorAll('#comp tbody tr').forEach(function(r){r.style.background=''});
+      if(!on) tr.style.background='color-mix(in srgb, var(--teal) 14%, transparent)';
+    };
+  });
+
+  var months=['Mar','Apr','Máj','Jún','Júl','Aug','Sep'];
+  var S=[
+    {n:'sperky-eshop.sk',c:'#05bcc4',d:[12286,10443,10298,8646,8805,9524,9858],on:true},
+    {n:'sofia.sk',c:'#d8b878',d:[75228,69867,69008,25853,26270,50424,55010],on:true},
+    {n:'izlato.sk',c:'#98a2b3',d:[109240,87863,84515,65441,62017,61849,60144],on:true}
+  ];
+  var svg=document.getElementById('chart'), tip=document.getElementById('tip'), NS='http://www.w3.org/2000/svg';
+  var W=746,H=130,pl=34,pr=8,pt=6,pb=16;
+  function fmt(v){return v.toString().replace(/\B(?=(\d{3})+(?!\d))/g,' ')}
+  function el(t,a){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);return e}
+  function draw(){
+    while(svg.firstChild)svg.removeChild(svg.firstChild);
+    var max=0;S.forEach(function(s){if(s.on)s.d.forEach(function(v){max=Math.max(max,v)})});
+    if(!max)max=1; max*=1.1;
+    function x(i){return pl+(W-pl-pr)*i/(months.length-1)}
+    function y(v){return H-pb-(H-pt-pb)*v/max}
+    for(var g=0;g<=3;g++){
+      var gy=pt+(H-pt-pb)*g/3;
+      svg.appendChild(el('line',{x1:pl,x2:W-pr,y1:gy,y2:gy,stroke:'var(--line)'}));
+      var t=el('text',{x:2,y:gy+3,'font-size':8});t.textContent=Math.round(max*(1-g/3)/1000)+'k';svg.appendChild(t);
+    }
+    months.forEach(function(m,i){var t=el('text',{x:x(i),y:H-3,'font-size':8,'text-anchor':'middle'});t.textContent=m;svg.appendChild(t)});
+    S.forEach(function(s){
+      if(!s.on)return;
+      svg.appendChild(el('polyline',{points:s.d.map(function(v,i){return x(i)+','+y(v)}).join(' '),fill:'none',stroke:s.c,'stroke-width':2,'stroke-linejoin':'round'}));
+      s.d.forEach(function(v,i){svg.appendChild(el('circle',{cx:x(i),cy:y(v),r:2.5,fill:s.c}))});
+    });
+    var hit=el('rect',{x:pl,y:0,width:W-pl-pr,height:H,fill:'transparent'});
+    svg.appendChild(hit);
+    var guide=el('line',{y1:pt,y2:H-pb,stroke:'var(--dim)','stroke-dasharray':'2 2',visibility:'hidden'});
+    svg.insertBefore(guide,hit);
+    hit.addEventListener('mousemove',function(e){
+      var r=svg.getBoundingClientRect(), px=(e.clientX-r.left)/r.width*W;
+      var i=Math.max(0,Math.min(months.length-1,Math.round((px-pl)/(W-pl-pr)*(months.length-1))));
+      guide.setAttribute('x1',x(i));guide.setAttribute('x2',x(i));guide.setAttribute('visibility','visible');
+      var h='<b>'+months[i]+' 2026</b>';
+      S.forEach(function(s){if(s.on)h+='<br><span style="color:'+s.c+'">●</span> '+s.n+': '+fmt(s.d[i])});
+      tip.innerHTML=h;tip.style.display='block';
+      var wr=svg.parentNode.getBoundingClientRect();
+      var left=e.clientX-wr.left+12; if(left>wr.width-170) left=e.clientX-wr.left-170;
+      tip.style.left=left+'px';tip.style.top=(e.clientY-wr.top+8)+'px';
+    });
+    hit.addEventListener('mouseleave',function(){tip.style.display='none';guide.setAttribute('visibility','hidden')});
+  }
+  var lg=document.getElementById('lg');
+  S.forEach(function(s){
+    var b=document.createElement('button');
+    b.innerHTML='<i style="background:'+s.c+'"></i>'+s.n;
+    b.onclick=function(){
+      var others=S.filter(function(o){return o!==s&&o.on}).length;
+      if(s.on&&!others)return;
+      s.on=!s.on;b.classList.toggle('off',!s.on);draw();
+    };
+    lg.appendChild(b);
+  });
+  draw();
+})();
+</script>
+</body>
+</html>
