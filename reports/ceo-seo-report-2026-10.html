@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="sk" data-theme="dark">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SEO Report — Október 2026</title>
+<style>
+:root{
+  --teal:#05bcc4; --deep:#03797e; --teal3:#7fd0d4;
+  --gold:#d8b878; --gold2:#c9a869; --gold3:#8a6417;
+  --slate:#98a2b3;
+  --good:#3fbf7f; --warn:#d8b878; --risk:#e0554e;
+  --paper:#0e1413; --paper2:#131b1a; --ink:#e8f0ef; --ink2:#b9c9c7; --dim:#829896; --line:#22302e; --track:#1b2523;
+}
+:root[data-theme="light"]{
+  --paper:#f8f4f7; --paper2:#fff; --ink:#131b1a; --ink2:#3b4a48; --dim:#667574; --line:#e2dae0; --track:#ece6ea;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:15px; line-height:1.55; font-variant-numeric:tabular-nums;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1140px; margin:0 auto; padding:0 26px 60px}
+a{color:var(--teal)}
+em{color:var(--teal); font-style:normal}
+
+.prog{position:fixed; top:0; left:0; height:2px; background:var(--teal); z-index:50; width:0%; transition:width .1s linear}
+
+.topbar{position:sticky; top:0; z-index:40; display:flex; justify-content:flex-end; padding:14px 26px 0; max-width:1140px; margin:0 auto}
+.theme-pill{display:flex; gap:2px; background:var(--paper2); border:1px solid var(--line); border-radius:999px; padding:3px}
+.theme-pill button{
+  border:none; background:transparent; color:var(--dim); font-size:11px; letter-spacing:.08em; text-transform:uppercase;
+  padding:6px 13px; border-radius:999px; cursor:pointer; font-family:inherit; transition:background .18s,color .18s;
+}
+.theme-pill button.on{background:color-mix(in srgb, var(--teal) 16%, transparent); color:var(--teal)}
+
+header.hero{padding:44px 0 20px; text-align:center}
+.crown{font-size:26px; color:var(--gold); display:block; margin-bottom:6px}
+.eyebrow{font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold2); margin-bottom:14px}
+h1{font-size:clamp(28px,4.6vw,46px); font-weight:660; letter-spacing:-.025em; margin:0 0 10px}
+.sub{color:var(--ink2); font-size:15.5px; max-width:640px; margin:0 auto 14px}
+.meta-line{display:flex; gap:18px; justify-content:center; flex-wrap:wrap; font-size:11.5px; color:var(--dim); letter-spacing:.02em}
+.meta-line b{color:var(--ink2); font-weight:600}
+
+h2{font-size:clamp(20px,2.6vw,27px); font-weight:640; margin:0 0 4px}
+.sub-h{font-size:9.5px; letter-spacing:.17em; text-transform:uppercase; color:var(--dim); border-top:1px solid var(--line); padding-top:10px; margin-bottom:18px; display:flex; justify-content:space-between}
+section{padding:40px 0 6px; border-top:1px solid var(--line)}
+section:first-of-type{border-top:none}
+.snum{color:var(--teal); font-weight:700; margin-right:8px}
+
+.reveal{opacity:0; transform:translateY(16px); transition:opacity .55s ease, transform .55s ease}
+.reveal.in{opacity:1; transform:translateY(0)}
+
+/* KPI strip */
+.kpi-strip{display:grid; grid-template-columns:repeat(auto-fit,minmax(158px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:10px; overflow:hidden; margin-bottom:8px}
+.kpi-card{background:var(--paper2); padding:16px 16px 14px; position:relative; border-left:2px solid transparent; transition:border-color .18s, background .18s}
+.kpi-card:hover{border-left-color:var(--teal); background:color-mix(in srgb, var(--teal) 4%, var(--paper2))}
+.kpi-card .k{font-size:9.5px; letter-spacing:.13em; text-transform:uppercase; color:var(--dim); margin-bottom:8px}
+.kpi-card .v{font-size:23px; font-weight:660; letter-spacing:-.01em; display:flex; align-items:center; gap:7px}
+.kpi-card .s{font-size:11.5px; color:var(--ink2); margin-top:4px}
+.dot{width:8px; height:8px; border-radius:50%; flex:none}
+.dot.good{background:var(--good)} .dot.warn{background:var(--warn)} .dot.risk{background:var(--risk)}
+.d-good{color:var(--good)} .d-warn{color:var(--warn)} .d-risk{color:var(--risk)}
+
+/* exec summary */
+.xsum{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px}
+.xsum li{display:flex; gap:12px; align-items:flex-start; font-size:15.5px; line-height:1.5}
+.xsum .dot{margin-top:7px}
+
+/* findings cards */
+.fcards{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:14px}
+.fcard{position:relative; background:var(--paper2); border:1px solid var(--line); border-left:2px solid var(--teal); border-radius:8px; padding:16px 16px 14px; overflow:hidden}
+.fcard.gold{border-left-color:var(--gold)}
+.fcard.risk{border-left-color:var(--risk)}
+.fcard .cnum{position:absolute; top:-6px; right:8px; font-size:52px; font-weight:700; color:var(--line); z-index:0; line-height:1}
+.fcard .ctitle{font-weight:640; font-size:14.5px; margin-bottom:6px; position:relative}
+.fcard .cbody{font-size:13.5px; color:var(--ink2); position:relative}
+.fcard .cmetric{font-size:20px; font-weight:660; margin:4px 0; position:relative}
+
+/* two-col */
+.two{display:grid; grid-template-columns:repeat(auto-fit,minmax(340px,1fr)); gap:26px}
+.two > *{min-width:0}
+
+/* tables */
+.tw{overflow-x:auto; border:1px solid var(--line); border-radius:10px}
+table{border-collapse:collapse; width:100%; min-width:520px; font-size:13.5px}
+th{font-size:9.5px; letter-spacing:.13em; text-transform:uppercase; color:var(--dim); text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); white-space:nowrap}
+td{padding:10px 12px; border-bottom:1px solid var(--line); white-space:nowrap}
+tr:last-child td{border-bottom:none}
+tbody tr{transition:background .15s}
+tbody tr:hover{background:color-mix(in srgb, var(--teal) 5%, transparent)}
+td.num{text-align:right; font-variant-numeric:tabular-nums}
+.tag{display:inline-flex; align-items:center; gap:5px; font-size:11px; padding:2px 9px; border-radius:999px; background:var(--track); color:var(--ink2)}
+.tag.me{background:color-mix(in srgb, var(--teal) 16%, transparent); color:var(--teal); font-weight:600}
+
+/* bars */
+.brow{display:grid; grid-template-columns:120px 1fr 70px; align-items:center; gap:10px; margin-bottom:10px; font-size:12.5px}
+.brow .lbl{color:var(--ink2); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.brow .track{height:8px; background:var(--track); border-radius:999px; overflow:hidden}
+.brow .fill{height:100%; width:0%; background:var(--teal); border-radius:999px; transition:width .9s cubic-bezier(.2,.75,.2,1)}
+.brow.me .fill{background:linear-gradient(90deg,var(--teal),var(--deep))}
+.brow .val{text-align:right; color:var(--ink2); font-size:11.5px}
+.mini{display:inline-block; width:60px; height:6px; background:var(--track); border-radius:999px; overflow:hidden; vertical-align:middle; margin-right:6px}
+.mini i{display:block; height:100%; background:var(--teal); width:0%; border-radius:999px; transition:width .9s cubic-bezier(.2,.75,.2,1)}
+
+/* winners/losers */
+.wl-card{background:var(--paper2); border:1px solid var(--line); border-radius:8px; padding:14px 16px; margin-bottom:10px}
+.wl-card .wlh{display:flex; justify-content:space-between; align-items:baseline; gap:10px; margin-bottom:4px}
+.wl-card .wlh b{font-size:14px; font-weight:640}
+.wl-card .wlh span{font-size:13px; font-weight:660}
+.wl-card p{margin:2px 0 0; font-size:12.8px; color:var(--ink2)}
+
+/* action plan */
+.plan{display:flex; flex-direction:column; gap:10px}
+.plan-row{display:grid; grid-template-columns:28px 1fr 130px; gap:14px; align-items:center; background:var(--paper2); border:1px solid var(--line); border-radius:8px; padding:12px 16px}
+.plan-row .pn{font-weight:700; color:var(--teal); font-size:15px}
+.plan-row .pa b{display:block; font-size:14px; font-weight:620}
+.plan-row .pa span{font-size:12.5px; color:var(--ink2)}
+.pri{font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; text-align:center; padding:5px 10px; border-radius:999px; font-weight:600}
+.pri.high{background:color-mix(in srgb, var(--risk) 16%, transparent); color:var(--risk)}
+.pri.med{background:color-mix(in srgb, var(--gold) 20%, transparent); color:var(--gold2)}
+
+/* chart */
+.chart-box{background:var(--paper2); border:1px solid var(--line); border-radius:10px; padding:18px}
+svg text{font-family:inherit; fill:var(--dim)}
+.lg{display:flex; gap:16px; flex-wrap:wrap; font-size:11.5px; color:var(--ink2); margin-top:10px}
+.lg span{display:inline-flex; align-items:center; gap:6px}
+.lg i{width:10px; height:10px; border-radius:2px; display:inline-block}
+
+/* definitions */
+dl.defs{display:grid; grid-template-columns:220px 1fr; gap:6px 16px; font-size:12.8px; color:var(--ink2)}
+dl.defs dt{color:var(--ink); font-weight:600}
+dl.defs dd{margin:0 0 8px}
+
+footer{margin-top:30px; padding-top:18px; border-top:1px solid var(--line); font-size:11px; color:var(--dim); text-align:center}
+
+noscript div{background:var(--risk); color:#fff; text-align:center; padding:10px; font-size:13px}
+
+@media (max-width:700px){
+  .wrap{padding:0 16px 40px}
+  .topbar{padding:10px 16px 0}
+  .kpi-strip{grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}
+  table{min-width:460px}
+  .brow{grid-template-columns:90px 1fr 56px}
+  .plan-row{grid-template-columns:22px 1fr; grid-template-areas:"n a" ". p"}
+  .plan-row .pn{grid-area:n} .plan-row .pa{grid-area:a} .plan-row .pri{grid-area:p; width:max-content}
+  dl.defs{grid-template-columns:1fr}
+  dl.defs dt{margin-top:6px}
+}
+
+@media print{
+  .topbar,.prog{display:none !important}
+  body{background:#fff; color:#111}
+  section{break-inside:avoid; border-top:1px solid #ccc}
+  .kpi-strip{background:#ccc}
+  .kpi-card{background:#fff}
+  a{color:#111; text-decoration:none}
+  .reveal{opacity:1 !important; transform:none !important}
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{transition:none !important; animation:none !important; scroll-behavior:auto !important}
+  .reveal{opacity:1; transform:none}
+}
+</style>
+<style>
+.alert{background:color-mix(in srgb,var(--risk) 12%,var(--paper2));border:1px solid color-mix(in srgb,var(--risk) 45%,transparent);border-radius:10px;padding:16px 18px;margin:8px 0 6px;font-size:14px}
+.alert b{color:var(--risk)}
+.na{color:var(--dim);font-style:italic}
+td.na{white-space:normal}
+details{background:var(--paper2);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--ink2)}
+details summary{cursor:pointer;color:var(--ink);font-weight:600}
+</style>
+</head>
+<body>
+<div class="prog" id="prog"></div>
+<div class="topbar"><div class="theme-pill"><button id="btn-dark" class="on">Dark</button><button id="btn-light">Light</button></div></div>
+<div class="wrap">
+<header class="hero reveal">
+  <span class="crown">♛</span>
+  <div class="eyebrow">Šperky Aura · CEO SEO Report</div>
+  <h1>Október 2026: <em>dáta zablokované</em></h1>
+  <p class="sub">Tento mesiac nevieme odpovedať na otázky „rastieme / bijeme konkurenciu / zarába SEO“ — zdroj dát bol odpojený.</p>
+  <div class="meta-line"><span><b>Obdobie:</b> 1.–31. október 2026</span><span><b>Vygenerované:</b> 11. 11. 2026</span><span><b>Predchádzajúci report:</b> júl 2026</span></div>
+</header>
+
+<div class="alert reveal"><b>Akcia potrebná:</b> Ahrefs účet je od tohto mesiaca na pláne <b>Free (0 API kreditov)</b>. Všetky dáta o návštevnosti, pozíciách, kľúčových slovách, Search Console a konkurencii sú zablokované („Insufficient plan“). Dostupný je len Domain Rating. GA4, Merchant Center a interné tržby nie sú pripojené.</div>
+
+<section class="reveal"><h2><span class="snum">01</span>Zhrnutie pre CEO</h2><div class="sub-h"><span>3 body</span><span>Zdroj: Ahrefs (len DR)</span></div>
+<ul class="xsum">
+<li><span class="dot risk"></span><span><b>Rast a tržby SEO tento mesiac nevieme zmerať</b> — Ahrefs plán bol znížený na Free, GA4 ani tržby nie sú pripojené.</span></li>
+<li><span class="dot warn"></span><span><b>Autorita domény stabilná:</b> Domain Rating 38 — rovnako ako v júli. Sofia.sk je na rovnakej úrovni (38), Izlato vedie (50), Olivie zaostáva (25).</span></li>
+<li><span class="dot risk"></span><span><b>Riziko pred Vianocami:</b> v júli sme strácali podiel na trhu v prospech Sofia.sk. Bez obnovy dát nevieme, či trend pokračuje — v najdôležitejšej sezóne roka.</span></li>
+</ul></section>
+
+<section class="reveal"><h2><span class="snum">02</span>Kľúčové KPI</h2><div class="sub-h"><span>Október 2026 vs. september (M/M) vs. október 2025 (R/R)</span></div>
+<div class="tw"><table><thead><tr><th>KPI</th><th>Aktuálne</th><th>M/M</th><th>R/R</th><th>Stav</th></tr></thead><tbody><tr><td>Organická tržba</td><td class="na" colspan="3">Dáta nedostupné tento mesiac</td><td><span class="tag">—</span></td></tr><tr><td>Organické relácie</td><td class="na" colspan="3">Dáta nedostupné tento mesiac</td><td><span class="tag">—</span></td></tr><tr><td>Transakcie</td><td class="na" colspan="3">Dáta nedostupné tento mesiac</td><td><span class="tag">—</span></td></tr><tr><td>Konverzný pomer</td><td class="na" colspan="3">Dáta nedostupné tento mesiac</td><td><span class="tag">—</span></td></tr><tr><td>Priemerná pozícia</td><td class="na" colspan="3">Dáta nedostupné tento mesiac</td><td><span class="tag">—</span></td></tr><tr><td>Ahrefs viditeľnosť (Domain Rating)</td><td class="num">38</td><td class="num">n/a*</td><td class="num">n/a*</td><td><span class="tag"><span class="dot warn"></span>stabilné</span></td></tr><tr><td>Kľúčové slová v Top 3</td><td class="na" colspan="3">Dáta nedostupné tento mesiac</td><td><span class="tag">—</span></td></tr><tr><td>Kľúčové slová v Top 10</td><td class="na" colspan="3">Dáta nedostupné tento mesiac</td><td><span class="tag">—</span></td></tr></tbody></table></div>
+<p style="font-size:12px;color:var(--dim)">* Free prístup vracia len dnešnú hodnotu DR, bez histórie. Posledná známa hodnota: 38 (júl 2026) → bez zmeny.</p></section>
+
+<section class="reveal"><h2><span class="snum">03</span>Konkurencia</h2><div class="sub-h"><span>Autorita domény (Ahrefs DR, 0–100)</span><span>k 11. 11. 2026</span></div>
+<div class="two"><div class="chart-box"><div class="brow me" data-pct="76"><span class="lbl">sperky-eshop.sk</span><div class="track"><div class="fill"></div></div><span class="val">DR 38</span></div><div class="brow" data-pct="100"><span class="lbl">izlato.sk</span><div class="track"><div class="fill"></div></div><span class="val">DR 50</span></div><div class="brow" data-pct="76"><span class="lbl">sofia.sk</span><div class="track"><div class="fill"></div></div><span class="val">DR 38</span></div><div class="brow" data-pct="50"><span class="lbl">olivie.sk</span><div class="track"><div class="fill"></div></div><span class="val">DR 25</span></div></div>
+<div class="tw"><table style="min-width:420px"><thead><tr><th>Doména</th><th>DR</th><th>Návštevnosť</th><th>Podiel hlasu</th><th>Pohyb m/m</th></tr></thead><tbody><tr><td><span class="tag me">sperky-eshop.sk (my)</span></td><td class="num">38</td><td class="na">nedostupné</td><td class="na">nedostupné</td><td class="na">nedostupné</td></tr><tr><td>sofia.sk</td><td class="num">38</td><td class="na">nedostupné</td><td class="na">nedostupné</td><td class="na">nedostupné</td></tr><tr><td>izlato.sk</td><td class="num">50</td><td class="na">nedostupné</td><td class="na">nedostupné</td><td class="na">nedostupné</td></tr><tr><td>olivie.sk</td><td class="num">25</td><td class="na">nedostupné</td><td class="na">nedostupné</td><td class="na">nedostupné</td></tr></tbody></table></div></div>
+<p><b>Či získavame alebo strácame podiel na trhu, tento mesiac nevieme určiť</b> — viditeľnosť a návštevnosť konkurentov nie sú dostupné. Autorita domény je vyrovnaná so Sofiou a zaostáva za Izlatom.</p></section>
+
+<section class="reveal"><h2><span class="snum">04</span>Trend návštevnosti a viditeľnosti</h2><div class="sub-h"><span>Posledný mesiac · posledných 6 mesiacov</span></div>
+<p class="na">Dáta nedostupné tento mesiac. Posledné známe dáta (júl 2026): návštevnosť sa stabilizovala okolo 9 600/mes. po minuloročnom poklese, brandové vyhľadávanie klesalo.</p></section>
+
+<section class="reveal"><h2><span class="snum">05</span>Víťazi a porazení</h2><div class="sub-h"><span>Stránky a skupiny kľúčových slov</span></div>
+<div class="two"><div class="wl-card"><div class="wlh"><b>Víťazi</b></div><p class="na">Dáta nedostupné tento mesiac.</p></div>
+<div class="wl-card"><div class="wlh"><b>Porazení</b></div><p class="na">Dáta nedostupné tento mesiac.</p></div></div></section>
+
+<section class="reveal"><h2><span class="snum">06</span>Dokončená SEO práca</h2><div class="sub-h"><span>Len dokončené úlohy</span></div>
+<p class="na">Dáta nedostupné tento mesiac — nie je pripojený zdroj úloh.</p></section>
+
+<section class="reveal"><h2><span class="snum">07</span>Akčný plán na budúci mesiac</h2><div class="sub-h"><span>Akcia → obchodný výsledok → priorita</span></div>
+<div class="plan"><div class="plan-row"><span class="pn">1</span><div class="pa"><b>Obnoviť platený Ahrefs plán (API prístup)</b><span>→ Bez neho nevieme merať rast ani konkurenciu → report je slepý</span></div><span class="pri high">Vysoká</span></div><div class="plan-row"><span class="pn">2</span><div class="pa"><b>Pripojiť GA4 + interné tržby / Merchant Center</b><span>→ Zmerať, koľko eur SEO reálne zarába</span></div><span class="pri high">Vysoká</span></div><div class="plan-row"><span class="pn">3</span><div class="pa"><b>Po obnove dát: vyhodnotiť pokles brandu „sperky eshop“ (z júla)</b><span>→ Overiť, či sa najväčší júlový zdroj straty zastavil</span></div><span class="pri high">Vysoká</span></div><div class="plan-row"><span class="pn">4</span><div class="pa"><b>Po obnove dát: skontrolovať pozície Sofia.sk na našich kategóriách</b><span>→ Vedieť, či ďalej strácame podiel na trhu pred Vianocami</span></div><span class="pri med">Stredná</span></div><div class="plan-row"><span class="pn">5</span><div class="pa"><b>Spätne vygenerovať októbrový report</b><span>→ Kompletný m/m a r/r obraz pred vianočnou sezónou</span></div><span class="pri med">Stredná</span></div></div></section>
+
+<section class="reveal"><details><summary>Prečo report neobsahuje čísla?</summary>
+<p>Pri spustení 11. 11. 2026 Ahrefs API hlásil plán „Free, billed monthly“ s limitom 0 API kreditov (reset 21. 11. 2026). Volania Site Explorer, Rank Tracker, Search Console aj zoznam projektov vrátili chybu „Insufficient plan“. Jedinou dostupnou metrikou je verejný Domain Rating. Podľa pravidiel reportu nevymýšľame čísla — chýbajúce metriky sú označené ako nedostupné.</p></details></section>
+
+<footer>Šperky Aura · CEO SEO Report · október 2026 · vygenerované automaticky 11. 11. 2026 · Ahrefs (Free)</footer>
+</div>
+<script>
+(function(){
+ var r=document.documentElement,d=document.getElementById('btn-dark'),l=document.getElementById('btn-light');
+ function s(t){r.setAttribute('data-theme',t);d.classList.toggle('on',t==='dark');l.classList.toggle('on',t==='light');}
+ var pref=(window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark';s(pref);
+ d.onclick=function(){s('dark')};l.onclick=function(){s('light')};
+ var p=document.getElementById('prog');document.addEventListener('scroll',function(){var h=r;var x=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=(isFinite(x)?x:0)+'%';},{passive:true});
+ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.1});
+ document.querySelectorAll('.reveal').forEach(function(e){io.observe(e)});
+ document.querySelectorAll('.brow').forEach(function(b){var f=b.querySelector('.fill');requestAnimationFrame(function(){f.style.width=b.getAttribute('data-pct')+'%'})});
+})();
+</script>
+</body></html>
